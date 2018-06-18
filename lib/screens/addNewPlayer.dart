@@ -21,8 +21,14 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
     new DropdownMenuItem(child: new Text("Catcher"), value: "Catcher",),
   ];
 
+  TextEditingController _playerNameController = new TextEditingController();
+  var position;
+
   void _chooseFieldPosition(value) {
-    print(value);
+    setState(() {
+      position = value;
+      print(position);
+    });
   }
 
   @override
@@ -61,6 +67,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                           items: _fieldPositions,
                           onChanged: _chooseFieldPosition,
                           hint: new Text("Choose Field Position"),
+                          value: position,
                         ),
                         new SizedBox(
                           height: 15.0,
