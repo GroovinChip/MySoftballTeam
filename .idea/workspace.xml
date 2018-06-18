@@ -4,10 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/screens/login.dart" afterPath="$PROJECT_DIR$/lib/screens/login.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/signup.dart" afterPath="$PROJECT_DIR$/lib/screens/signup.dart" />
-    </list>
+    <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
