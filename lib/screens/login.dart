@@ -40,9 +40,12 @@ class _LoginPageState extends State<LoginPage> {
   var email;
   var password;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.lightBlue,
       body: new Center(
         child: new Column(
@@ -120,16 +123,22 @@ class _LoginPageState extends State<LoginPage> {
                                   password = _passwordController.text;
 
                                   try {
-                                    final firebaseUser = await FirebaseAuth
-                                        .instance
-                                        .signInWithEmailAndPassword(
-                                            email: email, password: password);
+                                    final firebaseUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
                                     if (firebaseUser.isEmailVerified == true) {
-                                      Navigator
-                                          .of(context)
-                                          .pushNamedAndRemoveUntil(
-                                              '/HomeScreen',
-                                              (Route<dynamic> route) => false);
+                                      _scaffoldKey.currentState.showSnackBar(
+                                        new SnackBar(
+                                          duration: new Duration(seconds: 4),
+                                          content:
+                                            new Row(
+                                              children: <Widget>[
+                                                new CircularProgressIndicator(),
+                                                new Text("    Signing-In...")
+                                              ],
+                                            ),
+                                        )
+                                      );
+                                      await new Future.delayed(const Duration(seconds : 4));
+                                      Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
                                     } else {
                                       final optionsDialog = new SimpleDialog(
                                         title: new Text(
