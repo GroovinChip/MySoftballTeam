@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Signup extends StatefulWidget {
@@ -6,6 +7,12 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
+  var email;
+  var password;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -38,18 +45,11 @@ class _SignupState extends State<Signup> {
                       ),
                       new TextField(
                         decoration: new InputDecoration(
-                          icon: new Icon(Icons.account_circle),
-                          labelText: "Username",
-                        ),
-                      ),
-                      new SizedBox(
-                        height: 25.0,
-                      ),
-                      new TextField(
-                        decoration: new InputDecoration(
                           icon: new Icon(Icons.email),
                           labelText: "Email Address",
                         ),
+                        controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
                       ),
                       new SizedBox(
                         height: 25.0,
@@ -60,6 +60,7 @@ class _SignupState extends State<Signup> {
                           labelText: "Password",
                         ),
                         obscureText: true,
+                        controller: _passwordController,
                       ),
                       new SizedBox(
                         height: 25.0,
@@ -68,7 +69,14 @@ class _SignupState extends State<Signup> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           new RaisedButton(
-                            onPressed: (){
+                            onPressed: ()async {
+                              email = _emailController.text;
+                              password = _passwordController.text;
+
+                              final firebaseUser = await FirebaseAuth.instance
+                                  .createUserWithEmailAndPassword(email: email, password: password);
+                              firebaseUser.sendEmailVerification();
+
                               Navigator.of(context)
                                   .pushNamedAndRemoveUntil('/HomeScreen', (Route<dynamic> route) => false);
                             },

@@ -70,12 +70,13 @@ class _AddNewGameState extends State<AddNewGame> {
                             height: 25.0,
                           ),
                           new SizedBox(
-                            width: 150.0,
+                            width: 145.0,
                             child: new TextField(
                               decoration: new InputDecoration(
                                 labelText: "Game Number",
                                 icon: new Icon(Icons.format_list_numbered)
                               ),
+                                keyboardType: TextInputType.number,
                             ),
                           ),
                           new SizedBox(
@@ -114,7 +115,7 @@ class _AddNewGameState extends State<AddNewGame> {
                                   child: new Padding(
                                     padding: const EdgeInsets.only(left: 16.0),
                                     child: new TextField(
-
+                                      keyboardType: TextInputType.number
                                     ),
                                   ),
                                 ),
@@ -133,7 +134,7 @@ class _AddNewGameState extends State<AddNewGame> {
                                     child: new Padding(
                                       padding: const EdgeInsets.only(left: 16.0),
                                       child: new TextField(
-
+                                        keyboardType: TextInputType.number
                                       ),
                                     ),
                                   ),

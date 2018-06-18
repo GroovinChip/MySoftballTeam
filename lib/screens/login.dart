@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/screens/addNewGame.dart';
 import 'package:my_softball_team/screens/addNewPlayer.dart';
 import 'package:my_softball_team/screens/homeScreen.dart';
 import 'package:my_softball_team/screens/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart'
+    show FirebaseAuth, FirebaseUser;
 
 class LoginScreen extends StatelessWidget {
   // This widget is the root of your application.
@@ -16,10 +20,10 @@ class LoginScreen extends StatelessWidget {
       home: new LoginPage(),
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
-        '/HomeScreen':(BuildContext context) => new HomeScreen(),
-        '/Signup':(BuildContext context) => new Signup(),
-        '/AddNewGame':(BuildContext context) => new AddNewGame(),
-        '/AddNewPlayer':(BuildContext context) => new AddNewPlayer(),
+        '/HomeScreen': (BuildContext context) => new HomeScreen(),
+        '/Signup': (BuildContext context) => new Signup(),
+        '/AddNewGame': (BuildContext context) => new AddNewGame(),
+        '/AddNewPlayer': (BuildContext context) => new AddNewPlayer(),
       },
     );
   }
@@ -31,6 +35,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
+  var email;
+  var password;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -41,10 +50,7 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             new Text(
               "MySoftballTeam",
-              style: new TextStyle(
-                fontSize: 30.0,
-                color: Colors.white
-              ),
+              style: new TextStyle(fontSize: 30.0, color: Colors.white),
             ),
             new SizedBox(
               height: 25.0,
@@ -69,9 +75,11 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       new TextField(
                         decoration: new InputDecoration(
-                          icon: new Icon(Icons.account_circle),
-                          labelText: "Username",
+                          icon: new Icon(Icons.email),
+                          labelText: "Email Address",
                         ),
+                        keyboardType: TextInputType.emailAddress,
+                        controller: _emailController,
                       ),
                       new SizedBox(
                         height: 25.0,
@@ -82,6 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: "Password",
                         ),
                         obscureText: true,
+                        controller: _passwordController,
                       ),
                       new SizedBox(
                         height: 50.0,
@@ -90,12 +99,12 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           new RaisedButton(
-                            onPressed: (){
+                            onPressed: () {
                               Navigator.of(context).pushNamed('/Signup');
                             },
                             color: Colors.lightBlueAccent,
                             child: new Text(
-                                "Create Account",
+                              "Create Account",
                               style: new TextStyle(
                                 color: Colors.white,
                               ),
@@ -103,19 +112,92 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           new Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: new RaisedButton(
-                                onPressed: (){
-                                  Navigator.of(context)
-                                      .pushNamedAndRemoveUntil('/HomeScreen', (Route<dynamic> route) => false);
+                            child: new Builder(
+                                builder: (BuildContext loginButtonContext) {
+                              return new RaisedButton(
+                                onPressed: () async {
+                                  email = _emailController.text;
+                                  password = _passwordController.text;
+
+                                  try {
+                                    final firebaseUser = await FirebaseAuth
+                                        .instance
+                                        .signInWithEmailAndPassword(
+                                            email: email, password: password);
+                                    if (firebaseUser.isEmailVerified == true) {
+                                      Navigator
+                                          .of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              '/HomeScreen',
+                                              (Route<dynamic> route) => false);
+                                    } else {
+                                      final optionsDialog = new SimpleDialog(
+                                        title: new Text(
+                                            "Your email address is not verified"),
+                                      );
+                                      showDialog(
+                                          context: context,
+                                          builder: (_) => SimpleDialog(
+                                                title: new Text(
+                                                    "Your email address is not verified"),
+                                                children: <Widget>[
+                                                  new Row(
+                                                    children: <Widget>[
+                                                      new Padding(
+                                                        padding:
+                                                            const EdgeInsets.only(left: 24.0, top: 16.0, bottom: 16.0),
+                                                        child: new Text(
+                                                            "Would you like another verificaion email sent?"),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  new Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: <Widget>[
+                                                      new FlatButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child:
+                                                              new Text("No")),
+                                                      new FlatButton(
+                                                          onPressed: () {
+                                                            firebaseUser.sendEmailVerification();
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child:
+                                                              new Text("Yes")
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ));
+                                    }
+                                  } catch (e) {
+                                    final snackBar = new SnackBar(
+                                      content: new Text(
+                                          "Email or Password not found, please try again."),
+                                      action: SnackBarAction(
+                                        label: 'Dismiss',
+                                        onPressed: () {},
+                                      ),
+                                      duration: new Duration(seconds: 3),
+                                    );
+                                    Scaffold
+                                        .of(loginButtonContext)
+                                        .showSnackBar(snackBar);
+                                  }
                                 },
                                 color: Colors.lightBlueAccent,
                                 child: new Text(
                                   "Login",
                                   style: new TextStyle(
-                                      color: Colors.white,
+                                    color: Colors.white,
                                   ),
                                 ),
-                            ),
+                              );
+                            }),
                           ),
                         ],
                       ),
