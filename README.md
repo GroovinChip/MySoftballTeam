@@ -2,7 +2,7 @@
 
 A new Flutter application to track your softball team&#x27;s players and games.
 
-![alt text](https://i.imgur.com/QOgoQLo.png)
+Check out the wiki for screenshots
 
 ## Getting Started
 
