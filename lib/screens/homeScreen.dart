@@ -82,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         controller: _pageController,
         onPageChanged: _onPageChanged,
+        physics: const NeverScrollableScrollPhysics(),
       ),
       floatingActionButton: _fabs[_page], // T
       bottomNavigationBar: new BottomNavigationBar(
