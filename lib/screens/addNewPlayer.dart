@@ -207,8 +207,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                                     outsFielded = _outsFieldedController.text;
 
                                     // Save the player to the database
-                                    CollectionReference team =
-                                        Firestore.instance.collection('Team');
+                                    CollectionReference team = Firestore.instance.collection('Team');
                                     await team.add({
                                       "PlayerName": playerName,
                                       "FieldPosition": position,

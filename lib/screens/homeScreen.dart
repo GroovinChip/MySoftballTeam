@@ -116,7 +116,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                               new FlatButton(
                                                 child: new Text(
                                                     "Remove Player From Team"),
-                                                onPressed: () {},
+                                                onPressed: () => Firestore.instance.runTransaction((transaction) async {
+                                                  CollectionReference team = Firestore.instance.collection('Team');
+                                                  await transaction.delete(ds.reference);
+                                                  Navigator.pop(context);
+                                                }),
                                               ),
                                             ],
                                           ),
