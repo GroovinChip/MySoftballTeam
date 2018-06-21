@@ -10,7 +10,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   firebase_auth: "^0.5.11"
   google_sign_in: "^3.0.4"
-  cloud_firestore: ^0.7.3
+  cloud_firestore: "^0.7.3"
 
 dev_dependencies:
   flutter_test:
