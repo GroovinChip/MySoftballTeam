@@ -35,8 +35,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  // Controllers
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
+
+  // Variables
   var email;
   var password;
 
@@ -67,12 +71,6 @@ class _LoginPageState extends State<LoginPage> {
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      /*new Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          new Text("Login"),
-                        ],
-                      ),*/
                       new SizedBox(
                         height: 25.0,
                       ),
@@ -122,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                                   email = _emailController.text;
                                   password = _passwordController.text;
 
+                                  // try to sign in using the user's credentials
                                   try {
                                     final firebaseUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
                                     if (firebaseUser.isEmailVerified == true) {

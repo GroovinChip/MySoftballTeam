@@ -8,6 +8,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  // List of bottom navigation bar items
   List<BottomNavigationBarItem> _bottomNavigationBarItems = [
     new BottomNavigationBarItem(
         icon: new Icon(Icons.gamepad), title: new Text("Games")),
@@ -17,14 +19,16 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: new Icon(Icons.poll), title: new Text("Stats")),
   ];
 
-  int _page = 0;
+  int _page = 0; // tracks what page is currently in view
   PageController _pageController;
 
+  // Navigate pages based on bottom navigation bar item tap
   void navigationTapped(int page) {
     _pageController.animateToPage(page,
         duration: const Duration(milliseconds: 300), curve: Curves.ease);
   }
 
+  // Track which page is in view
   void _onPageChanged(int page) {
     setState(() {
       this._page = page;
@@ -43,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController.dispose();
   }
 
+  // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
   @override
   Widget build(BuildContext context) {
     List<Widget> _fabs = [

@@ -7,6 +7,8 @@ class AddNewPlayer extends StatefulWidget {
 }
 
 class _AddNewPlayerState extends State<AddNewPlayer> {
+
+  // List of field positions
   List<DropdownMenuItem> _fieldPositions = [
     new DropdownMenuItem(
       child: new Text("Pitcher"),
@@ -54,6 +56,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
     ),
   ];
 
+  // Controllers
   TextEditingController _playerNameController = new TextEditingController();
   TextEditingController _gamesPlayerController = new TextEditingController();
   TextEditingController _atBatsController = new TextEditingController();
@@ -61,6 +64,8 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
   TextEditingController _outsReceivedController = new TextEditingController();
   TextEditingController _assistsController = new TextEditingController();
   TextEditingController _outsFieldedController = new TextEditingController();
+
+  // Variables
   String playerName;
   String position;
   String gamesPlayed;
@@ -69,8 +74,8 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
   String outsReceived;
   String assists;
   String outsFielded;
-  bool hasInitialStats = false;
 
+  // Set field position on DropdownButton tap
   void _chooseFieldPosition(value) {
     setState(() {
       position = value;

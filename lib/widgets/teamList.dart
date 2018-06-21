@@ -57,6 +57,7 @@ class _TeamListState extends State<TeamList> {
                                       child: new Text(
                                           "Remove Player From Team"),
                                       onPressed: () => Firestore.instance.runTransaction((transaction) async {
+                                        // Delete player from database
                                         CollectionReference team = Firestore.instance.collection('Team');
                                         await transaction.delete(ds.reference);
                                         Navigator.pop(context);

@@ -10,8 +10,11 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
 
+  // Controllers
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
+
+  // Variables
   var email;
   var password;
 
