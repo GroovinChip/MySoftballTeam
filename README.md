@@ -1,4 +1,4 @@
-# my_softball_team
+# MySoftballTeam
 
 A new Flutter application to track your softball team&#x27;s players and games.
 
