@@ -22,8 +22,9 @@ class _SignupState extends State<Signup> {
   var email;
   var password;
   var team;
+  var list;
 
-  // Set field position on DropdownButton tap
+  // Set team on DropdownButton tap
   void _chooseTeam(value) {
     setState(() {
       team = value;
@@ -96,11 +97,27 @@ class _SignupState extends State<Signup> {
                           new SizedBox(
                             width: 15.0,
                           ),
-                          new DropdownButton(
-                            items: _teamNames,
-                            onChanged: _chooseTeam,
-                            hint: new Text("Join a Team"),
-                            value: team
+                          new StreamBuilder<QuerySnapshot>(
+                            stream: Firestore.instance.collection("Teams").snapshots(),
+                            builder: (context, snapshot){
+                             /*var length = snapshot.data.documents.length;
+                             DocumentSnapshot ds = snapshot.data.documents[length - 1];*/
+
+                              if (snapshot.data == null) {
+                                return new CircularProgressIndicator();
+                              } else {
+
+                              }
+
+                             return new DropdownButton(
+                               items: snapshot.data.documents.map((DocumentSnapshot document) {
+                                 return DropdownMenuItem(child: new Text(document.documentID), value: document.documentID);
+                               }).toList(),
+                               onChanged: _chooseTeam,
+                               hint: new Text("Join a Team"),
+                               value: team
+                             );
+                            }
                           ),
                           new SizedBox(
                             width: 15.0,

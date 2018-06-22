@@ -9,7 +9,7 @@ class TeamList extends StatefulWidget {
 class _TeamListState extends State<TeamList> {
   @override
   Widget build(BuildContext context) {
-    return new StreamBuilder(
+    return new StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('Team').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return const Text('Loading...');
