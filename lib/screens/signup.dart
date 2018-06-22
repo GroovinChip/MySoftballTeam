@@ -1,7 +1,7 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -10,6 +10,10 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
 
+  List<DropdownMenuItem> _teamNames = [
+
+  ];
+
   // Controllers
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
@@ -17,6 +21,15 @@ class _SignupState extends State<Signup> {
   // Variables
   var email;
   var password;
+  var team;
+
+  // Set field position on DropdownButton tap
+  void _chooseTeam(value) {
+    setState(() {
+      team = value;
+      print(team);
+    });
+  }
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -75,10 +88,38 @@ class _SignupState extends State<Signup> {
                         height: 25.0,
                       ),
                       new Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          new Icon(Icons.group, color: Colors.black45,),
+                          new SizedBox(
+                            width: 1.0,
+                          ),
+                          new SizedBox(
+                            width: 15.0,
+                          ),
+                          new DropdownButton(
+                            items: _teamNames,
+                            onChanged: _chooseTeam,
+                            hint: new Text("Join a Team"),
+                            value: team
+                          ),
+                          new SizedBox(
+                            width: 15.0,
+                          ),
+                        ],
+                      ),
+                      new SizedBox(
+                        height: 25.0,
+                      ),
+                      new Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           new RaisedButton(
-                            onPressed: ()async {
+                            onPressed: (){},
+                            child: new Text("I don't see my team", style: new TextStyle(color: Colors.white),),
+                            color: Colors.deepOrangeAccent,
+                          ),
+                          new RaisedButton(
+                            onPressed: () async {
                               email = _emailController.text;
                               password = _passwordController.text;
 
