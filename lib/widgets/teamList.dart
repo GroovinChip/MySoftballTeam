@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
+import 'package:my_softball_team/globals.dart' as globals;
 
 class TeamList extends StatefulWidget {
   @override
   _TeamListState createState() => _TeamListState();
 }
 
+CollectionReference teamCollection = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
+
 class _TeamListState extends State<TeamList> {
   @override
   Widget build(BuildContext context) {
     return new StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('Team').snapshots(),
+      stream: teamCollection.snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return const Text('Loading...');
         return new ListView.builder(

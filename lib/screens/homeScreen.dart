@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_softball_team/widgets/teamList.dart';
+import 'package:my_softball_team/globals.dart' as globals;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -68,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("My Team"),
+        title: new Text(globals.teamTame.toString()),
       ),
       body: new PageView(
         children: <Widget>[

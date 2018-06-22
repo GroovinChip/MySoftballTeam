@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:my_softball_team/globals.dart' as globals;
 
 class AddNewPlayer extends StatefulWidget {
   @override
@@ -212,7 +213,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                                     outsFielded = _outsFieldedController.text;
 
                                     // Save the player to the database
-                                    CollectionReference team = Firestore.instance.collection('Team');
+                                    CollectionReference team = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Players");
                                     await team.add({
                                       "PlayerName": playerName,
                                       "FieldPosition": position,

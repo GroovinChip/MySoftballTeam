@@ -7,6 +7,8 @@ import 'package:my_softball_team/screens/homeScreen.dart';
 import 'package:my_softball_team/screens/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart'
     show FirebaseAuth, FirebaseUser;
+import 'package:my_softball_team/globals.dart' as globals;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
   // This widget is the root of your application.
@@ -45,6 +47,19 @@ class _LoginPageState extends State<LoginPage> {
   var password;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  void _getValuesFromStorage() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String team = "";
+    team = prefs.getString("TeamName");
+    globals.teamTame = team;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _getValuesFromStorage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,6 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                             ),
                                         )
                                       );
+                                      globals.loggedInUser = firebaseUser; // add user to globals
                                       await new Future.delayed(const Duration(seconds : 4));
                                       Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
                                     } else {
