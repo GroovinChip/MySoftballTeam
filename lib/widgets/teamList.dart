@@ -36,40 +36,29 @@ class _TeamListState extends State<TeamList> {
                         title: new Text(
                             "Options for ${ds['PlayerName']} - ${ds['FieldPosition']}"),
                         children: <Widget>[
-                          new Row(
-                            children: <Widget>[
-                              new Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 24.0,
-                                    top: 16.0,
-                                    bottom: 16.0),
-                                child: new Column(
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    new FlatButton(
-                                      child: new Text("Update Stats"),
-                                      onPressed: () {},
-                                    ),
-                                    new FlatButton(
-                                      child:
-                                      new Text("Change Position"),
-                                      onPressed: () {},
-                                    ),
-                                    new FlatButton(
-                                      child: new Text(
-                                          "Remove Player From Team"),
-                                      onPressed: () => Firestore.instance.runTransaction((transaction) async {
-                                        // Delete player from database
-                                        CollectionReference team = Firestore.instance.collection('Team');
-                                        await transaction.delete(ds.reference);
-                                        Navigator.pop(context);
-                                      }),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: new ListTile(
+                              leading: new Icon(Icons.poll),
+                              title: new Text("Update Stats"),
+                              onTap: (){},
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: new ListTile(
+                              leading: new Icon(Icons.location_on),
+                              title: new Text("Change Field Position"),
+                              onTap: (){},
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: new ListTile(
+                              leading: new Icon(Icons.delete),
+                              title: new Text("Remove Player From Team"),
+                              onTap: (){},
+                            ),
                           ),
                         ],
                       ));
