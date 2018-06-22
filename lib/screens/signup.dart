@@ -100,23 +100,23 @@ class _SignupState extends State<Signup> {
                           new StreamBuilder<QuerySnapshot>(
                             stream: Firestore.instance.collection("Teams").snapshots(),
                             builder: (context, snapshot){
-                             /*var length = snapshot.data.documents.length;
-                             DocumentSnapshot ds = snapshot.data.documents[length - 1];*/
 
+                              // Check if the snapshot is null
                               if (snapshot.data == null) {
                                 return new CircularProgressIndicator();
                               } else {
 
                               }
 
-                             return new DropdownButton(
-                               items: snapshot.data.documents.map((DocumentSnapshot document) {
-                                 return DropdownMenuItem(child: new Text(document.documentID), value: document.documentID);
-                               }).toList(),
-                               onChanged: _chooseTeam,
-                               hint: new Text("Join a Team"),
-                               value: team
-                             );
+                              // Return a dropdownbutton with all the teams from the database
+                              return new DropdownButton(
+                                items: snapshot.data.documents.map((DocumentSnapshot document) {
+                                  return DropdownMenuItem(child: new Text(document.documentID), value: document.documentID);
+                                }).toList(),
+                                onChanged: _chooseTeam,
+                                hint: new Text("Join a Team"),
+                                value: team
+                              );
                             }
                           ),
                           new SizedBox(
