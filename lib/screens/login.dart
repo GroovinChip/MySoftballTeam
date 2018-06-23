@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/screens/addNewGame.dart';
 import 'package:my_softball_team/screens/addNewPlayer.dart';
@@ -32,6 +31,7 @@ class LoginScreen extends StatelessWidget {
 }
 
 class LoginPage extends StatefulWidget {
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -45,6 +45,7 @@ class _LoginPageState extends State<LoginPage> {
   // Variables
   var email;
   var password;
+  bool isChecked = false;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -53,6 +54,19 @@ class _LoginPageState extends State<LoginPage> {
     String team = "";
     team = prefs.getString("TeamName");
     globals.teamTame = team;
+    String token = prefs.get("Token");
+    if(token.isNotEmpty){
+      Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
+    }
+  }
+
+  void _rememberLogin() async {
+    if(isChecked == true){
+      print(globals.loggedInUser);
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      String userIdToken = await globals.loggedInUser.getIdToken();
+      prefs.setString("Token", userIdToken);
+    }
   }
 
   @override
@@ -109,7 +123,24 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _passwordController,
                       ),
                       new SizedBox(
-                        height: 50.0,
+                        height: 25.0,
+                      ),
+                      new Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          new Text("Remember Me"),
+                          new Checkbox(
+                            value: isChecked,
+                            onChanged: (bool value) {
+                              setState(() {
+                                isChecked = value;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                      new SizedBox(
+                        height: 25.0,
                       ),
                       new Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -152,6 +183,7 @@ class _LoginPageState extends State<LoginPage> {
                                         )
                                       );
                                       globals.loggedInUser = firebaseUser; // add user to globals
+                                      _rememberLogin();
                                       await new Future.delayed(const Duration(seconds : 4));
                                       Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
                                     } else {
