@@ -9,7 +9,27 @@ class TeamList extends StatefulWidget {
 
 CollectionReference teamCollection = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
 
+
 class _TeamListState extends State<TeamList> {
+
+  var position;
+
+// Set field position on DropdownButton tap
+  void _changeFieldPosition(value) {
+    setState(() {
+      position = value;
+      print(position);
+      print(globals.selectedPlayerName);
+      teamCollection.document(globals.selectedPlayerName).updateData({"FieldPosition":position});
+      Navigator.pop(context);
+      /*Firestore.instance.runTransaction((transaction) async {
+        // Update the player
+        await transaction.update();
+        Navigator.pop(context);
+      });*/
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new StreamBuilder<QuerySnapshot>(
@@ -30,6 +50,7 @@ class _TeamListState extends State<TeamList> {
                 title: new Text("${ds['PlayerName']}"),
                 subtitle: new Text("${ds['FieldPosition']}"),
                 onTap: () {
+                  globals.selectedPlayerName = "${ds['PlayerName']}";
                   showDialog(
                       context: context,
                       builder: (_) => SimpleDialog(
@@ -49,7 +70,27 @@ class _TeamListState extends State<TeamList> {
                             child: new ListTile(
                               leading: new Icon(Icons.location_on),
                               title: new Text("Change Field Position"),
-                              onTap: (){},
+                              onTap: (){
+                                Navigator.pop(context);
+                                showModalBottomSheet(
+                                    context: context,
+                                    builder: (builder){
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          new ListTile(
+                                            leading: new Icon(Icons.location_on),
+                                            title: new DropdownButton(
+                                              items: globals.fieldPositions,
+                                              onChanged: _changeFieldPosition,
+                                              hint: new Text("${ds['FieldPosition']}"),
+                                              value: position),
+                                            trailing: new SizedBox(width: 50.0),
+                                          ),
+                                        ],
+                                      );
+                                    });
+                              },
                             ),
                           ),
                           Padding(
@@ -57,7 +98,42 @@ class _TeamListState extends State<TeamList> {
                             child: new ListTile(
                               leading: new Icon(Icons.delete),
                               title: new Text("Remove Player From Team"),
-                              onTap: (){},
+                              onTap: () => Firestore.instance.runTransaction((transaction) async {
+                                Navigator.pop(context);
+                                showModalBottomSheet(
+                                    context: context,
+                                    builder: (builder){
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          new ListTile(
+                                            title: new Text("Are you sure you want to remove  ${ds['PlayerName']} from your team?"),
+                                            subtitle: new Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: <Widget>[
+                                                new RaisedButton(
+                                                  onPressed: (){
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: new Text("No", style: new TextStyle(color: Colors.white)),
+                                                  color: Colors.deepOrangeAccent,
+                                                ),
+                                                new RaisedButton(
+                                                  onPressed: () {
+                                                    // Delete player from database
+                                                    teamCollection.document(globals.selectedPlayerName).delete();
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: new Text("Yes", style: new TextStyle(color: Colors.white)),
+                                                  color: Colors.blue,
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    });
+                              }),
                             ),
                           ),
                         ],

@@ -9,54 +9,6 @@ class AddNewPlayer extends StatefulWidget {
 
 class _AddNewPlayerState extends State<AddNewPlayer> {
 
-  // List of field positions
-  List<DropdownMenuItem> _fieldPositions = [
-    new DropdownMenuItem(
-      child: new Text("Pitcher"),
-      value: "Pitcher",
-    ),
-    new DropdownMenuItem(
-      child: new Text("First Base"),
-      value: "First Base",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Second Base"),
-      value: "Second Base",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Shortstop"),
-      value: "Shortstop",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Third Base"),
-      value: "Third Base",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Right Field"),
-      value: "Right Field",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Right Center Field"),
-      value: "Right Center Field",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Center Field"),
-      value: "Center Field",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Left Center Field"),
-      value: "Left Center Field",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Left Field"),
-      value: "Left Field",
-    ),
-    new DropdownMenuItem(
-      child: new Text("Catcher"),
-      value: "Catcher",
-    ),
-  ];
-
   // Controllers
   TextEditingController _playerNameController = new TextEditingController();
   TextEditingController _gamesPlayerController = new TextEditingController();
@@ -80,7 +32,6 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
   void _chooseFieldPosition(value) {
     setState(() {
       position = value;
-      print(position);
     });
   }
 
@@ -118,7 +69,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                           height: 25.0,
                         ),
                         new DropdownButton(
-                          items: _fieldPositions,
+                          items: globals.fieldPositions,
                           onChanged: _chooseFieldPosition,
                           hint: new Text("Choose Field Position"),
                           value: position,
@@ -214,7 +165,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
 
                                     // Save the player to the database
                                     CollectionReference team = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Players");
-                                    await team.add({
+                                    team.document(playerName).setData({
                                       "PlayerName": playerName,
                                       "FieldPosition": position,
                                       "GamesPlayedStat": gamesPlayed,

@@ -33,14 +33,12 @@ class _SignupState extends State<Signup> {
   void _chooseTeam(value) {
     setState(() {
       _team = value;
-      print(_team);
     });
   }
 
   void _saveValuesToStorage(String teamName) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("TeamName", teamName);
-    print("Saving " + teamName + " to SharedPreferences");
   }
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
