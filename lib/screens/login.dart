@@ -172,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                                     if (firebaseUser.isEmailVerified == true) {
                                       _scaffoldKey.currentState.showSnackBar(
                                         new SnackBar(
-                                          duration: new Duration(seconds: 4),
+                                          duration: new Duration(seconds: 2),
                                           content:
                                             new Row(
                                               children: <Widget>[
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                                       );
                                       globals.loggedInUser = firebaseUser; // add user to globals
                                       _rememberLogin();
-                                      await new Future.delayed(const Duration(seconds : 4));
+                                      await new Future.delayed(const Duration(seconds : 2));
                                       Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
                                     } else {
                                       final optionsDialog = new SimpleDialog(

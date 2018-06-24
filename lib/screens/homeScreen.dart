@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_softball_team/widgets/teamList.dart';
 import 'package:my_softball_team/globals.dart' as globals;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -48,9 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController.dispose();
   }
 
-  // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
   @override
   Widget build(BuildContext context) {
+    // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
     List<Widget> _fabs = [
       new FloatingActionButton(
         onPressed: () {
@@ -70,6 +72,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(globals.teamTame.toString()),
+        actions: <Widget>[
+          new FlatButton(onPressed: () async {
+            FirebaseAuth.instance.signOut();
+            final SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.setString("Token", "");
+            Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
+          }, child: new Text("Log Out", style: new TextStyle(color: Colors.white),))
+        ],
       ),
       body: new PageView(
         children: <Widget>[
