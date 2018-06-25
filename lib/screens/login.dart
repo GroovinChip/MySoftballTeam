@@ -52,27 +52,40 @@ class _LoginPageState extends State<LoginPage> {
 
   void _getValuesFromStorage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String team = "";
-    team = prefs.getString("TeamName");
-    globals.teamTame = team;
-    String token = prefs.get("Token");
+    /*String token = prefs.get("Token");
     if(token.isNotEmpty){
       Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
+    }*/
+    // TODO: retrieve firebaseUser, authenticate, and navigate to main screen
+    email = prefs.get("Email");
+    password = prefs.get("Password");
+    try {
+      globals.loggedInUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      if(globals.loggedInUser.isEmailVerified == true) {
+        Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
+      } else {
+        email = "";
+        password = "";
+      }
+    } catch (e) {
+      print(e);
     }
+
   }
 
   void _rememberLogin() async {
     if(isChecked == true){
       print(globals.loggedInUser);
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      String userIdToken = await globals.loggedInUser.getIdToken();
-      prefs.setString("Token", userIdToken);
+      /*String userIdToken = await globals.loggedInUser.getIdToken();
+      prefs.setString("Token", userIdToken);*/
+      prefs.setString("Email", email);
+      prefs.setString("Password", password);
     }
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     _getValuesFromStorage();
   }
 
