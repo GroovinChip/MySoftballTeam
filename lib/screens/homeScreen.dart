@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -69,9 +71,28 @@ class _HomeScreenState extends State<HomeScreen> {
       new Container()
     ];
 
-    return new Scaffold(
+    CollectionReference usersDB = Firestore.instance.collection("Users");
+
+    return new Scaffold (
       appBar: new AppBar(
-        title: new Text(globals.teamTame.toString()),
+        title: StreamBuilder<QuerySnapshot>(
+          stream: usersDB.snapshots(),
+          builder: (context, snapshot) {
+            if(snapshot.hasData){
+              //return new Text("MySoftballTeam");
+              List<DocumentSnapshot> users = snapshot.data.documents;
+              for(int index = 0; index < users.length; index++) {
+                if (users[index].documentID == globals.loggedInUser.uid) {
+                  DocumentSnapshot team = users[index];
+                  return new Text("${team['Team']}");
+                }
+              }
+            } else {
+              return new Text("MySoftballTeam");
+            }
+
+          },
+        ),
         actions: <Widget>[
           new FlatButton(onPressed: () async {
             FirebaseAuth.instance.signOut();

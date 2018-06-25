@@ -1,10 +1,12 @@
 library my_softball_team.globals;
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 FirebaseUser loggedInUser;
 String teamTame;
 String selectedPlayerName;
+CollectionReference usersDB;
 
 // List of field positions
 List<DropdownMenuItem> fieldPositions = [

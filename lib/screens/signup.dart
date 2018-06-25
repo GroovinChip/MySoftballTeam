@@ -12,10 +12,6 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
 
-  List<DropdownMenuItem> _teamNames = [
-
-  ];
-
   // Controllers
   TextEditingController _nameController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
@@ -197,7 +193,7 @@ class _SignupState extends State<Signup> {
                                                       return new RaisedButton(
                                                         onPressed: () async {
                                                           globals.teamTame = _teamNameController.text; // add team name to globals
-                                                          _saveValuesToStorage(globals.teamTame);
+                                                          //_saveValuesToStorage(globals.teamTame);
                                                           // Add team name to database
                                                           if (globals.teamTame != "") {
                                                             CollectionReference team = Firestore.instance.collection("Teams");
@@ -227,7 +223,7 @@ class _SignupState extends State<Signup> {
                                 child: new Text("I don't see my team", style: new TextStyle(color: Colors.white),),
                                 color: Colors.deepOrangeAccent,
                               ),
-                              new RaisedButton(
+                              new RaisedButton( // Create Account button
                                 onPressed: () async {
                                   email = _emailController.text;
                                   password = _passwordController.text;
@@ -246,18 +242,19 @@ class _SignupState extends State<Signup> {
                                         )
                                     );
                                   }
+                                  
+                                  name = _nameController.text;
 
                                   // create the user
-                                  final firebaseUser = await FirebaseAuth.instance
-                                      .createUserWithEmailAndPassword(email: email, password: password);
-
-                                  // Add the user to their team
-                                  name = _nameController.text;
-                                  CollectionReference team = Firestore.instance.collection("Teams");
-                                  team.document(globals.teamTame).collection("Players").document(name).setData({"PlayerName":name});
+                                  final firebaseUser = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+                                  
+                                  // add the user to the database
+                                  CollectionReference usersDB = Firestore.instance.collection("Users");
+                                  usersDB.document(firebaseUser.uid).setData({"Name":name, "Email":firebaseUser.email, "Team":_team});
 
                                   // Add user to globals
                                   globals.loggedInUser = firebaseUser;
+                                  globals.usersDB = usersDB;
 
                                   _scaffoldKey.currentState.showSnackBar(
                                       new SnackBar(

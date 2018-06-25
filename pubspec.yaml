@@ -12,6 +12,7 @@ dependencies:
   google_sign_in: "^3.0.4"
   cloud_firestore: "^0.7.3"
   shared_preferences: "^0.4.2"
+  flutter_list_drag_and_drop: "^0.1.2"
 
 dev_dependencies:
   flutter_test:
