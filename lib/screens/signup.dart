@@ -254,7 +254,6 @@ class _SignupState extends State<Signup> {
 
                                   // Add user to globals
                                   globals.loggedInUser = firebaseUser;
-                                  globals.usersDB = usersDB;
 
                                   _scaffoldKey.currentState.showSnackBar(
                                       new SnackBar(

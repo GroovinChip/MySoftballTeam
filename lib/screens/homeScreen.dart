@@ -84,7 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
               for(int index = 0; index < users.length; index++) {
                 if (users[index].documentID == globals.loggedInUser.uid) {
                   DocumentSnapshot team = users[index];
-                  return new Text("${team['Team']}");
+                  globals.teamTame = "${team['Team']}";
+                  return new Text(globals.teamTame);
                 }
               }
             } else {

@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 FirebaseUser loggedInUser;
 String teamTame;
 String selectedPlayerName;
-CollectionReference usersDB;
+CollectionReference usersDB = Firestore.instance.collection("Users");
 
 // List of field positions
 List<DropdownMenuItem> fieldPositions = [
