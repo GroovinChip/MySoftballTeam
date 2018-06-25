@@ -52,11 +52,6 @@ class _LoginPageState extends State<LoginPage> {
 
   void _getValuesFromStorage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    /*String token = prefs.get("Token");
-    if(token.isNotEmpty){
-      Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
-    }*/
-    // TODO: retrieve firebaseUser, authenticate, and navigate to main screen
     email = prefs.get("Email");
     password = prefs.get("Password");
     try {
@@ -77,8 +72,6 @@ class _LoginPageState extends State<LoginPage> {
     if(isChecked == true){
       print(globals.loggedInUser);
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      /*String userIdToken = await globals.loggedInUser.getIdToken();
-      prefs.setString("Token", userIdToken);*/
       prefs.setString("Email", email);
       prefs.setString("Password", password);
     }

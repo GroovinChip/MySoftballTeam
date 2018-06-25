@@ -23,11 +23,6 @@ class _TeamListState extends State<TeamList> {
       print(globals.selectedPlayerName);
       teamCollection.document(globals.selectedPlayerName).updateData({"FieldPosition":position});
       Navigator.pop(context);
-      /*Firestore.instance.runTransaction((transaction) async {
-        // Update the player
-        await transaction.update();
-        Navigator.pop(context);
-      });*/
     });
   }
 
@@ -88,7 +83,7 @@ class _TeamListState extends State<TeamList> {
                                                   onChanged: _changeFieldPosition,
                                                   hint: new Text("${ds['FieldPosition']}"),
                                                   value: position),
-                                                trailing: new SizedBox(width: 50.0),
+                                                trailing: new SizedBox(width: 150.0),
                                               ),
                                             ],
                                           );
@@ -109,28 +104,34 @@ class _TeamListState extends State<TeamList> {
                                           return Column(
                                             mainAxisSize: MainAxisSize.min,
                                             children: <Widget>[
-                                              new ListTile(
-                                                title: new Text("Are you sure you want to remove  ${ds['PlayerName']} from your team?"),
-                                                subtitle: new Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                  children: <Widget>[
-                                                    new RaisedButton(
-                                                      onPressed: (){
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: new Text("No", style: new TextStyle(color: Colors.white)),
-                                                      color: Colors.deepOrangeAccent,
+                                              Padding(
+                                                padding: const EdgeInsets.only(top: 8.0),
+                                                child: new ListTile(
+                                                  title: new Text("Are you sure you want to remove ${ds['PlayerName']} from your team?"),
+                                                  subtitle: Padding(
+                                                    padding: const EdgeInsets.only(top: 8.0),
+                                                    child: new Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                      children: <Widget>[
+                                                        new RaisedButton(
+                                                          onPressed: (){
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child: new Text("No", style: new TextStyle(color: Colors.white)),
+                                                          color: Colors.deepOrangeAccent,
+                                                        ),
+                                                        new RaisedButton(
+                                                          onPressed: () {
+                                                            // Delete player from database
+                                                            teamCollection.document(globals.selectedPlayerName).delete();
+                                                            Navigator.pop(context);
+                                                          },
+                                                          child: new Text("Yes", style: new TextStyle(color: Colors.white)),
+                                                          color: Colors.blue,
+                                                        )
+                                                      ],
                                                     ),
-                                                    new RaisedButton(
-                                                      onPressed: () {
-                                                        // Delete player from database
-                                                        teamCollection.document(globals.selectedPlayerName).delete();
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: new Text("Yes", style: new TextStyle(color: Colors.white)),
-                                                      color: Colors.blue,
-                                                    )
-                                                  ],
+                                                  ),
                                                 ),
                                               ),
                                             ],

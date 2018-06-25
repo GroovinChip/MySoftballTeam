@@ -61,12 +61,14 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.of(context).pushNamed('/AddNewGame');
         },
         child: new Icon(Icons.add),
+        tooltip: "Add a Game",
       ),
       new FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed('/AddNewPlayer');
         },
         child: new Icon(Icons.add),
+        tooltip: "Add a Player",
       ),
       new Container()
     ];
