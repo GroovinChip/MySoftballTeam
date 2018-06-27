@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_softball_team/widgets/teamList.dart';
+import 'package:my_softball_team/widgets/statsTable.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -81,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
           stream: usersDB.snapshots(),
           builder: (context, snapshot) {
             if(snapshot.hasData){
-              //return new Text("MySoftballTeam");
               List<DocumentSnapshot> users = snapshot.data.documents;
               for(int index = 0; index < users.length; index++) {
                 if (users[index].documentID == globals.loggedInUser.uid) {
@@ -111,9 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: new Text("Softball Games will go here"),
           ),
           new TeamList(),
-          new Center(
-            child: new Text("Stats will go here"),
-          )
+          new StatsTable()
         ],
         controller: _pageController,
         onPageChanged: _onPageChanged,
