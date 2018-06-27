@@ -15,17 +15,17 @@ class _StatsTableState extends State<StatsTable> {
   CollectionReference players = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
   CollectionReference stats = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Stats");
 
-  List<DataColumn> columns = [
-    new DataColumn(label: new Text("Players")),
-  ];
-  List<DataRow> rows = [];
-  List<DataCell> cells = [];
-
   @override
   Widget build(BuildContext context) {
     return new StreamBuilder<List<QuerySnapshot>>(
       stream: new StreamZip([players.snapshots(), stats.snapshots()]),
       builder: (context, snapshot){
+        List<DataColumn> columns = [
+          new DataColumn(label: new Text("Players")),
+        ];
+        List<DataRow> rows = [];
+        List<DataCell> cells = [];
+
         if(snapshot.hasData) {
           final players_stream = snapshot.data[0];
           final stats_stream = snapshot.data[1];
@@ -46,19 +46,6 @@ class _StatsTableState extends State<StatsTable> {
           print("Cells: " + cells.length.toString());
           print("Rows" + rows.length.toString());
           print("Columns: " + columns.length.toString());
-
-          /*List<DocumentSnapshot> teamPlayers = snapshot.data.documents;
-          // Iterate through the players to set the first cell of every row as the player name
-          for(int index = 0; index < teamPlayers.length; index++){
-            for(int row = 0; row < rows.length; row++){
-              if(teamPlayers[index].documentID == rows[row].toString()) {
-
-              } else {
-                rows.add(new DataRow(cells: [new DataCell(new Text(teamPlayers[index].documentID), onTap: (){})]));
-              }
-            }
-
-          }*/
 
           return ListView(
             scrollDirection: Axis.horizontal,
