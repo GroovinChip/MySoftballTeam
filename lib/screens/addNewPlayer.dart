@@ -42,195 +42,214 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
         title: new Text("Add New Player"),
       ),
       body: new SingleChildScrollView(
-        child: new Center(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: new Card(
-                  elevation: 4.0,
-                  child: new Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: new Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        new SizedBox(
-                          height: 25.0,
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: new Card(
+                elevation: 4.0,
+                child: new Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: new Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      new SizedBox(
+                        height: 25.0,
+                      ),
+                      new TextField(
+                        decoration: new InputDecoration(
+                          icon: new Icon(Icons.person),
+                          labelText: "Player Name",
                         ),
-                        new TextField(
-                          decoration: new InputDecoration(
-                            icon: new Icon(Icons.person),
-                            labelText: "Player Name",
+                        controller: _playerNameController,
+                      ),
+                      new SizedBox(
+                        height: 25.0,
+                      ),
+                      new DropdownButton(
+                        items: globals.fieldPositions,
+                        onChanged: _chooseFieldPosition,
+                        hint: new Text("Choose Field Position"),
+                        value: position,
+                      ),
+                      new SizedBox(
+                        height: 15.0,
+                      ),
+                      new ExpansionTile(
+                        title: new Text("Initial Stats (Optional)"),
+                        children: <Widget>[
+                          new SizedBox(
+                            width: double.infinity,
+                            child: new TextField(
+                              keyboardType: TextInputType.number,
+                              controller: _gamesPlayerController,
+                              decoration: new InputDecoration(
+                                labelText: "Games Played",
+                                icon: new Icon(Icons.poll),
+                              ),
+                            ),
                           ),
-                          controller: _playerNameController,
-                        ),
-                        new SizedBox(
-                          height: 25.0,
-                        ),
-                        new DropdownButton(
-                          items: globals.fieldPositions,
-                          onChanged: _chooseFieldPosition,
-                          hint: new Text("Choose Field Position"),
-                          value: position,
-                        ),
-                        new SizedBox(
-                          height: 15.0,
-                        ),
-                        new ExpansionTile(
-                          title: new Text("Initial Stats (Optional)"),
-                          children: <Widget>[
-                            new ListTile(
-                              title: new Text("Games Played"),
-                              subtitle: new SizedBox(
-                                width: 75.0,
-                                child: new TextField(
-                                  keyboardType: TextInputType.number,
-                                  controller: _gamesPlayerController,
-                                ),
+                          new SizedBox(
+                            height: 15.0,
+                          ),
+                          new SizedBox(
+                            width: double.infinity,
+                            child: new TextField(
+                              keyboardType: TextInputType.number,
+                              controller: _atBatsController,
+                              decoration: new InputDecoration(
+                                labelText: "At Bats",
+                                icon: new Icon(Icons.poll),
                               ),
                             ),
-                            new ListTile(
-                              title: new Text("At Bats"),
-                              subtitle: new SizedBox(
-                                width: 75.0,
-                                child: new TextField(
-                                  keyboardType: TextInputType.number,
-                                  controller: _atBatsController,
-                                ),
+                          ),
+                          new SizedBox(
+                            height: 15.0,
+                          ),
+                          new SizedBox(
+                            width: double.infinity,
+                            child: new TextField(
+                              keyboardType: TextInputType.number,
+                              controller: _baseHitsController,
+                              decoration: new InputDecoration(
+                                labelText: "Base Hits",
+                                icon: new Icon(Icons.poll),
                               ),
                             ),
-                            new ListTile(
-                              title: new Text("Base Hits"),
-                              subtitle: new SizedBox(
-                                width: 75.0,
-                                child: new TextField(
-                                  keyboardType: TextInputType.number,
-                                  controller: _baseHitsController,
-                                ),
+                          ),
+                          new SizedBox(
+                            height: 15.0,
+                          ),
+                          new SizedBox(
+                            width: double.infinity,
+                            child: new TextField(
+                              keyboardType: TextInputType.number,
+                              controller: _outsReceivedController,
+                              decoration: new InputDecoration(
+                                labelText: "Outs Received",
+                                icon: new Icon(Icons.poll),
                               ),
                             ),
-                            new ListTile(
-                              title: new Text("Outs Received"),
-                              subtitle: new SizedBox(
-                                width: 75.0,
-                                child: new TextField(
-                                  keyboardType: TextInputType.number,
-                                  controller: _outsReceivedController,
-                                ),
+                          ),
+                          new SizedBox(
+                            height: 15.0,
+                          ),
+                          new SizedBox(
+                            width: double.infinity,
+                            child: new TextField(
+                              keyboardType: TextInputType.number,
+                              controller: _assistsController,
+                              decoration: new InputDecoration(
+                                labelText: "Assists",
+                                icon: new Icon(Icons.poll),
                               ),
                             ),
-                            new ListTile(
-                              title: new Text("Assists"),
-                              subtitle: new SizedBox(
-                                width: 75.0,
-                                child: new TextField(
-                                  keyboardType: TextInputType.number,
-                                  controller: _assistsController,
-                                ),
+                          ),
+                          new SizedBox(
+                            height: 15.0,
+                          ),
+                          new SizedBox(
+                            width: double.infinity,
+                            child: new TextField(
+                              keyboardType: TextInputType.number,
+                              controller: _outsFieldedController,
+                              decoration: new InputDecoration(
+                                labelText: "Outs Fielded",
+                                icon: new Icon(Icons.poll),
                               ),
                             ),
-                            new ListTile(
-                              title: new Text("Outs Fielded"),
-                              subtitle: new Padding(
-                                padding: const EdgeInsets.only(bottom: 25.0),
-                                child: new SizedBox(
-                                  width: 75.0,
-                                  child: new TextField(
-                                    keyboardType: TextInputType.number,
-                                    controller: _outsFieldedController,
-                                  ),
-                                ),
+                          ),
+                          new SizedBox(
+                            height: 25.0,
+                          ),
+                        ],
+                      ),
+                      new SizedBox(
+                        height: 25.0,
+                      ),
+                      new Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          new RaisedButton(
+                            onPressed: () => Firestore.instance
+                                    .runTransaction((transaction) async {
+                                  // Get all the text from the fields
+                                  playerName = _playerNameController.text;
+                                  gamesPlayed = _gamesPlayerController.text;
+                                  atBats = _atBatsController.text;
+                                  baseHits = _baseHitsController.text;
+                                  outsReceived = _outsReceivedController.text;
+                                  assists = _assistsController.text;
+                                  outsFielded = _outsFieldedController.text;
+
+                                  if(playerName == ""){
+                                    playerName = "0";
+                                  }
+
+                                  if(gamesPlayed == ""){
+                                    gamesPlayed = "0";
+                                  }
+
+                                  if(atBats == ""){
+                                    atBats = "0";
+                                  }
+
+                                  if(baseHits == ""){
+                                    baseHits = "0";
+                                  }
+
+                                  if(outsReceived == ""){
+                                    outsReceived = "0";
+                                  }
+
+                                  if(assists == ""){
+                                    assists = "0";
+                                  }
+
+                                  if(outsFielded == ""){
+                                    outsFielded = "0";
+                                  }
+
+                                  // Save the player to the database
+                                  CollectionReference team = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Players");
+                                  //CollectionReference stats = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Stats");
+                                  team.document(playerName).setData({
+                                    "PlayerName" : playerName,
+                                    "FieldPosition" : position,
+                                    "GamesPlayed" : gamesPlayed,
+                                    "AtBats" : atBats,
+                                    "BaseHits" : baseHits,
+                                    "OutsReceived" : outsReceived,
+                                    "Assists" : assists,
+                                    "OutsFielded" : outsFielded
+                                  });
+
+                                  /*stats.document("Games Played").setData({"PlayerName":playerName, "GamesPlayedCount":gamesPlayed});
+                                  stats.document("At Bats").setData({"PlayerName":playerName, "AtBatsCount":gamesPlayed});
+                                  stats.document("Base Hits").setData({"PlayerName":playerName, "BaseHitsCount":gamesPlayed});
+                                  stats.document("Outs Received").setData({"PlayerName":playerName, "OutsReceivedCount":gamesPlayed});
+                                  stats.document("Assists").setData({"PlayerName":playerName, "AssistsCount":gamesPlayed});
+                                  stats.document("Outs Fielded").setData({"PlayerName":playerName, "OutsFieldedCount":gamesPlayed});*/
+                                  Navigator.pop(context);
+                                }),
+                            color: Colors.blue,
+                            child: new Text(
+                              "Save",
+                              style: new TextStyle(
+                                color: Colors.white,
                               ),
                             ),
-                          ],
-                        ),
-                        new SizedBox(
-                          height: 25.0,
-                        ),
-                        new Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            new RaisedButton(
-                              onPressed: () => Firestore.instance
-                                      .runTransaction((transaction) async {
-                                    // Get all the text from the fields
-                                    playerName = _playerNameController.text;
-                                    gamesPlayed = _gamesPlayerController.text;
-                                    atBats = _atBatsController.text;
-                                    baseHits = _baseHitsController.text;
-                                    outsReceived = _outsReceivedController.text;
-                                    assists = _assistsController.text;
-                                    outsFielded = _outsFieldedController.text;
-
-                                    if(playerName == ""){
-                                      playerName = "0";
-                                    }
-
-                                    if(gamesPlayed == ""){
-                                      gamesPlayed = "0";
-                                    }
-
-                                    if(atBats == ""){
-                                      atBats = "0";
-                                    }
-
-                                    if(baseHits == ""){
-                                      baseHits = "0";
-                                    }
-
-                                    if(outsReceived == ""){
-                                      outsReceived = "0";
-                                    }
-
-                                    if(assists == ""){
-                                      assists = "0";
-                                    }
-
-                                    if(outsFielded == ""){
-                                      outsFielded = "0";
-                                    }
-
-                                    // Save the player to the database
-                                    CollectionReference team = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Players");
-                                    //CollectionReference stats = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Stats");
-                                    team.document(playerName).setData({
-                                      "PlayerName" : playerName,
-                                      "FieldPosition" : position,
-                                      "GamesPlayed" : gamesPlayed,
-                                      "AtBats" : atBats,
-                                      "BaseHits" : baseHits,
-                                      "OutsReceived" : outsReceived,
-                                      "Assists" : assists,
-                                      "OutsFielded" : outsFielded
-                                    });
-
-                                    /*stats.document("Games Played").setData({"PlayerName":playerName, "GamesPlayedCount":gamesPlayed});
-                                    stats.document("At Bats").setData({"PlayerName":playerName, "AtBatsCount":gamesPlayed});
-                                    stats.document("Base Hits").setData({"PlayerName":playerName, "BaseHitsCount":gamesPlayed});
-                                    stats.document("Outs Received").setData({"PlayerName":playerName, "OutsReceivedCount":gamesPlayed});
-                                    stats.document("Assists").setData({"PlayerName":playerName, "AssistsCount":gamesPlayed});
-                                    stats.document("Outs Fielded").setData({"PlayerName":playerName, "OutsFieldedCount":gamesPlayed});*/
-                                    Navigator.pop(context);
-                                  }),
-                              color: Colors.blue,
-                              child: new Text(
-                                "Save",
-                                style: new TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              splashColor: Colors.lightBlueAccent,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                            splashColor: Colors.lightBlueAccent,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
