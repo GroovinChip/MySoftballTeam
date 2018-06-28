@@ -25,6 +25,7 @@ class _StatsTableState extends State<StatsTable> {
         ];
         List<DataRow> rows = [];
         List<DataCell> cells = [];
+        List<LocalKey> rowKeys = [];
 
         if(snapshot.hasData) {
           final players_stream = snapshot.data[0];
@@ -33,19 +34,51 @@ class _StatsTableState extends State<StatsTable> {
           List<DocumentSnapshot> playersInStream = players_stream.documents;
           List<DocumentSnapshot> statsInStream = stats_stream.documents;
 
-          for(int playerIndex = 0; playerIndex < playersInStream.length; playerIndex++) {
-            //rows.add(new DataRow(cells: [new DataCell(new Text(playersInStream[playerIndex].documentID), onTap: (){})]));
-          }
-
+          // Create the columns
           for(int statsIndex = 0; statsIndex < statsInStream.length; statsIndex++) {
             columns.add(new DataColumn(label: new Text(statsInStream[statsIndex].documentID)));
+            //cells.add(new DataCell(new Text("Test")));
             //cells.add(new DataCell(new Text("Placeholder")));
             //rows.add(new DataRow(cells: cells));
           }
 
-          print("Cells: " + cells.length.toString());
-          print("Rows" + rows.length.toString());
-          print("Columns: " + columns.length.toString());
+          // Load the players and their data
+          for(int playerIndex = 0; playerIndex < playersInStream.length; playerIndex++) {
+            rows.add(
+              new DataRow(
+                cells: [
+                  new DataCell(
+                    new Text(playersInStream[playerIndex].documentID), 
+                    onTap: (){}
+                  ),
+                  new DataCell(
+                    new Text(playersInStream[playerIndex]["Assists"]),
+                    onTap: (){}
+                  ),
+                  new DataCell(
+                    new Text(playersInStream[playerIndex]["AtBats"]),
+                    onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["BaseHits"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["GamesPlayed"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["OutsFielded"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["OutsReceived"]),
+                      onTap: (){}
+                  ),
+                ]
+              )
+            );
+          }
 
           return ListView(
             scrollDirection: Axis.horizontal,

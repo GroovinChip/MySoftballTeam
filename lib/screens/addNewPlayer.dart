@@ -163,19 +163,54 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                                     assists = _assistsController.text;
                                     outsFielded = _outsFieldedController.text;
 
+                                    if(playerName == ""){
+                                      playerName = "0";
+                                    }
+
+                                    if(gamesPlayed == ""){
+                                      gamesPlayed = "0";
+                                    }
+
+                                    if(atBats == ""){
+                                      atBats = "0";
+                                    }
+
+                                    if(baseHits == ""){
+                                      baseHits = "0";
+                                    }
+
+                                    if(outsReceived == ""){
+                                      outsReceived = "0";
+                                    }
+
+                                    if(assists == ""){
+                                      assists = "0";
+                                    }
+
+                                    if(outsFielded == ""){
+                                      outsFielded = "0";
+                                    }
+
                                     // Save the player to the database
                                     CollectionReference team = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Players");
-                                    CollectionReference stats = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Stats");
+                                    //CollectionReference stats = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Stats");
                                     team.document(playerName).setData({
-                                      "PlayerName": playerName,
-                                      "FieldPosition": position,
+                                      "PlayerName" : playerName,
+                                      "FieldPosition" : position,
+                                      "GamesPlayed" : gamesPlayed,
+                                      "AtBats" : atBats,
+                                      "BaseHits" : baseHits,
+                                      "OutsReceived" : outsReceived,
+                                      "Assists" : assists,
+                                      "OutsFielded" : outsFielded
                                     });
-                                    stats.document("Games Played").setData({playerName:gamesPlayed});
-                                    stats.document("At Bats").setData({playerName:atBats});
-                                    stats.document("Base Hits").setData({playerName:baseHits});
-                                    stats.document("Outs Received").setData({playerName:outsReceived});
-                                    stats.document("Assists").setData({playerName:assists});
-                                    stats.document("Outs Fielded").setData({playerName:outsFielded});
+
+                                    /*stats.document("Games Played").setData({"PlayerName":playerName, "GamesPlayedCount":gamesPlayed});
+                                    stats.document("At Bats").setData({"PlayerName":playerName, "AtBatsCount":gamesPlayed});
+                                    stats.document("Base Hits").setData({"PlayerName":playerName, "BaseHitsCount":gamesPlayed});
+                                    stats.document("Outs Received").setData({"PlayerName":playerName, "OutsReceivedCount":gamesPlayed});
+                                    stats.document("Assists").setData({"PlayerName":playerName, "AssistsCount":gamesPlayed});
+                                    stats.document("Outs Fielded").setData({"PlayerName":playerName, "OutsFieldedCount":gamesPlayed});*/
                                     Navigator.pop(context);
                                   }),
                               color: Colors.blue,
