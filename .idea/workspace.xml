@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/widgets/statsTable.dart" afterPath="$PROJECT_DIR$/lib/widgets/statsTable.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/teamList.dart" afterPath="$PROJECT_DIR$/lib/widgets/teamList.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -100,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teamList.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="teamList.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="72" column="57" lean-forward="false" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
+            <state relative-caret-position="231">
+              <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -112,7 +112,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="statsTable.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="statsTable.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/widgets/statsTable.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="40">
@@ -166,11 +166,11 @@
         <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/screens/signup.dart" />
         <option value="$PROJECT_DIR$/lib/globals.dart" />
-        <option value="$PROJECT_DIR$/lib/widgets/teamList.dart" />
         <option value="$PROJECT_DIR$/lib/screens/login.dart" />
         <option value="$PROJECT_DIR$/lib/screens/homeScreen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/addNewPlayer.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/statsTable.dart" />
+        <option value="$PROJECT_DIR$/lib/widgets/teamList.dart" />
       </list>
     </option>
   </component>
@@ -902,16 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="72" column="57" lean-forward="false" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/addNewPlayer.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1125">
@@ -936,6 +926,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

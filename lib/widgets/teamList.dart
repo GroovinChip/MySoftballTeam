@@ -19,8 +19,6 @@ class _TeamListState extends State<TeamList> {
   void _changeFieldPosition(value) {
     setState(() {
       position = value;
-      print(position);
-      print(globals.selectedPlayerName);
       teamCollection.document(globals.selectedPlayerName).updateData({"FieldPosition":position});
       Navigator.pop(context);
     });
@@ -34,11 +32,8 @@ class _TeamListState extends State<TeamList> {
         if (!snapshot.hasData) return const Text('Loading...');
         return new ListView.builder(
             itemCount: snapshot.data.documents.length,
-            /*padding: const EdgeInsets.only(top: 10.0),
-                  itemExtent: 25.0,*/
             itemBuilder: (context, index) {
               DocumentSnapshot ds = snapshot.data.documents[index];
-              //return new Text(" ${ds['PlayerName']} ${ds['FieldPosition']}");
               return Column(
                 children: <Widget>[
                   new ListTile(
