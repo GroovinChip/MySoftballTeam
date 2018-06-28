@@ -103,8 +103,8 @@
       <file leaf-file-name="teamList.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+            <state relative-caret-position="235">
+              <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -115,8 +115,8 @@
       <file leaf-file-name="statsTable.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/widgets/statsTable.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="1595">
+              <caret line="94" column="12" lean-forward="false" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -924,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/statsTable.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="1595">
+          <caret line="94" column="12" lean-forward="false" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -934,8 +934,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        <state relative-caret-position="235">
+          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

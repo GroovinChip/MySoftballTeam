@@ -29,8 +29,8 @@ class _TeamListState extends State<TeamList> {
     return new StreamBuilder<QuerySnapshot>(
       stream: teamCollection.snapshots(),
       builder: (context, snapshot) {
-        if (!snapshot.hasData) return const Text('Loading...');
-        return new ListView.builder(
+        if (snapshot.hasData == true) {
+          return new ListView.builder(
             itemCount: snapshot.data.documents.length,
             itemBuilder: (context, index) {
               DocumentSnapshot ds = snapshot.data.documents[index];
@@ -143,6 +143,11 @@ class _TeamListState extends State<TeamList> {
                 ],
               );
             });
+        } else {
+          return new Center(
+            child: new CircularProgressIndicator(),
+          );
+        }
       },
     );
   }
