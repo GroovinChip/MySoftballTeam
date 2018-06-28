@@ -10,7 +10,6 @@ class StatsTable extends StatefulWidget {
 
 class _StatsTableState extends State<StatsTable> {
 
-  //CollectionReference teamStats = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Stats");
   CollectionReference root = Firestore.instance.collection("Teams");
   CollectionReference players = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
   CollectionReference stats = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Stats");
@@ -37,12 +36,9 @@ class _StatsTableState extends State<StatsTable> {
           // Create the columns
           for(int statsIndex = 0; statsIndex < statsInStream.length; statsIndex++) {
             columns.add(new DataColumn(label: new Text(statsInStream[statsIndex].documentID)));
-            //cells.add(new DataCell(new Text("Test")));
-            //cells.add(new DataCell(new Text("Placeholder")));
-            //rows.add(new DataRow(cells: cells));
           }
 
-          // Load the players and their data
+          // Load the players and their data as rows
           for(int playerIndex = 0; playerIndex < playersInStream.length; playerIndex++) {
             rows.add(
               new DataRow(
