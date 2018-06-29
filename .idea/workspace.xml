@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/widgets/editStatsModal.dart" afterPath="$PROJECT_DIR$/lib/widgets/editStatsModal.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/teamList.dart" afterPath="$PROJECT_DIR$/lib/widgets/teamList.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -100,19 +100,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teamList.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="teamList.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-900">
+              <caret line="3" column="62" lean-forward="false" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editStatsModal.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="editStatsModal.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/widgets/editStatsModal.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
@@ -182,8 +180,8 @@
         <option value="$PROJECT_DIR$/lib/screens/homeScreen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/addNewPlayer.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/statsTable.dart" />
-        <option value="$PROJECT_DIR$/lib/widgets/teamList.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/editStatsModal.dart" />
+        <option value="$PROJECT_DIR$/lib/widgets/teamList.dart" />
       </list>
     </option>
   </component>
@@ -579,9 +577,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="22" column="62" lean-forward="false" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -655,9 +651,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="27" lean-forward="false" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -928,16 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/statsTable.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -955,6 +939,14 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/teamList.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-900">
+          <caret line="3" column="62" lean-forward="false" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>

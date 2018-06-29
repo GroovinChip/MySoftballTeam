@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
+import 'package:my_softball_team/widgets/editStatsModal.dart';
 import 'package:flutter_list_drag_and_drop/drag_and_drop_list.dart';
 
 class TeamList extends StatefulWidget {
@@ -55,7 +56,14 @@ class _TeamListState extends State<TeamList> {
                                 child: new ListTile(
                                   leading: new Icon(Icons.poll),
                                   title: new Text("Update Stats"),
-                                  onTap: (){},
+                                  onTap: (){
+                                    Navigator.of(context).push(new MaterialPageRoute<Null>(
+                                        builder: (BuildContext context) {
+                                          return new EditStatsModal();
+                                        },
+                                        fullscreenDialog: true
+                                    ));
+                                  },
                                 ),
                               ),
                               Padding(
