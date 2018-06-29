@@ -11,6 +11,14 @@ class EditStatsModal extends StatefulWidget {
 class _EditStatsModalState extends State<EditStatsModal> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Update Stats"),
+        actions: <Widget>[
+          new FlatButton(onPressed: (){}, child: new Text("Save", style: new TextStyle(color: Colors.white),)),
+        ],
+      ),
+      body: new Container(),
+    );
   }
 }
