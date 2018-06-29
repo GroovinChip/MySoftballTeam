@@ -57,6 +57,7 @@ class _TeamListState extends State<TeamList> {
                                   leading: new Icon(Icons.poll),
                                   title: new Text("Update Stats"),
                                   onTap: (){
+                                    globals.selectedPlayerName = "${ds['PlayerName']}";
                                     Navigator.pop(context);
                                     Navigator.of(context).push(new MaterialPageRoute<Null>(
                                         builder: (BuildContext context) {
