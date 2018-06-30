@@ -13,6 +13,7 @@ class _StatsTableState extends State<StatsTable> {
   CollectionReference root = Firestore.instance.collection("Teams");
   CollectionReference players = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
   CollectionReference stats = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Stats");
+  bool sortAscending = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +21,15 @@ class _StatsTableState extends State<StatsTable> {
       stream: new StreamZip([players.snapshots(), stats.snapshots()]),
       builder: (context, snapshot){
         List<DataColumn> columns = [
-          new DataColumn(label: new Text("Players")),
+          new DataColumn(
+            label: new Text("Players"),
+            onSort: (int columnIndex, bool ascending){
+              print("Column " + columnIndex.toString() + " tapped");
+            }
+          ),
         ];
         List<DataRow> rows = [];
         List<DataCell> cells = [];
-        List<LocalKey> rowKeys = [];
 
         if(snapshot.hasData) {
           final players_stream = snapshot.data[0];
@@ -35,7 +40,15 @@ class _StatsTableState extends State<StatsTable> {
 
           // Create the columns
           for(int statsIndex = 0; statsIndex < statsInStream.length; statsIndex++) {
-            columns.add(new DataColumn(label: new Text(statsInStream[statsIndex].documentID)));
+            columns.add(new DataColumn(
+                label: new Text(statsInStream[statsIndex].documentID),
+                onSort: (int columnIndex, bool sortDirection){
+                  print(sortDirection);
+                  sortAscending = sortDirection;
+                  print("Column " + columnIndex.toString() + " tapped");
+                }
+              )
+            );
           }
 
           // Load the players and their data as rows
@@ -71,7 +84,7 @@ class _StatsTableState extends State<StatsTable> {
                       new Text(playersInStream[playerIndex]["OutsReceived"]),
                       onTap: (){}
                   ),
-                ]
+                ],
               )
             );
           }
@@ -84,6 +97,7 @@ class _StatsTableState extends State<StatsTable> {
                     child: new DataTable(
                       columns: columns,
                       rows: rows,
+                      sortAscending: sortAscending,
                     )
                 ),
               ),

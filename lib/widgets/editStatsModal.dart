@@ -19,7 +19,6 @@ class _EditStatsModalState extends State<EditStatsModal> {
   TextEditingController _outsFieldedController = new TextEditingController();
 
   // Variables
-  String position;
   String gamesPlayed;
   String atBats;
   String baseHits;
@@ -48,12 +47,6 @@ class _EditStatsModalState extends State<EditStatsModal> {
             for(int index = 0; index < players.length; index++){
               if(players[index].documentID == globals.selectedPlayerName){
                 player = players[index];
-                _assistsController.text = "${player['Assists']}";
-                _atBatsController.text = "${player['AtBats']}";
-                _baseHitsController.text = "${player['BaseHits']}";
-                _gamesPlayerController.text = "${player['GamesPlayed']}";
-                _outsFieldedController.text = "${player['OutsFielded']}";
-                _outsReceivedController.text = "${player['OutsReceived']}";
               }
             }
             return new SingleChildScrollView(
@@ -74,9 +67,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                  labelText: "Assists",
+                                  labelText: "Current Assists: ${player['Assists']}",
+
                                 ),
                                 controller: _assistsController,
+                                onChanged: (text) {
+                                  //_assistsController.text = text;
+                                  print(_assistsController.text);
+                                },
                               ),
                             ),
                             Padding(
@@ -84,7 +82,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "At Bats"
+                                    labelText: "Current At Bats: ${player['AtBats']}"
                                 ),
                                 controller: _atBatsController,
                               ),
@@ -94,7 +92,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Base Hits"
+                                    labelText: "Current Base Hits: ${player['BaseHits']}"
                                 ),
                                 controller: _baseHitsController,
                               ),
@@ -104,12 +102,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Games Played"
+                                    labelText: "Current Games Played: ${player['GamesPlayed']}"
                                 ),
                                 controller: _gamesPlayerController,
-                                onChanged: (text) {
-                                  gamesPlayed = text;
-                                },
                               ),
                             ),
                             Padding(
@@ -117,7 +112,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Outs Fielded"
+                                    labelText: "Current Outs Fielded: ${player['OutsFielded']}"
                                 ),
                                 controller: _outsFieldedController,
                               ),
@@ -127,7 +122,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Outs Received"
+                                    labelText: "Current Outs Received: ${player['OutsReceived']}"
                                 ),
                                 controller: _outsReceivedController,
                               ),
@@ -139,13 +134,40 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 children: <Widget>[
                                   new RaisedButton(
                                     onPressed: (){
+                                      gamesPlayed = _gamesPlayerController.text;
+                                      atBats = _atBatsController.text;
+                                      baseHits = _baseHitsController.text;
+                                      outsReceived = _outsReceivedController.text;
+                                      assists = _assistsController.text;
+                                      outsFielded = _outsFieldedController.text;
+
+                                      if(gamesPlayed == ""){
+                                        gamesPlayed = "0";
+                                      }
+                                      if(atBats == ""){
+                                        atBats = "0";
+                                      }
+                                      if(baseHits == ""){
+                                        baseHits = "0";
+                                      }
+                                      if(outsReceived == ""){
+                                        outsReceived = "0";
+                                      }
+                                      if(assists == ""){
+                                        assists = "0";
+                                      }
+                                      if(outsFielded == ""){
+                                        outsFielded = "0";
+                                      }
+
+
                                       playersCollection.document(globals.selectedPlayerName).updateData({
-                                        "GamesPlayed" : _gamesPlayerController.text,
-                                        "AtBats" : _atBatsController.text,
-                                        "BaseHits" : _baseHitsController.text,
-                                        "OutsReceived" : _outsReceivedController.text,
-                                        "Assists" : _assistsController.text,
-                                        "OutsFielded" : _outsFieldedController.text
+                                        "GamesPlayed" : gamesPlayed,
+                                        "AtBats" : atBats,
+                                        "BaseHits" : baseHits,
+                                        "OutsReceived" : outsReceived,
+                                        "Assists" : assists,
+                                        "OutsFielded" : outsFielded
                                       });
                                       Navigator.pop(context);
                                     },
