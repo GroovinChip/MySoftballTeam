@@ -12,8 +12,11 @@ class _AddNewGameState extends State<AddNewGame> {
     new DropdownMenuItem(child: new Text("Away"), value: "Away",),
   ];
 
+  String _homeOrAway;
+
   void _chooseHomeOrAway(value) {
     print(value);
+    _homeOrAway = value;
   }
 
   @override
@@ -65,6 +68,7 @@ class _AddNewGameState extends State<AddNewGame> {
                             items: _homeOrAwayOptions,
                             onChanged: _chooseHomeOrAway,
                             hint: new Text("Choose Home or Away"),
+                            value: _homeOrAway,
                           ),
                           new SizedBox(
                             height: 25.0,
