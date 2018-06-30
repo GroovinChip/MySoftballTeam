@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart'
     show FirebaseAuth, FirebaseUser;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_softball_team/globals.dart' as globals;
+import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -26,6 +27,7 @@ class LoginScreen extends StatelessWidget {
         '/Signup': (BuildContext context) => new Signup(),
         '/AddNewGame': (BuildContext context) => new AddNewGame(),
         '/AddNewPlayer': (BuildContext context) => new AddNewPlayer(),
+        '/SeasonSchedule': (BuildContext context) => new SeasonSchedule()
       },
     );
   }

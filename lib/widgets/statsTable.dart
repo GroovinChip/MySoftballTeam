@@ -41,13 +41,13 @@ class _StatsTableState extends State<StatsTable> {
           // Create the columns
           for(int statsIndex = 0; statsIndex < statsInStream.length; statsIndex++) {
             columns.add(new DataColumn(
-                label: new Text(statsInStream[statsIndex].documentID),
-                onSort: (int columnIndex, bool sortDirection){
-                  print(sortDirection);
-                  sortAscending = sortDirection;
-                  print("Column " + columnIndex.toString() + " tapped");
-                }
-              )
+              label: new Text(statsInStream[statsIndex].documentID),
+              onSort: (int columnIndex, bool sortDirection){
+                print(sortDirection);
+                sortAscending = sortDirection;
+                print("Column " + columnIndex.toString() + " tapped");
+              },
+              ),
             );
           }
 
@@ -89,19 +89,25 @@ class _StatsTableState extends State<StatsTable> {
             );
           }
 
-          return ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              SingleChildScrollView(
-                child: new Container(
-                    child: new DataTable(
-                      columns: columns,
-                      rows: rows,
-                      sortAscending: sortAscending,
-                    )
-                ),
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 4.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: <Widget>[
+                  SingleChildScrollView(
+                    child: new Container(
+                        child: new DataTable(
+                          columns: columns,
+                          rows: rows,
+                          sortAscending: sortAscending,
+                        )
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           );
         } else {
           return new Center(

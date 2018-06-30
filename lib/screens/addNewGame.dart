@@ -12,6 +12,10 @@ class _AddNewGameState extends State<AddNewGame> {
     new DropdownMenuItem(child: new Text("Away"), value: "Away",),
   ];
 
+  TextEditingController _opposingTeamController = new TextEditingController();
+  TextEditingController _gameLocationController = new TextEditingController();
+  TextEditingController _gameDateController = new TextEditingController();
+  TextEditingController _gameTimeController = new TextEditingController();
   String _homeOrAway;
 
   void _chooseHomeOrAway(value) {
@@ -30,7 +34,7 @@ class _AddNewGameState extends State<AddNewGame> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 25.0),
               child: new Card(
                 elevation: 4.0,
                 child: new Padding(
@@ -38,61 +42,143 @@ class _AddNewGameState extends State<AddNewGame> {
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      new SizedBox(
-                        height: 25.0,
-                      ),
                       new Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          new Text("MyTeam"),
-                          new SizedBox(
-                            height: 25.0,
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                new SizedBox(
+                                  width: 185.0,
+                                  child: new TextField(
+                                    controller: _gameDateController,
+                                    enabled: false,
+                                    decoration: new InputDecoration(
+                                      labelText: "Game Date*",
+                                      filled: true,
+                                      fillColor: Colors.black12,
+                                    ),
+                                  ),
+                                ),
+                                new RaisedButton(
+                                  child: new Text("Pick Game Date"),
+                                  onPressed: () async {
+                                    String month;
+                                    DateTime gameDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate:
+                                        DateTime(DateTime.now().year,
+                                        DateTime.now().month, DateTime.now().day),
+                                      lastDate: DateTime(3000));
+                                    switch(gameDate.month){
+                                      case 1:
+                                        month = "January";
+                                        break;
+                                      case 2:
+                                        month = "February";
+                                        break;
+                                      case 3:
+                                        month = "March";
+                                        break;
+                                      case 4:
+                                        month = "April";
+                                        break;
+                                      case 5:
+                                        month = "May";
+                                        break;
+                                      case 6:
+                                        month = "June";
+                                        break;
+                                      case 7:
+                                        month = "July";
+                                        break;
+                                      case 8:
+                                        month = "August";
+                                        break;
+                                      case 9:
+                                        month = "September";
+                                        break;
+                                      case 10:
+                                        month = "October";
+                                        break;
+                                      case 11:
+                                        month = "November";
+                                        break;
+                                      case 12:
+                                        month = "December";
+                                        break;
+                                    }
+                                    _gameDateController.text = month + " " + gameDate.day.toString() + ", " + gameDate.year.toString();
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                          new Text("VS"),
-                          new SizedBox(
-                            height: 10.0,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                new SizedBox(
+                                  width: 185.0,
+                                  child: new TextField(
+                                    controller: _gameTimeController,
+                                    enabled: false,
+                                    decoration: new InputDecoration(
+                                      labelText: "Game Time*",
+                                      filled: true,
+                                      fillColor: Colors.black12,
+                                    ),
+                                  ),
+                                ),
+                                new RaisedButton(
+                                  child: new Text("Pick Game Time"),
+                                  onPressed: () async {
+                                    TimeOfDay gameTime = await showTimePicker(
+                                      context: context,
+                                      initialTime: TimeOfDay.now(),
+                                    );
+                                    _gameTimeController.text = gameTime.format(context);
+                                  }),
+                              ],
+                            ),
                           ),
-                          new SizedBox(
-                            width: 175.0,
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0, top: 16.0),
                             child: new TextField(
+                              controller: _opposingTeamController,
                               decoration: new InputDecoration(
-                                labelText: "Opposing Team",
-                                icon: new Icon(Icons.group)
+                                labelText: "Opposing Team*",
+                                fillColor: Colors.black12,
+                                filled: true,
+                                suffixIcon: new IconButton(
+                                  icon: new Icon(Icons.clear),
+                                  onPressed: (){
+                                    _opposingTeamController.text = "";
+                                  }
+                                ),
                               ),
                             ),
                           ),
-                          new SizedBox(
-                            height: 25.0,
-                          ),
-                          new DropdownButton(
-                            items: _homeOrAwayOptions,
-                            onChanged: _chooseHomeOrAway,
-                            hint: new Text("Choose Home or Away"),
-                            value: _homeOrAway,
-                          ),
-                          new SizedBox(
-                            height: 25.0,
-                          ),
-                          new SizedBox(
-                            width: 145.0,
-                            child: new TextField(
-                              decoration: new InputDecoration(
-                                labelText: "Game Number",
-                                icon: new Icon(Icons.format_list_numbered)
-                              ),
-                                keyboardType: TextInputType.number,
+                          TextField(
+                            controller: _gameLocationController,
+                            decoration: new InputDecoration(
+                                labelText: "Game Location*",
+                                fillColor: Colors.black12,
+                                filled: true,
+                                suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _gameLocationController.text = "";
+                                    })
                             ),
-                          ),
-                          new SizedBox(
-                            height: 25.0,
-                          ),
-                          new Divider(
-                            color: Colors.grey,
-                            height: 1.0,
                           ),
                         ],
                       ),
-                      new Padding(
+                      new SizedBox(height: 25.0),
+                      /*new Padding(
                         padding: const EdgeInsets.only(bottom: 25.0),
                         child: new ExpansionTile(
                           title: new Text("Post Game Options"),
@@ -147,7 +233,7 @@ class _AddNewGameState extends State<AddNewGame> {
                             ),
                           ],
                         ),
-                      ),
+                      ),*/
                       new Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:my_softball_team/widgets/teamList.dart';
 import 'package:my_softball_team/widgets/statsTable.dart';
 import 'package:my_softball_team/globals.dart' as globals;
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // List of bottom navigation bar items
   List<BottomNavigationBarItem> _bottomNavigationBarItems = [
     new BottomNavigationBarItem(
-        icon: new Icon(Icons.gamepad), title: new Text("Games")),
+        icon: new Icon(Icons.today), title: new Text("Schedule")),
     new BottomNavigationBarItem(
         icon: new Icon(Icons.group), title: new Text("Team")),
     new BottomNavigationBarItem(
@@ -107,9 +108,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: new PageView(
         children: <Widget>[
-          new Center(
+          /*new Center(
             child: new Text("Softball Games will go here"),
-          ),
+          ),*/
+          new SeasonSchedule(),
           new TeamList(),
           new StatsTable()
         ],
