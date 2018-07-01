@@ -20,11 +20,17 @@ class _AddNewGameState extends State<AddNewGame> {
   TextEditingController _gameLocationController = new TextEditingController();
   TextEditingController _gameDateController = new TextEditingController();
   TextEditingController _gameTimeController = new TextEditingController();
+  String year;
+  String month;
+  DateTime gameDate;
+  TimeOfDay gameTime;
   String _homeOrAway;
 
   void _chooseHomeOrAway(value) {
     print(value);
-    _homeOrAway = value;
+    setState(() {
+      _homeOrAway = value;
+    });
   }
 
   @override
@@ -68,14 +74,15 @@ class _AddNewGameState extends State<AddNewGame> {
                                 new RaisedButton(
                                   child: new Text("Pick Game Date"),
                                   onPressed: () async {
-                                    String month;
-                                    DateTime gameDate = await showDatePicker(
+                                    gameDate = await showDatePicker(
                                       context: context,
                                       initialDate: DateTime.now(),
                                       firstDate:
                                         DateTime(DateTime.now().year,
                                         DateTime.now().month, DateTime.now().day),
-                                      lastDate: DateTime(3000));
+                                      lastDate: DateTime(DateTime.now().year, 12, 31)
+                                    );
+                                    year = gameDate.year.toString();
                                     switch(gameDate.month){
                                       case 1:
                                         month = "January";
@@ -142,7 +149,7 @@ class _AddNewGameState extends State<AddNewGame> {
                                 new RaisedButton(
                                   child: new Text("Pick Game Time"),
                                   onPressed: () async {
-                                    TimeOfDay gameTime = await showTimePicker(
+                                    gameTime = await showTimePicker(
                                       context: context,
                                       initialTime: TimeOfDay.now(),
                                     );
@@ -183,69 +190,32 @@ class _AddNewGameState extends State<AddNewGame> {
                           ),
                         ],
                       ),
+                      new SizedBox(height: 15.0),
+                      new DropdownButton(
+                        items: _homeOrAwayOptions,
+                        onChanged: _chooseHomeOrAway,
+                        hint: new Text("Home or Away"),
+                        value: _homeOrAway,
+                      ),
                       new SizedBox(height: 25.0),
-                      /*new Padding(
-                        padding: const EdgeInsets.only(bottom: 25.0),
-                        child: new ExpansionTile(
-                          title: new Text("Post Game Options"),
-                          children: <Widget>[
-                            new Row(
-                              children: <Widget>[
-                                new Padding(
-                                  padding: const EdgeInsets.only(left: 16.0),
-                                  child: new Text("Score:"),
-                                ),
-                              ],
-                            ),
-                            new SizedBox(
-                              height: 10.0,
-                            ),
-                            new Row(
-                              children: <Widget>[
-                                new Padding(
-                                  padding: const EdgeInsets.only(left: 16.0),
-                                  child: new Text("MyTeam:"),
-                                ),
-                                new SizedBox(
-                                  width: 100.0,
-                                  child: new Padding(
-                                    padding: const EdgeInsets.only(left: 16.0),
-                                    child: new TextField(
-                                      keyboardType: TextInputType.number
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            new Padding(
-                              padding: const EdgeInsets.only(bottom: 25.0),
-                              child: new Row(
-                                children: <Widget>[
-                                  new Padding(
-                                    padding: const EdgeInsets.only(left: 16.0),
-                                    child: new Text("Opposing Team:"),
-                                  ),
-                                  new SizedBox(
-                                    width: 100.0,
-                                    child: new Padding(
-                                      padding: const EdgeInsets.only(left: 16.0),
-                                      child: new TextField(
-                                        keyboardType: TextInputType.number
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),*/
                       new Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           new RaisedButton(
                             onPressed: (){
-
+                              if(_gameDateController.text != "" && _gameTimeController.text != "") {
+                                if(_opposingTeamController.text != "" && _gameLocationController.text != "") {
+                                  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Seasons").document(year).collection("Games");
+                                  gamesDB.add({
+                                    "GameDate":_gameDateController.text,
+                                    "GameTime":_gameTimeController.text,
+                                    "OpposingTeam":_opposingTeamController.text,
+                                    "GameLocation":_gameLocationController.text,
+                                    "HomeOrAway":_homeOrAway
+                                  });
+                                  Navigator.pop(context);
+                                }
+                              }
                             },
                             color: Colors.blue,
                             child: new Text(
