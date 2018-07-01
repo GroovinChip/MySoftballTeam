@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:my_softball_team/globals.dart' as globals;
 
 class AddNewGame extends StatefulWidget{
   @override
@@ -6,6 +8,8 @@ class AddNewGame extends StatefulWidget{
 }
 
 class _AddNewGameState extends State<AddNewGame> {
+
+  //CollectionReference scheduleDB = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Games"); needs Season
 
   List<DropdownMenuItem> _homeOrAwayOptions = [
     new DropdownMenuItem(child: new Text("Home"), value: "Home",),
@@ -108,6 +112,8 @@ class _AddNewGameState extends State<AddNewGame> {
                                         break;
                                       case 12:
                                         month = "December";
+                                        break;
+                                      default:
                                         break;
                                     }
                                     _gameDateController.text = month + " " + gameDate.day.toString() + ", " + gameDate.year.toString();

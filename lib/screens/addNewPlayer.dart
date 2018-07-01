@@ -54,13 +54,16 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                   child: new Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      new SizedBox(
-                        height: 25.0,
-                      ),
                       new TextField(
                         decoration: new InputDecoration(
-                          icon: new Icon(Icons.person),
                           labelText: "Player Name",
+                          filled: true,
+                          fillColor: Colors.black12,
+                          suffixIcon: new IconButton(
+                            icon: new Icon(Icons.clear),
+                            onPressed: (){
+                              _playerNameController.text = "";
+                            }),
                         ),
                         controller: _playerNameController,
                       ),
@@ -86,7 +89,13 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _gamesPlayerController,
                               decoration: new InputDecoration(
                                 labelText: "Games Played",
-                                icon: new Icon(Icons.poll),
+                                filled: true,
+                                fillColor: Colors.black12,
+                                suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _gamesPlayerController.text = "";
+                                    }),
                               ),
                             ),
                           ),
@@ -100,7 +109,13 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _atBatsController,
                               decoration: new InputDecoration(
                                 labelText: "At Bats",
-                                icon: new Icon(Icons.poll),
+                                filled: true,
+                                fillColor: Colors.black12,
+                                suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _atBatsController.text = "";
+                                    }),
                               ),
                             ),
                           ),
@@ -114,7 +129,13 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _baseHitsController,
                               decoration: new InputDecoration(
                                 labelText: "Base Hits",
-                                icon: new Icon(Icons.poll),
+                                filled: true,
+                                fillColor: Colors.black12,
+                                suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _baseHitsController.text = "";
+                                    }),
                               ),
                             ),
                           ),
@@ -128,7 +149,13 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _outsReceivedController,
                               decoration: new InputDecoration(
                                 labelText: "Outs Received",
-                                icon: new Icon(Icons.poll),
+                                filled: true,
+                                fillColor: Colors.black12,
+                                suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _outsReceivedController.text = "";
+                                    }),
                               ),
                             ),
                           ),
@@ -142,7 +169,13 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _assistsController,
                               decoration: new InputDecoration(
                                 labelText: "Assists",
-                                icon: new Icon(Icons.poll),
+                                filled: true,
+                                fillColor: Colors.black12,
+                                suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _assistsController.text = "";
+                                    }),
                               ),
                             ),
                           ),
@@ -156,7 +189,13 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _outsFieldedController,
                               decoration: new InputDecoration(
                                 labelText: "Outs Fielded",
-                                icon: new Icon(Icons.poll),
+                                filled: true,
+                                fillColor: Colors.black12,
+                                suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _outsFieldedController.text = "";
+                                    }),
                               ),
                             ),
                           ),
