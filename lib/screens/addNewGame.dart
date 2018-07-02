@@ -14,6 +14,7 @@ class _AddNewGameState extends State<AddNewGame> {
   List<DropdownMenuItem> _homeOrAwayOptions = [
     new DropdownMenuItem(child: new Text("Home"), value: "Home",),
     new DropdownMenuItem(child: new Text("Away"), value: "Away",),
+    new DropdownMenuItem(child: new Text("Bye"), value: "Bye",)
   ];
 
   TextEditingController _opposingTeamController = new TextEditingController();

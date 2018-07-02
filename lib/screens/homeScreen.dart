@@ -8,6 +8,7 @@ import 'package:my_softball_team/widgets/teamList.dart';
 import 'package:my_softball_team/widgets/statsTable.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_fab_dialer/flutter_fab_dialer.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -56,14 +57,46 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var _fabMiniMenuItemList = [
+      new FabMiniMenuItem.withText(
+        Icon(Icons.filter_list),
+        Colors.blue,
+        4.0,
+        "View previous seasons",
+        (){
+          
+        },
+        "View A Previous Season",
+        Colors.blue,
+        Colors.white,
+      ),
+      new FabMiniMenuItem.withText(
+        Icon(Icons.add),
+        Colors.blue,
+        4.0,
+        "Add a game to the schedule",
+        (){
+          Navigator.of(context).pushNamed('/AddNewGame');
+        },
+        "Add Game",
+        Colors.blue,
+        Colors.white,
+      ),
+    ];
+
     // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
     List<Widget> _fabs = [
-      new FloatingActionButton(
+      /*new FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed('/AddNewGame');
         },
         child: new Icon(Icons.add),
         tooltip: "Add a Game",
+      ),*/
+      new FabDialer(
+        _fabMiniMenuItemList,
+        Colors.blue,
+        Icon(Icons.add)
       ),
       new FloatingActionButton(
         onPressed: () {
@@ -98,12 +131,19 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         actions: <Widget>[
-          new FlatButton(onPressed: () async {
-            FirebaseAuth.instance.signOut();
-            final SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.setString("Token", "");
-            Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
-          }, child: new Text("Log Out", style: new TextStyle(color: Colors.white),))
+          new FlatButton(
+            onPressed: () async {
+              FirebaseAuth.instance.signOut();
+              final SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString("Token", "");
+              Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
+            }, 
+            child: new Text(
+              "Log Out", 
+              style: new TextStyle(
+                color: Colors.white),
+            ),
+          ),
         ],
       ),
       body: new PageView(

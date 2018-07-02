@@ -100,6 +100,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_fab_dialer">
+          <value>
+            <list>
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_fab_dialer-0.0.5/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_list_drag_and_drop">
           <value>
             <list>
@@ -431,6 +438,7 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-0.1.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.11/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.4/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_fab_dialer-0.0.5/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_list_drag_and_drop-0.1.3/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/front_end-0.1.0-alpha.12/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/glob-1.1.5/lib" />
