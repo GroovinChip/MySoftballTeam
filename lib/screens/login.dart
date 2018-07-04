@@ -19,6 +19,7 @@ class LoginScreen extends StatelessWidget {
       title: 'My Softball Team',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'sourcesanspro'
       ),
       home: new LoginPage(),
       debugShowCheckedModeBanner: false,

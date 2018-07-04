@@ -9,6 +9,7 @@ import 'package:my_softball_team/widgets/statsTable.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_fab_dialer/flutter_fab_dialer.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -20,11 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
   // List of bottom navigation bar items
   List<BottomNavigationBarItem> _bottomNavigationBarItems = [
     new BottomNavigationBarItem(
-        icon: new Icon(Icons.today), title: new Text("Schedule")),
+        icon: new Icon(CommunityMaterialIcons.calendar_text), title: new Text("Schedule")),
     new BottomNavigationBarItem(
         icon: new Icon(Icons.group), title: new Text("Team")),
     new BottomNavigationBarItem(
-        icon: new Icon(Icons.poll), title: new Text("Stats")),
+        icon: new Icon(CommunityMaterialIcons.chart_line_stacked), title: new Text("Stats")),
   ];
 
   int _page = 0; // tracks what page is currently in view

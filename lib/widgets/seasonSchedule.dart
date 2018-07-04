@@ -13,12 +13,9 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
 
   CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
 
-  void wait() async {
-    await new Future.delayed(const Duration(seconds : 2));
-  }
-
   @override
   Widget build(BuildContext context) {
+
     return StreamBuilder<QuerySnapshot>(
       stream: gamesDB.snapshots(),
       builder: (context, snapshot) {

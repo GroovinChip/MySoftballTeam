@@ -14,6 +14,7 @@ dependencies:
   shared_preferences: "^0.4.2"
   flutter_list_drag_and_drop: "^0.1.2"
   flutter_fab_dialer: "^0.0.5"
+  community_material_icon: 0.1.2
 
 dev_dependencies:
   flutter_test:
@@ -23,9 +24,8 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-  #fonts:
-  #  - family: sourcesanspro
-  #    fonts:
-  #      - asset: fonts/sourcesanspro_regular.ttf
-  #        style: normal
+  fonts:
+    - family: sourcesanspro
+      fonts:
+        - asset: fonts/sourcesanspro_regular.ttf
 
