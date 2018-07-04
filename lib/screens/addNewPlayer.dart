@@ -251,7 +251,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                                   }
 
                                   // Save the player to the database
-                                  CollectionReference team = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Players");
+                                  CollectionReference team = Firestore.instance.collection('Teams').document(globals.teamName).collection("Players");
                                   //CollectionReference stats = Firestore.instance.collection('Teams').document(globals.teamTame).collection("Stats");
                                   team.document(playerName).setData({
                                     "PlayerName" : playerName,

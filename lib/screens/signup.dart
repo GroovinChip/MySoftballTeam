@@ -192,12 +192,12 @@ class _SignupState extends State<Signup> {
 
                                                       return new RaisedButton(
                                                         onPressed: () async {
-                                                          globals.teamTame = _teamNameController.text; // add team name to globals
+                                                          globals.teamName = _teamNameController.text; // add team name to globals
                                                           //_saveValuesToStorage(globals.teamTame);
                                                           // Add team name to database
-                                                          if (globals.teamTame != "") {
+                                                          if (globals.teamName != "") {
                                                             CollectionReference team = Firestore.instance.collection("Teams");
-                                                            team.document(globals.teamTame).setData({"TeamName":globals.teamTame});
+                                                            team.document(globals.teamName).setData({"TeamName":globals.teamName});
                                                             Navigator.pop(context);
                                                           } else {
 

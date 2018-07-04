@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 FirebaseUser loggedInUser;
-String teamTame;
+String teamName;
 String selectedPlayerName;
 CollectionReference usersDB = Firestore.instance.collection("Users");
 

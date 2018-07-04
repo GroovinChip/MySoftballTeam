@@ -11,11 +11,10 @@ class SeasonSchedule extends StatefulWidget {
 
 class _SeasonScheduleState extends State<SeasonSchedule> {
 
-  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
+  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
 
   @override
   Widget build(BuildContext context) {
-
     return StreamBuilder<QuerySnapshot>(
       stream: gamesDB.snapshots(),
       builder: (context, snapshot) {
@@ -29,19 +28,6 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
         List<DataRow> rows = [];
 
         if(snapshot.hasData == true) {
-
-          if(snapshot.data.documents.length == 0){
-            return Center(
-              child: RaisedButton(
-                child: new Text("Get Games"),
-                onPressed: (){
-                  setState(() {
-
-                  });
-                },
-              ),
-            );
-          }
 
           List<DocumentSnapshot> games = snapshot.data.documents;
 
@@ -84,7 +70,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
           );
 
         } else {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: Text("No Games in the Schedule"));
         }
       },
     );

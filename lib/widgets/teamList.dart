@@ -9,7 +9,7 @@ class TeamList extends StatefulWidget {
   _TeamListState createState() => _TeamListState();
 }
 
-CollectionReference teamCollection = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
+CollectionReference teamCollection = Firestore.instance.collection("Teams").document(globals.teamName).collection("Players");
 
 
 class _TeamListState extends State<TeamList> {

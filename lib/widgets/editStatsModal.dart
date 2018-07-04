@@ -26,7 +26,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
   String assists;
   String outsFielded;
 
-  CollectionReference playersCollection = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
+  CollectionReference playersCollection = Firestore.instance.collection("Teams").document(globals.teamName).collection("Players");
   DocumentSnapshot player;
 
   @override

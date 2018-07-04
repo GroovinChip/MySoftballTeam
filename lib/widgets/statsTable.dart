@@ -11,8 +11,8 @@ class StatsTable extends StatefulWidget {
 class _StatsTableState extends State<StatsTable> {
 
   CollectionReference root = Firestore.instance.collection("Teams");
-  CollectionReference players = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Players");
-  CollectionReference stats = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Stats");
+  CollectionReference players = Firestore.instance.collection("Teams").document(globals.teamName).collection("Players");
+  CollectionReference stats = Firestore.instance.collection("Teams").document(globals.teamName).collection("Stats");
   bool sortAscending = false;
 
   @override

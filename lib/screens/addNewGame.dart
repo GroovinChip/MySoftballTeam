@@ -206,7 +206,7 @@ class _AddNewGameState extends State<AddNewGame> {
                             onPressed: (){
                               if(_gameDateController.text != "" && _gameTimeController.text != "") {
                                 if(_opposingTeamController.text != "" && _gameLocationController.text != "") {
-                                  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Seasons").document(year).collection("Games");
+                                  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(year).collection("Games");
                                   gamesDB.add({
                                     "GameDate":_gameDateController.text,
                                     "GameTime":_gameTimeController.text,
