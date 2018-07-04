@@ -68,7 +68,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
                                   labelText: "Current Assists: ${player['Assists']}",
-
+                                  filled: true,
+                                  fillColor: Colors.black12,
+                                  suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _assistsController.text="";
+                                    },
+                                  )
                                 ),
                                 controller: _assistsController,
                                 onChanged: (text) {
@@ -82,7 +89,15 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Current At Bats: ${player['AtBats']}"
+                                  labelText: "Current At Bats: ${player['AtBats']}",
+                                  filled: true,
+                                  fillColor: Colors.black12,
+                                  suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _atBatsController.text="";
+                                    },
+                                  )
                                 ),
                                 controller: _atBatsController,
                               ),
@@ -92,7 +107,15 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Current Base Hits: ${player['BaseHits']}"
+                                  labelText: "Current Base Hits: ${player['BaseHits']}",
+                                  filled: true,
+                                  fillColor: Colors.black12,
+                                  suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _baseHitsController.text="";
+                                    },
+                                  )
                                 ),
                                 controller: _baseHitsController,
                               ),
@@ -102,7 +125,15 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Current Games Played: ${player['GamesPlayed']}"
+                                  labelText: "Current Games Played: ${player['GamesPlayed']}",
+                                  filled: true,
+                                  fillColor: Colors.black12,
+                                  suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _gamesPlayerController.text="";
+                                    },
+                                  )
                                 ),
                                 controller: _gamesPlayerController,
                               ),
@@ -112,7 +143,15 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Current Outs Fielded: ${player['OutsFielded']}"
+                                  labelText: "Current Outs Fielded: ${player['OutsFielded']}",
+                                  filled: true,
+                                  fillColor: Colors.black12,
+                                  suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _outsFieldedController.text="";
+                                    },
+                                  )
                                 ),
                                 controller: _outsFieldedController,
                               ),
@@ -122,7 +161,15 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Current Outs Received: ${player['OutsReceived']}"
+                                  labelText: "Current Outs Received: ${player['OutsReceived']}",
+                                  filled: true,
+                                  fillColor: Colors.black12,
+                                  suffixIcon: new IconButton(
+                                    icon: new Icon(Icons.clear),
+                                    onPressed: (){
+                                      _outsReceivedController.text="";
+                                    },
+                                  )
                                 ),
                                 controller: _outsReceivedController,
                               ),

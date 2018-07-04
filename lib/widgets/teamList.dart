@@ -83,7 +83,8 @@ class _TeamListState extends State<TeamList> {
                                             children: <Widget>[
                                               new ListTile(
                                                 leading: new Icon(Icons.location_on),
-                                                title: new DropdownButton(
+                                                title: new Text("Current Postion:"),
+                                                subtitle: new DropdownButton(
                                                   items: globals.fieldPositions,
                                                   onChanged: _changeFieldPosition,
                                                   hint: new Text("${ds['FieldPosition']}"),

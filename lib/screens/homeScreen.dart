@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     new BottomNavigationBarItem(
         icon: new Icon(Icons.group), title: new Text("Team")),
     new BottomNavigationBarItem(
-        icon: new Icon(CommunityMaterialIcons.chart_line_stacked), title: new Text("Stats")),
+        icon: new Icon(Icons.insert_chart), title: new Text("Stats")),
   ];
 
   int _page = 0; // tracks what page is currently in view
@@ -136,7 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               FirebaseAuth.instance.signOut();
               final SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString("Token", "");
+              prefs.setString("Email", "");
+              prefs.setString("Password", "");
               Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
             }, 
             child: new Text(
