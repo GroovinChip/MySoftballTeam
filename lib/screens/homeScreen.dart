@@ -60,14 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var _fabMiniMenuItemList = [
       new FabMiniMenuItem.withText(
-        Icon(Icons.filter_list),
+        Icon(Icons.history),
         Colors.blue,
         4.0,
-        "View previous seasons",
+        "",
         (){
-          
+
         },
-        "View A Previous Season",
+        "View Previous Games",
         Colors.blue,
         Colors.white,
       ),
