@@ -28,7 +28,6 @@ class _AddNewGameState extends State<AddNewGame> {
   String _homeOrAway;
 
   void _chooseHomeOrAway(value) {
-    print(value);
     setState(() {
       _homeOrAway = value;
     });

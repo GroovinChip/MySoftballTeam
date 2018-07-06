@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 FirebaseUser loggedInUser;
 String teamName;
 String selectedPlayerName;
+String selectedGameDocument;
 CollectionReference usersDB = Firestore.instance.collection("Users");
 
 // List of field positions

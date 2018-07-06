@@ -203,6 +203,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                   IconButton(
                     icon: new Icon(Icons.edit),
                     onPressed: (){
+                      globals.selectedGameDocument = games[index].documentID;
                       Navigator.of(context).push(new MaterialPageRoute<Null>(
                           builder: (BuildContext context) {
                             return new EditGameModal();
@@ -211,7 +212,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                       ));
                     },
                     tooltip: "Edit Game Details",
-                  )
+                  ),
                 ),
               ]));
             }
