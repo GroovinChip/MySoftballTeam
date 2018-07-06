@@ -34,9 +34,6 @@ class _EditStatsModalState extends State<EditStatsModal> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Update Stats"),
-        actions: <Widget>[
-          new FlatButton(onPressed: (){}, child: new Text("Save", style: new TextStyle(color: Colors.white),)),
-        ],
       ),
       // TODO: Wrap SingleChildScrollView in StreamBuilder to load in existing stats into the TextFields
       body: StreamBuilder<QuerySnapshot>(

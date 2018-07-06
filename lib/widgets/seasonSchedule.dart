@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
+import 'package:my_softball_team/widgets/editGameModal.dart';
 
 class SeasonSchedule extends StatefulWidget {
   @override
@@ -24,6 +25,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
           DataColumn(label: Text("Location")),
           DataColumn(label: Text("Opposing Team")),
           DataColumn(label: Text("Home or Away")),
+          DataColumn(label: Text("Actions")),
         ];
         List<DataRow> rows = [];
 
@@ -183,22 +185,33 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
             } else {
               rows.add(DataRow(cells: [
                 DataCell(
-                    Text("${games[index]['GameDate']}"),
-                    onTap: (){
-
-                    }
+                  Text("${games[index]['GameDate']}")
                 ),
                 DataCell(
-                    Text("${games[index]['GameTime']}")
+                  Text("${games[index]['GameTime']}")
                 ),
                 DataCell(
-                    Text("${games[index]['GameLocation']}")
+                  Text("${games[index]['GameLocation']}")
                 ),
                 DataCell(
-                    Text("${games[index]['OpposingTeam']}")
+                  Text("${games[index]['OpposingTeam']}")
                 ),
                 DataCell(
-                    Text("${games[index]['HomeOrAway']}")
+                  Text("${games[index]['HomeOrAway']}")
+                ),
+                DataCell(
+                  IconButton(
+                    icon: new Icon(Icons.edit),
+                    onPressed: (){
+                      Navigator.of(context).push(new MaterialPageRoute<Null>(
+                          builder: (BuildContext context) {
+                            return new EditGameModal();
+                          },
+                          fullscreenDialog: true
+                      ));
+                    },
+                    tooltip: "Edit Game Details",
+                  )
                 ),
               ]));
             }

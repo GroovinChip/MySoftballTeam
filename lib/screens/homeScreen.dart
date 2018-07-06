@@ -122,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (users[index].documentID == globals.loggedInUser.uid) {
                   DocumentSnapshot team = users[index];
                   globals.teamName = "${team['Team']}";
-                  return new Text(globals.teamName);
+                  return new Text(globals.teamName); // TODO: show win/loss record next to team name
                 }
               }
             } else {
