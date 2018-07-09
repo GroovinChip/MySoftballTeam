@@ -17,20 +17,23 @@ class _CheckLoginState extends State<CheckLogin> {
     String email = prefs.get("Email");
     String password = prefs.get("Password");
     String teamName = prefs.get("TeamName");
-    try {
-      final firebaseUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-      globals.loggedInUser = firebaseUser;
-      if(globals.loggedInUser.isEmailVerified == true) {
-        globals.teamName = teamName;
-        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new HomeScreen()));
-      } else {
-        email = "";
-        password = "";
-        teamName = "";
-        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new LoginScreen()));
+    if(email.isEmpty || email == ""){
+      if(password.isEmpty || password == ""){
+        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()));
       }
-    } catch (e) {
-      print(e);
+    } else {
+      try {
+        final firebaseUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+        globals.loggedInUser = firebaseUser;
+        if(globals.loggedInUser.isEmailVerified == true) {
+          globals.teamName = teamName;
+          Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new HomeScreen()));
+        } else {
+          Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()));
+        }
+      } catch (e) {
+        print(e);
+      }
     }
   }
 

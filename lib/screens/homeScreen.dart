@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
               final SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setString("Email", "");
               prefs.setString("Password", "");
-              Navigator.of(context).pushNamedAndRemoveUntil('/',(Route<dynamic> route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
             }, 
             child: new Text(
               "Log Out", 

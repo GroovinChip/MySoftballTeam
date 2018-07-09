@@ -11,29 +11,6 @@ import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'My Softball Team',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'sourcesanspro'
-      ),
-      home: new LoginPage(),
-      debugShowCheckedModeBanner: false,
-      routes: <String, WidgetBuilder>{
-        '/HomeScreen': (BuildContext context) => new HomeScreen(),
-        '/Signup': (BuildContext context) => new Signup(),
-        '/AddNewGame': (BuildContext context) => new AddNewGame(),
-        '/AddNewPlayer': (BuildContext context) => new AddNewPlayer(),
-        '/SeasonSchedule': (BuildContext context) => new SeasonSchedule()
-      },
-    );
-  }
-}
-
 class LoginPage extends StatefulWidget {
 
   @override

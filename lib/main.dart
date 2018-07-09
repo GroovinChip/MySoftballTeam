@@ -5,6 +5,7 @@ import 'package:my_softball_team/screens/addNewPlayer.dart';
 import 'package:my_softball_team/screens/signup.dart';
 import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:my_softball_team/screens/homeScreen.dart';
+import 'package:my_softball_team/screens/login.dart';
 
 void main() => runApp(new LoadApplication());
 
@@ -25,7 +26,8 @@ class LoadApplication extends StatelessWidget {
         '/Signup': (BuildContext context) => new Signup(),
         '/AddNewGame': (BuildContext context) => new AddNewGame(),
         '/AddNewPlayer': (BuildContext context) => new AddNewPlayer(),
-        '/SeasonSchedule': (BuildContext context) => new SeasonSchedule()
+        '/SeasonSchedule': (BuildContext context) => new SeasonSchedule(),
+        '/LoginPage': (BuildContext context) => new LoginPage()
       },
     );
   }
