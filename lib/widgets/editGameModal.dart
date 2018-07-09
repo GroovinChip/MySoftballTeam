@@ -244,7 +244,39 @@ class _EditGameModalState extends State<EditGameModal> {
                                   children: <Widget>[
                                     new RaisedButton(
                                       onPressed: (){
+                                        if(_editGameDateController.text == ""){
+                                          _editGameDateController.text = "${game['GameDate']}";
+                                        }
+                                        if(_editGameTimeController.text == ""){
+                                          _editGameTimeController.text = "${game['GameTime']}";
+                                        }
+                                        if(_editOpposingTeamController.text == ""){
+                                          _editOpposingTeamController.text = "${game['OpposingTeam']}";
+                                        }
+                                        if(_editGameLocationController.text == ""){
+                                          _editGameLocationController.text = "${game['GameLocation']}";
+                                        }
+                                        if(_homeOrAway == ""){
+                                          _homeOrAway = "${game['HomeOrAway']}";
+                                        }
+                                        if(winOrLoss == ""){
+                                          winOrLoss = "unknown";
+                                        }
 
+                                        // TODO: Record win/loss in a Record document
+
+                                        gamesDB.document(globals.selectedGameDocument).updateData(
+                                          {
+                                            "GameDate":_editGameDateController.text,
+                                            "GameTime":_editGameTimeController.text,
+                                            "OpposingTeam":_editOpposingTeamController.text,
+                                            "GameLocation":_editGameLocationController.text,
+                                            "HomeOrAway":_homeOrAway,
+                                            "WinOrLoss":winOrLoss
+                                          }
+                                        );
+
+                                        Navigator.pop(context);
                                       },
                                       color: Colors.blue,
                                       child: new Text(

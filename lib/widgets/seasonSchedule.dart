@@ -178,9 +178,14 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
 
             String toParseAsDate = year + month + day;
             dateToEval = DateTime.parse(toParseAsDate);
-            DateTime now = new DateTime.now();
+            DateTime today = new DateTime(
+              DateTime.now().year,
+              DateTime.now().month,
+              DateTime.now().day,
+              23
+            );
             //print(dateToEval);
-            if(dateToEval.isBefore(now) == true){
+            if(dateToEval.isBefore(today) == true){
               // do not create a Game row
             } else {
               rows.add(DataRow(cells: [

@@ -35,7 +35,6 @@ class _EditStatsModalState extends State<EditStatsModal> {
       appBar: new AppBar(
         title: new Text("Update Stats"),
       ),
-      // TODO: Wrap SingleChildScrollView in StreamBuilder to load in existing stats into the TextFields
       body: StreamBuilder<QuerySnapshot>(
         stream: playersCollection.snapshots(),
         builder: (context, snapshot){

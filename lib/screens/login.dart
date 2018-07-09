@@ -54,28 +54,6 @@ class _LoginPageState extends State<LoginPage> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  void _getValuesFromStorage() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    email = prefs.get("Email");
-    password = prefs.get("Password");
-    teamName = prefs.get("TeamName");
-    try {
-      final firebaseUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-      globals.loggedInUser = firebaseUser;
-      if(globals.loggedInUser.isEmailVerified == true) {
-        globals.teamName = teamName;
-        Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);
-      } else {
-        email = "";
-        password = "";
-        teamName = "";
-      }
-    } catch (e) {
-      print(e);
-    }
-
-  }
-
   void _rememberLogin() async {
     if(isChecked == true){
       print(globals.loggedInUser);
@@ -88,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    _getValuesFromStorage();
+    super.initState();
   }
 
   @override

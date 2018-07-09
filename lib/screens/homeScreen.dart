@@ -72,6 +72,37 @@ class _HomeScreenState extends State<HomeScreen> {
         Colors.white,
       ),
       new FabMiniMenuItem.withText(
+        Icon(CommunityMaterialIcons.file_chart),
+        Colors.blue,
+        4.0,
+        "",
+        (){
+          showDialog(
+            context: context,
+            builder: (_) => SimpleDialog(
+              title: Text(globals.teamName + " Win/Loss Record"),
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: ListTile(
+                    title: Text("Wins: "),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: ListTile(
+                    title: Text("Losses: "),
+                  ),
+                ),
+              ],
+            )
+          );
+        },
+        "View Record",
+        Colors.blue,
+        Colors.white,
+      ),
+      new FabMiniMenuItem.withText(
         Icon(Icons.add),
         Colors.blue,
         4.0,

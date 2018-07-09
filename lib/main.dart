@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:my_softball_team/screens/login.dart';
-import 'screens/homeScreen.dart';
+import 'package:my_softball_team/checkLogin.dart';
+import 'package:my_softball_team/screens/addNewGame.dart';
+import 'package:my_softball_team/screens/addNewPlayer.dart';
+import 'package:my_softball_team/screens/signup.dart';
+import 'package:my_softball_team/widgets/seasonSchedule.dart';
+import 'package:my_softball_team/screens/homeScreen.dart';
 
-//TODO: Move auto-login here instean of the login screen, so the user who has opted to stay logged in doesn't see that screen flash for a second
+void main() => runApp(new LoadApplication());
 
-void main() => runApp(new LoginScreen());
+class LoadApplication extends StatelessWidget {
+// This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'My Softball Team',
+      theme: new ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'sourcesanspro'
+      ),
+      home: new CheckLogin(),
+      debugShowCheckedModeBanner: false,
+      routes: <String, WidgetBuilder>{
+        '/HomeScreen': (BuildContext context) => new HomeScreen(),
+        '/Signup': (BuildContext context) => new Signup(),
+        '/AddNewGame': (BuildContext context) => new AddNewGame(),
+        '/AddNewPlayer': (BuildContext context) => new AddNewPlayer(),
+        '/SeasonSchedule': (BuildContext context) => new SeasonSchedule()
+      },
+    );
+  }
+}
