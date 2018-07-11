@@ -182,7 +182,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
               DateTime.now().year,
               DateTime.now().month,
               DateTime.now().day,
-              23
+              0
             );
             //print(dateToEval);
             if(dateToEval.isBefore(today) == true){

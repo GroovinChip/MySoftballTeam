@@ -1,14 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:my_softball_team/screens/addNewGame.dart';
-import 'package:my_softball_team/screens/addNewPlayer.dart';
-import 'package:my_softball_team/screens/homeScreen.dart';
-import 'package:my_softball_team/screens/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart'
     show FirebaseAuth, FirebaseUser;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {

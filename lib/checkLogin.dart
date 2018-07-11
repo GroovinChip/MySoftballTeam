@@ -45,6 +45,9 @@ class _CheckLoginState extends State<CheckLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: CircularProgressIndicator());
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(child: CircularProgressIndicator())
+    );
   }
 }
