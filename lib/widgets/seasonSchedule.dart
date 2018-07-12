@@ -211,26 +211,71 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                   Text("${games[index]['HomeOrAway']}")
                 ),
                 DataCell(
-                  IconButton(
-                    icon: new Icon(Icons.edit),
-                    onPressed: (){
-                      globals.selectedGameDocument = games[index].documentID;
-                      Navigator.of(context).push(new MaterialPageRoute<Null>(
-                          builder: (BuildContext context) {
-                            return new EditGameModal();
+                  Container(
+                    width: 100.0,
+                    child: Row(
+                      children: <Widget>[
+                        IconButton(
+                          icon: new Icon(Icons.edit),
+                          onPressed: (){
+                            globals.selectedGameDocument = games[index].documentID;
+                            Navigator.of(context).push(new MaterialPageRoute<Null>(
+                                builder: (BuildContext context) {
+                                  return new EditGameModal();
+                                },
+                                fullscreenDialog: true
+                            ));
                           },
-                          fullscreenDialog: true
-                      ));
-                    },
-                    tooltip: "Edit Game Details",
+                          tooltip: "Edit Game Details",
+                        ),
+                        IconButton(
+                          icon: new Icon(Icons.delete),
+                          onPressed: (){
+                            globals.selectedGameDocument = games[index].documentID;
+                            showDialog(
+                                context: context,
+                                builder: (_) => SimpleDialog(
+                                  title: Text("Delete Game"),
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: ListTile(
+                                        title: Text("Are you sure you want to remove this game from the schedule?"),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: <Widget>[
+                                          FlatButton(
+                                            child: Text("Yes"),
+                                            onPressed: (){
+                                              gamesDB.document(globals.selectedGameDocument).delete();
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                          FlatButton(
+                                            child: Text("No"),
+                                            onPressed: (){
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                )
+                            );
+                          },
+                          tooltip: "Delete Game",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ]));
             }
-          }
-
-          for(int rowIndex = 0; rowIndex < rows.length; rowIndex++){
-            Text cellA = rows[rowIndex].cells[0].child;
           }
 
           return ListView(
