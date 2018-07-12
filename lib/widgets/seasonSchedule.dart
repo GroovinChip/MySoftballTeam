@@ -33,6 +33,12 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
 
           List<DocumentSnapshot> games = snapshot.data.documents;
 
+          games.sort((a, b){
+            DateTime game1 = globals.convertStringDateToDateTime(a['GameDate'], a['GameTime']);
+            DateTime game2 = globals.convertStringDateToDateTime(b['GameDate'], b['GameTime']);
+            return game1.compareTo(game2);
+          });
+
           for(int index = 0; index < games.length; index++) {
             // Check each game date - if the date is in the past, do not display it
             String date = "${games[index]['GameDate']}";
@@ -221,6 +227,10 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                 ),
               ]));
             }
+          }
+
+          for(int rowIndex = 0; rowIndex < rows.length; rowIndex++){
+            Text cellA = rows[rowIndex].cells[0].child;
           }
 
           return ListView(
