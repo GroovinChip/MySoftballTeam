@@ -21,7 +21,6 @@ class _EditGameModalState extends State<EditGameModal> {
     DropdownMenuItem(child: Text("Loss"), value: "Loss")
   ];
 
-  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
   TextEditingController _editGameDateController = new TextEditingController();
   TextEditingController _editGameTimeController = new TextEditingController();
   TextEditingController _editGameLocationController = new TextEditingController();
@@ -52,16 +51,13 @@ class _EditGameModalState extends State<EditGameModal> {
         title: Text("Edit Game"),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: gamesDB.snapshots(),
+        stream: globals.gamesDB.snapshots(),
         builder: (context, snapshot){
           if(snapshot.hasData == true){
             List<DocumentSnapshot> games = snapshot.data.documents;
             for(int index = 0; index < games.length; index++) {
               if(games[index].documentID == globals.selectedGameDocument){
                 DocumentSnapshot game = games[index];
-                /*return Center(
-                  child: Text("${game['GameDate']}" + " ${game['GameTime']}"),
-                );*/
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -265,7 +261,7 @@ class _EditGameModalState extends State<EditGameModal> {
 
                                         // TODO: Record win/loss in a Record document
 
-                                        gamesDB.document(globals.selectedGameDocument).updateData(
+                                        globals.gamesDB.document(globals.selectedGameDocument).updateData(
                                           {
                                             "GameDate":_editGameDateController.text,
                                             "GameTime":_editGameTimeController.text,

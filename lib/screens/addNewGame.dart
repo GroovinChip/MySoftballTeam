@@ -9,8 +9,6 @@ class AddNewGame extends StatefulWidget{
 
 class _AddNewGameState extends State<AddNewGame> {
 
-  //CollectionReference scheduleDB = Firestore.instance.collection("Teams").document(globals.teamTame).collection("Games"); needs Season
-
   List<DropdownMenuItem> _homeOrAwayOptions = [
     new DropdownMenuItem(child: new Text("Home"), value: "Home",),
     new DropdownMenuItem(child: new Text("Away"), value: "Away",),
@@ -205,8 +203,7 @@ class _AddNewGameState extends State<AddNewGame> {
                             onPressed: (){
                               if(_gameDateController.text != "" && _gameTimeController.text != "") {
                                 if(_opposingTeamController.text != "" && _gameLocationController.text != "") {
-                                  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(year).collection("Games");
-                                  gamesDB.add({
+                                  globals.gamesDB.add({
                                     "GameDate":_gameDateController.text,
                                     "GameTime":_gameTimeController.text,
                                     "OpposingTeam":_opposingTeamController.text,

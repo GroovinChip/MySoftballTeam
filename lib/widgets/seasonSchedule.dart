@@ -11,12 +11,10 @@ class SeasonSchedule extends StatefulWidget {
 
 class _SeasonScheduleState extends State<SeasonSchedule> {
 
-  CollectionReference gamesDB = Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: gamesDB.snapshots(),
+      stream: globals.gamesDB.snapshots(),
       builder: (context, snapshot) {
         List<DataColumn> columns = [
           DataColumn(label: Text("Date")),
@@ -108,7 +106,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                                           FlatButton(
                                             child: Text("Yes"),
                                             onPressed: (){
-                                              gamesDB.document(globals.selectedGameDocument).delete();
+                                              globals.gamesDB.document(globals.selectedGameDocument).delete();
                                               Navigator.pop(context);
                                             },
                                           ),

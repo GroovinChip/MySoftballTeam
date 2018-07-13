@@ -180,9 +180,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: new PageView(
         children: <Widget>[
-          /*new Center(
-            child: new Text("Softball Games will go here"),
-          ),*/
           new SeasonSchedule(),
           new TeamList(),
           new StatsTable()
