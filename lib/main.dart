@@ -3,6 +3,7 @@ import 'package:my_softball_team/checkLogin.dart';
 import 'package:my_softball_team/screens/addNewGame.dart';
 import 'package:my_softball_team/screens/addNewPlayer.dart';
 import 'package:my_softball_team/screens/signup.dart';
+import 'package:my_softball_team/widgets/previousGamesTable.dart';
 import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:my_softball_team/screens/homeScreen.dart';
 import 'package:my_softball_team/screens/login.dart';
@@ -27,7 +28,8 @@ class LoadApplication extends StatelessWidget {
         '/AddNewGame': (BuildContext context) => new AddNewGame(),
         '/AddNewPlayer': (BuildContext context) => new AddNewPlayer(),
         '/SeasonSchedule': (BuildContext context) => new SeasonSchedule(),
-        '/LoginPage': (BuildContext context) => new LoginPage()
+        '/LoginPage': (BuildContext context) => new LoginPage(),
+        '/PreviousGamesTable': (BuildContext context) => new PreviousGamesTable()
       },
     );
   }

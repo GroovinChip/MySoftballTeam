@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
         4.0,
         "",
         (){
-
+          Navigator.of(context).pushNamed('/PreviousGamesTable');
         },
         "View Previous Games",
         Colors.blue,

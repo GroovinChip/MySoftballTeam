@@ -8,6 +8,7 @@ String teamName;
 String selectedPlayerName;
 String selectedGameDocument;
 CollectionReference usersDB = Firestore.instance.collection("Users");
+CollectionReference gamesDB = Firestore.instance.collection("Teams").document(teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
 
 // List of field positions
 List<DropdownMenuItem> fieldPositions = [
