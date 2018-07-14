@@ -61,15 +61,35 @@ class _StatsTableState extends State<StatsTable> {
                     onTap: (){}
                   ),
                   new DataCell(
-                    new Text(playersInStream[playerIndex]["Assists"]),
-                    onTap: (){}
-                  ),
-                  new DataCell(
                     new Text(playersInStream[playerIndex]["AtBats"]),
                     onTap: (){}
                   ),
                   new DataCell(
-                      new Text(playersInStream[playerIndex]["BaseHits"]),
+                      new Text(playersInStream[playerIndex]["Singles"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Doubles"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Triples"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["HomeRuns"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["RunsBattedIn"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Walks"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Strikeouts"]),
                       onTap: (){}
                   ),
                   new DataCell(

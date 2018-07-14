@@ -67,7 +67,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                 ),
                 DataCell(
                   Container(
-                    width: 100.0,
+                    width: 145.0,
                     child: Row(
                       children: <Widget>[
                         IconButton(
@@ -82,6 +82,14 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                             ));
                           },
                           tooltip: "Edit Game Details",
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.email),
+                          onPressed: (){
+                            globals.selectedGameDocument = games[index].documentID;
+                            Navigator.of(context).pushNamed('/SendGameReminderEmailScreen');
+                          },
+                          tooltip: "Send Reminder Email",
                         ),
                         IconButton(
                           icon: new Icon(Icons.delete),

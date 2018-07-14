@@ -11,19 +11,29 @@ class EditStatsModal extends StatefulWidget {
 class _EditStatsModalState extends State<EditStatsModal> {
 
   // Controllers
-  TextEditingController _gamesPlayerController = new TextEditingController();
   TextEditingController _atBatsController = new TextEditingController();
-  TextEditingController _baseHitsController = new TextEditingController();
+  TextEditingController _singlesController = new TextEditingController();
+  TextEditingController _doublesController = new TextEditingController();
+  TextEditingController _triplesController = new TextEditingController();
+  TextEditingController _homeRunsController = new TextEditingController();
+  TextEditingController _runsBattedInController = new TextEditingController();
+  TextEditingController _walksController = new TextEditingController();
+  TextEditingController _strikeoutsController = new TextEditingController();
+  TextEditingController _gamesPlayerController = new TextEditingController();
   TextEditingController _outsReceivedController = new TextEditingController();
-  TextEditingController _assistsController = new TextEditingController();
   TextEditingController _outsFieldedController = new TextEditingController();
 
   // Variables
-  String gamesPlayed;
   String atBats;
-  String baseHits;
+  String singles;
+  String doubles;
+  String triples;
+  String homeRuns;
+  String runsBattedIn;
+  String walks;
+  String strikeouts;
+  String gamesPlayed;
   String outsReceived;
-  String assists;
   String outsFielded;
 
   CollectionReference playersCollection = Firestore.instance.collection("Teams").document(globals.teamName).collection("Players");
@@ -63,28 +73,6 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                  labelText: "Current Assists: ${player['Assists']}",
-                                  filled: true,
-                                  fillColor: Colors.black12,
-                                  suffixIcon: new IconButton(
-                                    icon: new Icon(Icons.clear),
-                                    onPressed: (){
-                                      _assistsController.text="";
-                                    },
-                                  )
-                                ),
-                                controller: _assistsController,
-                                onChanged: (text) {
-                                  //_assistsController.text = text;
-                                  print(_assistsController.text);
-                                },
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
-                                keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
                                   labelText: "Current At Bats: ${player['AtBats']}",
                                   filled: true,
                                   fillColor: Colors.black12,
@@ -103,17 +91,125 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                  labelText: "Current Base Hits: ${player['BaseHits']}",
-                                  filled: true,
-                                  fillColor: Colors.black12,
-                                  suffixIcon: new IconButton(
-                                    icon: new Icon(Icons.clear),
-                                    onPressed: (){
-                                      _baseHitsController.text="";
-                                    },
-                                  )
+                                    labelText: "Current Singles: ${player['Singles']}",
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    suffixIcon: new IconButton(
+                                      icon: new Icon(Icons.clear),
+                                      onPressed: (){
+                                        _singlesController.text="";
+                                      },
+                                    )
                                 ),
-                                controller: _baseHitsController,
+                                controller: _singlesController,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: new InputDecoration(
+                                    labelText: "Current Doubles: ${player['Doubles']}",
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    suffixIcon: new IconButton(
+                                      icon: new Icon(Icons.clear),
+                                      onPressed: (){
+                                        _doublesController.text="";
+                                      },
+                                    )
+                                ),
+                                controller: _doublesController,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: new InputDecoration(
+                                    labelText: "Current Triples: ${player['Triples']}",
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    suffixIcon: new IconButton(
+                                      icon: new Icon(Icons.clear),
+                                      onPressed: (){
+                                        _triplesController.text="";
+                                      },
+                                    )
+                                ),
+                                controller: _triplesController,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: new InputDecoration(
+                                    labelText: "Current Homes Runs: ${player['HomeRuns']}",
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    suffixIcon: new IconButton(
+                                      icon: new Icon(Icons.clear),
+                                      onPressed: (){
+                                        _homeRunsController.text="";
+                                      },
+                                    )
+                                ),
+                                controller: _homeRunsController,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: new InputDecoration(
+                                    labelText: "Current RBIs: ${player['RunsBattedIn']}",
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    suffixIcon: new IconButton(
+                                      icon: new Icon(Icons.clear),
+                                      onPressed: (){
+                                        _runsBattedInController.text="";
+                                      },
+                                    )
+                                ),
+                                controller: _runsBattedInController,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: new InputDecoration(
+                                    labelText: "Current Walks: ${player['Walks']}",
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    suffixIcon: new IconButton(
+                                      icon: new Icon(Icons.clear),
+                                      onPressed: (){
+                                        _walksController.text="";
+                                      },
+                                    )
+                                ),
+                                controller: _walksController,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: new TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: new InputDecoration(
+                                    labelText: "Current Strikeouts: ${player['Strikeouts']}",
+                                    filled: true,
+                                    fillColor: Colors.black12,
+                                    suffixIcon: new IconButton(
+                                      icon: new Icon(Icons.clear),
+                                      onPressed: (){
+                                        _strikeoutsController.text="";
+                                      },
+                                    )
+                                ),
+                                controller: _strikeoutsController,
                               ),
                             ),
                             Padding(
@@ -179,39 +275,67 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                     onPressed: (){
                                       gamesPlayed = _gamesPlayerController.text;
                                       atBats = _atBatsController.text;
-                                      baseHits = _baseHitsController.text;
                                       outsReceived = _outsReceivedController.text;
-                                      assists = _assistsController.text;
                                       outsFielded = _outsFieldedController.text;
 
-                                      if(gamesPlayed == ""){
-                                        gamesPlayed = "0";
-                                      }
-                                      if(atBats == ""){
+                                      if(atBats == "" || atBats == null){
                                         atBats = "0";
                                       }
-                                      if(baseHits == ""){
-                                        baseHits = "0";
+
+                                      if(singles == "" || singles == null){
+                                        singles = "0";
                                       }
-                                      if(outsReceived == ""){
+
+                                      if(doubles == "" || doubles == null){
+                                        doubles = "0";
+                                      }
+
+                                      if(triples == "" || triples == null){
+                                        triples = "0";
+                                      }
+
+                                      if(homeRuns == "" || homeRuns == null){
+                                        homeRuns = "0";
+                                      }
+
+                                      if(runsBattedIn == "" || runsBattedIn == null){
+                                        runsBattedIn = "0";
+                                      }
+
+                                      if(walks == "" || walks == null){
+                                        walks = "0";
+                                      }
+
+                                      if(strikeouts == "" || strikeouts == null){
+                                        strikeouts = "0";
+                                      }
+
+                                      if(gamesPlayed == "" || gamesPlayed == null){
+                                        gamesPlayed = "0";
+                                      }
+
+                                      if(outsReceived == "" || outsReceived == null){
                                         outsReceived = "0";
                                       }
-                                      if(assists == ""){
-                                        assists = "0";
-                                      }
-                                      if(outsFielded == ""){
+
+                                      if(outsFielded == "" || outsFielded == null){
                                         outsFielded = "0";
                                       }
 
-
                                       playersCollection.document(globals.selectedPlayerName).updateData({
-                                        "GamesPlayed" : gamesPlayed,
                                         "AtBats" : atBats,
-                                        "BaseHits" : baseHits,
+                                        "Singles" : singles,
+                                        "Doubles" : doubles,
+                                        "Triples" : triples,
+                                        "HomeRuns" : homeRuns,
+                                        "RunsBattedIn" : runsBattedIn,
+                                        "Walks" : walks,
+                                        "Strikeouts" : strikeouts,
+                                        "GamesPlayed" : gamesPlayed,
                                         "OutsReceived" : outsReceived,
-                                        "Assists" : assists,
                                         "OutsFielded" : outsFielded
                                       });
+
                                       Navigator.pop(context);
                                     },
                                     color: Colors.blue,
