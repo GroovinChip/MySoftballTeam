@@ -55,6 +55,17 @@ class _EditStatsModalState extends State<EditStatsModal> {
                 player = players[index];
               }
             }
+            atBats = "${player['AtBats']}";
+            singles = "${player['Singles']}";
+            doubles = "${player['Doubles']}";
+            triples = "${player['Triples']}";
+            homeRuns = "${player['HomeRuns']}";
+            runsBattedIn = "${player['RunsBattedIn']}";
+            walks = "${player['Walks']}";
+            strikeouts = "${player['Strikeouts']}";
+            gamesPlayed = "${player['GamesPlayed']}";
+            outsReceived = "${player['OutsReceived']}";
+            outsFielded = "${player['OutsFielded']}";
             return new SingleChildScrollView(
               child: new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -145,7 +156,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                    labelText: "Current Homes Runs: ${player['HomeRuns']}",
+                                    labelText: "Current Home Runs: ${player['HomeRuns']}",
                                     filled: true,
                                     fillColor: Colors.black12,
                                     suffixIcon: new IconButton(
@@ -217,7 +228,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: new TextField(
                                 keyboardType: TextInputType.number,
                                 decoration: new InputDecoration(
-                                  labelText: "Current Games Played: ${player['GamesPlayed']}",
+                                  labelText: "Current Games Played: " + gamesPlayed,
                                   filled: true,
                                   fillColor: Colors.black12,
                                   suffixIcon: new IconButton(
@@ -273,53 +284,82 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 children: <Widget>[
                                   new RaisedButton(
                                     onPressed: (){
-                                      gamesPlayed = _gamesPlayerController.text;
+                                      /*gamesPlayed = _gamesPlayerController.text;
                                       atBats = _atBatsController.text;
+                                      singles = _singlesController.text;
+                                      doubles = _doublesController.text;
+                                      triples = _triplesController.text;
+                                      homeRuns = _homeRunsController.text;
+                                      runsBattedIn = _runsBattedInController.text;
+                                      walks = _walksController.text;
+                                      strikeouts = _strikeoutsController.text;
                                       outsReceived = _outsReceivedController.text;
-                                      outsFielded = _outsFieldedController.text;
+                                      outsFielded = _outsFieldedController.text;*/
 
                                       if(atBats == "" || atBats == null){
                                         atBats = "0";
+                                      } else if(_atBatsController.text.length > 0) {
+                                        atBats= _atBatsController.text;
                                       }
 
                                       if(singles == "" || singles == null){
                                         singles = "0";
+                                      } else if(_singlesController.text.length > 0) {
+                                        singles = _singlesController.text;
                                       }
 
                                       if(doubles == "" || doubles == null){
                                         doubles = "0";
+                                      } else if(_doublesController.text.length > 0) {
+                                        doubles = _doublesController.text;
                                       }
 
                                       if(triples == "" || triples == null){
                                         triples = "0";
+                                      } else if(_triplesController.text.length > 0) {
+                                        triples = _triplesController.text;
                                       }
 
                                       if(homeRuns == "" || homeRuns == null){
                                         homeRuns = "0";
+                                      } else if(_homeRunsController.text.length > 0) {
+                                        homeRuns = _homeRunsController.text;
                                       }
 
                                       if(runsBattedIn == "" || runsBattedIn == null){
                                         runsBattedIn = "0";
+                                      } else if(_runsBattedInController.text.length > 0) {
+                                        runsBattedIn = _runsBattedInController.text;
                                       }
 
                                       if(walks == "" || walks == null){
                                         walks = "0";
+                                      } else if(_walksController.text.length > 0) {
+                                        walks = _walksController.text;
                                       }
 
                                       if(strikeouts == "" || strikeouts == null){
                                         strikeouts = "0";
+                                      } else if(_strikeoutsController.text.length > 0) {
+                                        strikeouts = _strikeoutsController.text;
                                       }
 
                                       if(gamesPlayed == "" || gamesPlayed == null){
                                         gamesPlayed = "0";
+                                      } else if(_gamesPlayerController.text.length > 0) {
+                                        gamesPlayed = _gamesPlayerController.text;
                                       }
 
                                       if(outsReceived == "" || outsReceived == null){
                                         outsReceived = "0";
+                                      } else if(_outsReceivedController.text.length > 0) {
+                                        outsReceived = _outsReceivedController.text;
                                       }
 
                                       if(outsFielded == "" || outsFielded == null){
                                         outsFielded = "0";
+                                      } else if(_outsFieldedController.text.length > 0) {
+                                        outsFielded = _outsFieldedController.text;
                                       }
 
                                       playersCollection.document(globals.selectedPlayerName).updateData({

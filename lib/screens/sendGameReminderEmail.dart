@@ -26,7 +26,33 @@ class _SendGameReminderEmailScreenState extends State<SendGameReminderEmailScree
         children: <Widget>[
           TextField(
             decoration: InputDecoration(
-
+              filled: true,
+              fillColor: Colors.black12,
+              labelText: "To:",
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.black12,
+              labelText: "CC:",
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.black12,
+              labelText: "Subject:",
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                maxLines: 100,
+                decoration: InputDecoration.collapsed(),
+                inputFormatters: TextI,
+              ),
             ),
           ),
         ],

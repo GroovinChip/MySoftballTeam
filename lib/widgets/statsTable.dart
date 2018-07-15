@@ -29,7 +29,6 @@ class _StatsTableState extends State<StatsTable> {
           ),
         ];
         List<DataRow> rows = [];
-        List<DataCell> cells = [];
 
         if(snapshot.hasData) {
           final players_stream = snapshot.data[0];
@@ -45,7 +44,6 @@ class _StatsTableState extends State<StatsTable> {
               onSort: (int columnIndex, bool sortDirection){
                 print(sortDirection);
                 sortAscending = sortDirection;
-                print("Column " + columnIndex.toString() + " tapped");
               },
               ),
             );
@@ -65,35 +63,15 @@ class _StatsTableState extends State<StatsTable> {
                     onTap: (){}
                   ),
                   new DataCell(
-                      new Text(playersInStream[playerIndex]["Singles"]),
-                      onTap: (){}
-                  ),
-                  new DataCell(
                       new Text(playersInStream[playerIndex]["Doubles"]),
                       onTap: (){}
                   ),
                   new DataCell(
-                      new Text(playersInStream[playerIndex]["Triples"]),
+                      new Text(playersInStream[playerIndex]["GamesPlayed"]),
                       onTap: (){}
                   ),
                   new DataCell(
                       new Text(playersInStream[playerIndex]["HomeRuns"]),
-                      onTap: (){}
-                  ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["RunsBattedIn"]),
-                      onTap: (){}
-                  ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["Walks"]),
-                      onTap: (){}
-                  ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["Strikeouts"]),
-                      onTap: (){}
-                  ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["GamesPlayed"]),
                       onTap: (){}
                   ),
                   new DataCell(
@@ -102,6 +80,26 @@ class _StatsTableState extends State<StatsTable> {
                   ),
                   new DataCell(
                       new Text(playersInStream[playerIndex]["OutsReceived"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["RunsBattedIn"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Singles"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Strikeouts"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Triples"]),
+                      onTap: (){}
+                  ),
+                  new DataCell(
+                      new Text(playersInStream[playerIndex]["Walks"]),
                       onTap: (){}
                   ),
                 ],
