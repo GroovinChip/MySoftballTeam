@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,12 +20,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // List of bottom navigation bar items
   List<BottomNavigationBarItem> _bottomNavigationBarItems = [
-    new BottomNavigationBarItem(
-        icon: new Icon(CommunityMaterialIcons.calendar_text), title: new Text("Schedule")),
-    new BottomNavigationBarItem(
-        icon: new Icon(Icons.group), title: new Text("Team")),
-    new BottomNavigationBarItem(
-        icon: new Icon(Icons.insert_chart), title: new Text("Stats")),
+    BottomNavigationBarItem(
+      icon: Icon(CommunityMaterialIcons.calendar_text),
+      title: Text("Schedule"),
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.group),
+      title: Text("Team"),
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.insert_chart),
+      title: Text("Stats"),
+    ),
   ];
 
   int _page = 0; // tracks what page is currently in view
@@ -46,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = new PageController();
+    _pageController = PageController();
   }
 
   @override
@@ -57,139 +64,133 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var _fabMiniMenuItemList = [
-      new FabMiniMenuItem.withText(
-        Icon(Icons.history),
-        Colors.blue,
-        4.0,
-        "",
-        (){
-          Navigator.of(context).pushNamed('/PreviousGamesTable');
-        },
-        "View Previous Games",
-        Colors.blue,
-        Colors.white,
-      ),
-      new FabMiniMenuItem.withText(
-        Icon(CommunityMaterialIcons.file_chart),
-        Colors.blue,
-        4.0,
-        "",
-        (){
-          showDialog(
-            context: context,
-            builder: (_) => SimpleDialog(
-              title: Text(globals.teamName + " Win/Loss Record"),
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: ListTile(
-                    title: Text("Wins: "),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: ListTile(
-                    title: Text("Losses: "),
-                  ),
-                ),
-              ],
-            )
-          );
-        },
-        "View Record",
-        Colors.blue,
-        Colors.white,
-      ),
-      new FabMiniMenuItem.withText(
-        Icon(Icons.add),
-        Colors.blue,
-        4.0,
-        "Add a game to the schedule",
-        (){
-          Navigator.of(context).pushNamed('/AddNewGame');
-        },
-        "Add Game",
-        Colors.blue,
-        Colors.white,
-      ),
-    ];
 
     // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
     List<Widget> _fabs = [
-      /*new FloatingActionButton(
+      FloatingActionButton.extended(
         onPressed: () {
           Navigator.of(context).pushNamed('/AddNewGame');
         },
-        child: new Icon(Icons.add),
-        tooltip: "Add a Game",
-      ),*/
-      new FabDialer(
-        _fabMiniMenuItemList,
-        Colors.blue,
-        Icon(Icons.add)
+        icon: Icon(Icons.add),
+        label: Text("Add a Game"),
       ),
-      new FloatingActionButton(
+      FloatingActionButton.extended(
         onPressed: () {
           Navigator.of(context).pushNamed('/AddNewPlayer');
         },
-        child: new Icon(Icons.add),
-        tooltip: "Add a Player",
+        icon: Icon(Icons.add),
+        label: Text("Add a Player"),
       ),
-      new Container()
+      Container()
     ];
 
     CollectionReference usersDB = Firestore.instance.collection("Users");
 
-    return new Scaffold (
-      appBar: new AppBar(
-        title: StreamBuilder<QuerySnapshot>(
-          stream: usersDB.snapshots(),
+    List<PopupMenuItem> oveflowMenuItems = [
+      PopupMenuItem(
+        child: Text("View Previous Games"),
+        value: "VPG",
+      ),
+      PopupMenuItem(
+        child: Text("Log Out"),
+        value: "LO",
+      ),
+    ];
+
+    void onSelectOverflowMenuItem(item) async {
+      switch(item){
+        case "VPG":
+          Navigator.of(context).pushNamed('/PreviousGamesTable');
+          break;
+        case "LO":
+          FirebaseAuth.instance.signOut();
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString("Email", "");
+          prefs.setString("Password", "");
+          Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
+          break;
+      }
+    }
+
+    return Scaffold (
+      appBar: AppBar(
+        //centerTitle: true,
+        backgroundColor: Colors.white,
+        title: StreamBuilder<List<QuerySnapshot>>(
+          stream: StreamZip([usersDB.snapshots(), globals.gamesDB.snapshots()]),
           builder: (context, snapshot) {
             if(snapshot.hasData){
-              List<DocumentSnapshot> users = snapshot.data.documents;
+              final usersStream = snapshot.data[0];
+              final gamesStream = snapshot.data[1];
+              List<DocumentSnapshot> users = usersStream.documents;
+              List<DocumentSnapshot> games = gamesStream.documents;
+              int wins = 0;
+              int losses = 0;
+
               for(int index = 0; index < users.length; index++) {
                 if (users[index].documentID == globals.loggedInUser.uid) {
                   DocumentSnapshot team = users[index];
                   globals.teamName = "${team['Team']}";
-                  return new Text(globals.teamName); // TODO: show win/loss record next to team name
+
+                  for(int index2 = 0; index2 < games.length; index2++) {
+                    DocumentSnapshot game = games[index2];
+                    String winOrLoss = "${game['WinOrLoss']}";
+                    if(winOrLoss  == null){
+
+                    } else if(winOrLoss == "Unknown") {
+
+                    } else if(winOrLoss == "Win") {
+                      wins += 1;
+                    } else if(winOrLoss == "Loss") {
+                      losses += 1;
+                    }
+                  }
+
+                  return Text(
+                    globals.teamName + " " + wins.toString() + " - " + losses.toString(),
+                    style: TextStyle(
+                      color: Colors.black
+                    ),
+                  );
                 }
               }
             } else {
-              return new Text("MySoftballTeam");
+              return Text(
+                "MySoftballTeam",
+                style: TextStyle(
+                  color: Colors.black
+                ),
+              );
             }
 
           },
         ),
         actions: <Widget>[
-          new FlatButton(
-            onPressed: () async {
-              FirebaseAuth.instance.signOut();
-              final SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString("Email", "");
-              prefs.setString("Password", "");
-              Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
-            }, 
-            child: new Text(
-              "Log Out", 
-              style: new TextStyle(
-                color: Colors.white),
+          PopupMenuButton(
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.black,
             ),
-          ),
+            itemBuilder: (builder){
+              return oveflowMenuItems;
+            },
+            onSelected: onSelectOverflowMenuItem,
+          )
         ],
       ),
-      body: new PageView(
+      body: PageView(
         children: <Widget>[
-          new SeasonSchedule(),
-          new TeamList(),
-          new StatsTable()
+          SeasonSchedule(),
+          TeamList(),
+          StatsTable()
         ],
         controller: _pageController,
         onPageChanged: _onPageChanged,
         physics: const NeverScrollableScrollPhysics(),
       ),
-      floatingActionButton: _fabs[_page], // T
-      bottomNavigationBar: new BottomNavigationBar(
+      floatingActionButton: _fabs[_page],
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      bottomNavigationBar: BottomNavigationBar(
         items: _bottomNavigationBarItems,
         currentIndex: _page,
         onTap: navigationTapped,

@@ -50,8 +50,8 @@ class _SendGameReminderEmailScreenState extends State<SendGameReminderEmailScree
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 maxLines: 100,
-                decoration: InputDecoration.collapsed(),
-                inputFormatters: TextI,
+                decoration: InputDecoration.collapsed(hintText: ""),
+                //inputFormatters: TextI,
               ),
             ),
           ),

@@ -18,7 +18,7 @@ class LoadApplication extends StatelessWidget {
     return new MaterialApp(
       title: 'My Softball Team',
       theme: new ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.indigo,
           fontFamily: 'sourcesanspro'
       ),
       home: new CheckLogin(),

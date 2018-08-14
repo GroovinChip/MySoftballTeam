@@ -17,8 +17,8 @@ class _CheckLoginState extends State<CheckLogin> {
     String email = prefs.get("Email");
     String password = prefs.get("Password");
     String teamName = prefs.get("TeamName");
-    if(email.isEmpty || email == ""){
-      if(password.isEmpty || password == ""){
+    if(email == null || email == ""){
+      if(password == null || password == ""){
         Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()));
       }
     } else {

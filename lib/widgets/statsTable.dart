@@ -17,12 +17,12 @@ class _StatsTableState extends State<StatsTable> {
 
   @override
   Widget build(BuildContext context) {
-    return new StreamBuilder<List<QuerySnapshot>>(
-      stream: new StreamZip([players.snapshots(), stats.snapshots()]),
+    return StreamBuilder<List<QuerySnapshot>>(
+      stream: StreamZip([players.snapshots(), stats.snapshots()]),
       builder: (context, snapshot){
         List<DataColumn> columns = [
-          new DataColumn(
-            label: new Text("Players"),
+          DataColumn(
+            label: Text("Players"),
             onSort: (int columnIndex, bool ascending){
               print("Column " + columnIndex.toString() + " tapped");
             }
@@ -39,8 +39,8 @@ class _StatsTableState extends State<StatsTable> {
 
           // Create the columns
           for(int statsIndex = 0; statsIndex < statsInStream.length; statsIndex++) {
-            columns.add(new DataColumn(
-              label: new Text(statsInStream[statsIndex].documentID),
+            columns.add(DataColumn(
+              label: Text(statsInStream[statsIndex].documentID),
               onSort: (int columnIndex, bool sortDirection){
                 print(sortDirection);
                 sortAscending = sortDirection;
@@ -52,54 +52,54 @@ class _StatsTableState extends State<StatsTable> {
           // Load the players and their data as rows
           for(int playerIndex = 0; playerIndex < playersInStream.length; playerIndex++) {
             rows.add(
-              new DataRow(
+              DataRow(
                 cells: [
-                  new DataCell(
-                    new Text(playersInStream[playerIndex].documentID), 
+                  DataCell(
+                    Text(playersInStream[playerIndex].documentID), 
                     onTap: (){}
                   ),
-                  new DataCell(
-                    new Text(playersInStream[playerIndex]["AtBats"]),
+                  DataCell(
+                    Text(playersInStream[playerIndex]["AtBats"]),
                     onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["Doubles"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["Doubles"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["GamesPlayed"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["GamesPlayed"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["HomeRuns"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["HomeRuns"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["OutsFielded"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["OutsFielded"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["OutsReceived"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["OutsReceived"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["RunsBattedIn"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["RunsBattedIn"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["Singles"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["Singles"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["Strikeouts"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["Strikeouts"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["Triples"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["Triples"]),
                       onTap: (){}
                   ),
-                  new DataCell(
-                      new Text(playersInStream[playerIndex]["Walks"]),
+                  DataCell(
+                      Text(playersInStream[playerIndex]["Walks"]),
                       onTap: (){}
                   ),
                 ],
@@ -107,29 +107,23 @@ class _StatsTableState extends State<StatsTable> {
             );
           }
 
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              elevation: 4.0,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  SingleChildScrollView(
-                    child: new Container(
-                        child: new DataTable(
-                          columns: columns,
-                          rows: rows,
-                          sortAscending: sortAscending,
-                        )
-                    ),
-                  ),
-                ],
+          return ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              SingleChildScrollView(
+                child: Container(
+                    child: DataTable(
+                      columns: columns,
+                      rows: rows,
+                      sortAscending: sortAscending,
+                    )
+                ),
               ),
-            ),
+            ],
           );
         } else {
-          return new Center(
-            child: new CircularProgressIndicator(),
+          return Center(
+            child: CircularProgressIndicator(),
           );
         }
       },

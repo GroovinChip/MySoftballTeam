@@ -13,10 +13,10 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
 
   // Controllers
-  TextEditingController _nameController = new TextEditingController();
-  TextEditingController _emailController = new TextEditingController();
-  TextEditingController _passwordController = new TextEditingController();
-  TextEditingController _teamNameController = new TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _teamNameController = TextEditingController();
 
   // Variables
   var name;
@@ -37,135 +37,135 @@ class _SignupState extends State<Signup> {
     prefs.setString("TeamName", teamName);
   }
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.lightBlue,
-      body: new SingleChildScrollView(
-        child: new Padding(
+      backgroundColor: Colors.indigo,
+      body: SingleChildScrollView(
+        child: Padding(
           padding: const EdgeInsets.only(top: 100.0),
-          child: new Center(
-            child: new Column(
+          child: Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new Text(
+                Text(
                   "Create Account",
-                  style: new TextStyle(
+                  style: TextStyle(
                       fontSize: 30.0,
                       color: Colors.white
                   ),
                 ),
-                new SizedBox(
+                SizedBox(
                   height: 25.0,
                 ),
-                new Padding(
+                Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: new Card(
+                  child: Card(
                     elevation: 4.0,
-                    child: new Padding(
+                    child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          new SizedBox(
+                          SizedBox(
                             height: 10.0,
                           ),
-                          new TextField(
-                            decoration: new InputDecoration(
-                              icon: new Icon(Icons.person),
+                          TextField(
+                            decoration: InputDecoration(
+                              icon: Icon(Icons.person),
                               labelText: "*Name",
                             ),
                             controller: _nameController,
                             keyboardType: TextInputType.text,
                           ),
-                          new SizedBox(
+                          SizedBox(
                             height: 25.0,
                           ),
-                          new TextField(
-                            decoration: new InputDecoration(
-                              icon: new Icon(Icons.email),
+                          TextField(
+                            decoration: InputDecoration(
+                              icon: Icon(Icons.email),
                               labelText: "*Email Address",
                             ),
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
                           ),
-                          new SizedBox(
+                          SizedBox(
                             height: 25.0,
                           ),
-                          new TextField(
-                            decoration: new InputDecoration(
-                              icon: new Icon(Icons.lock),
+                          TextField(
+                            decoration: InputDecoration(
+                              icon: Icon(Icons.lock),
                               labelText: "*Password",
                             ),
 
                             obscureText: true,
                             controller: _passwordController,
                           ),
-                          new SizedBox(
+                          SizedBox(
                             height: 25.0,
                           ),
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Icon(Icons.group, color: Colors.black45,),
-                              new SizedBox(
+                              Icon(Icons.group, color: Colors.black45,),
+                              SizedBox(
                                 width: 1.0,
                               ),
-                              new SizedBox(
+                              SizedBox(
                                 width: 15.0,
                               ),
-                              new StreamBuilder<QuerySnapshot>(
+                              StreamBuilder<QuerySnapshot>(
                                 stream: Firestore.instance.collection("Teams").snapshots(),
                                 builder: (context, snapshot){
 
                                   // Check if the snapshot is null
                                   if (snapshot.data == null) {
-                                    return new CircularProgressIndicator();
+                                    return CircularProgressIndicator();
                                   }
 
                                   // Return a dropdownbutton with all the teams from the database
-                                  return new DropdownButton(
+                                  return DropdownButton(
                                     items: snapshot.data.documents.map((DocumentSnapshot document) {
-                                      return DropdownMenuItem(child: new Text(document.documentID), value: document.documentID);
+                                      return DropdownMenuItem(child: Text(document.documentID), value: document.documentID);
                                     }).toList(),
                                     onChanged: _chooseTeam,
-                                    hint: new Text("Join a Team"),
+                                    hint: Text("Join a Team"),
                                     value: _team
                                   );
                                 }
                               ),
-                              new SizedBox(
+                              SizedBox(
                                 width: 15.0,
                               ),
                             ],
                           ),
-                          new SizedBox(
+                          SizedBox(
                             height: 25.0,
                           ),
-                          new Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              new RaisedButton(
+                              RaisedButton(
                                 onPressed: (){
                                   showDialog(
                                     context: context,
                                     builder: (_) => SimpleDialog(
-                                      title: new Text("Add Your Team"),
+                                      title: Text("Add Your Team"),
                                       children: <Widget>[
-                                        new Column(
+                                        Column(
                                           children: <Widget>[
-                                            new Row(
+                                            Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: <Widget>[
-                                                new Icon(Icons.group, color: Colors.black45,),
-                                                new Padding(
+                                                Icon(Icons.group, color: Colors.black45,),
+                                                Padding(
                                                   padding: const EdgeInsets.only(left: 8.0),
-                                                  child: new SizedBox(
+                                                  child: SizedBox(
                                                     width: 200.0,
-                                                    child: new TextField(
-                                                      decoration: new InputDecoration(
+                                                    child: TextField(
+                                                      decoration: InputDecoration(
                                                         hintText: "Team Name"
                                                       ),
                                                       controller: _teamNameController,
@@ -174,23 +174,23 @@ class _SignupState extends State<Signup> {
                                                 ),
                                               ],
                                             ),
-                                            new SizedBox(
+                                            SizedBox(
                                               height: 25.0,
                                             ),
-                                            new Row(
+                                            Row(
                                               mainAxisAlignment: MainAxisAlignment.end,
                                               children: <Widget>[
-                                                new Padding(
+                                                Padding(
                                                   padding: const EdgeInsets.only(right: 22.0),
-                                                  child: new StreamBuilder<QuerySnapshot>(
+                                                  child: StreamBuilder<QuerySnapshot>(
                                                     stream: Firestore.instance.collection("Teams").snapshots(),
                                                     builder: (context, snapshot) {
                                                       // Check if the snapshot is null
                                                       if (snapshot.data == null) {
-                                                        return new CircularProgressIndicator();
+                                                        return CircularProgressIndicator();
                                                       }
 
-                                                      return new RaisedButton(
+                                                      return RaisedButton(
                                                         onPressed: () async {
                                                           globals.teamName = _teamNameController.text; // add team name to globals
                                                           //_saveValuesToStorage(globals.teamTame);
@@ -203,9 +203,9 @@ class _SignupState extends State<Signup> {
 
                                                           }
                                                         },
-                                                        color: Colors.blue,
-                                                        child: new Text("Add Team",
-                                                          style: new TextStyle(
+                                                        color: Colors.indigoAccent,
+                                                        child: Text("Add Team",
+                                                          style: TextStyle(
                                                               color: Colors
                                                                   .white),),
                                                       );
@@ -220,26 +220,30 @@ class _SignupState extends State<Signup> {
                                     )
                                   );
                                 },
-                                child: new Text("I don't see my team", style: new TextStyle(color: Colors.white),),
-                                color: Colors.deepOrangeAccent,
+                                child: Text("I don't see my team",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                color: Colors.purpleAccent,
                               ),
-                              new RaisedButton( // Create Account button
+                              RaisedButton( // Create Account button
                                 onPressed: () async {
                                   email = _emailController.text;
                                   password = _passwordController.text;
 
                                   if(email == '' || password == ''){
                                     _scaffoldKey.currentState.showSnackBar(
-                                        new SnackBar(
-                                          duration: new Duration(seconds: 2),
-                                          content:
-                                          new Row(
-                                            children: <Widget>[
-                                              new Icon(Icons.error),
-                                              new Text("  Please enter required fields")
-                                            ],
-                                          ),
-                                        )
+                                      SnackBar(
+                                        duration: Duration(seconds: 2),
+                                        content:
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(Icons.error),
+                                            Text("  Please enter required fields")
+                                          ],
+                                        ),
+                                      )
                                     );
                                   }
                                   
@@ -256,56 +260,56 @@ class _SignupState extends State<Signup> {
                                   globals.loggedInUser = firebaseUser;
 
                                   _scaffoldKey.currentState.showSnackBar(
-                                      new SnackBar(
-                                        duration: new Duration(seconds: 2),
-                                        content:
-                                        new Row(
-                                          children: <Widget>[
-                                            new CircularProgressIndicator(),
-                                            new Text("    Creating Account...")
-                                          ],
-                                        ),
-                                      )
+                                    SnackBar(
+                                      duration: Duration(seconds: 2),
+                                      content:
+                                      Row(
+                                        children: <Widget>[
+                                          CircularProgressIndicator(),
+                                          Text("    Creating Account...")
+                                        ],
+                                      ),
+                                    )
                                   );
 
                                   firebaseUser.sendEmailVerification();
 
                                   _scaffoldKey.currentState.showSnackBar(
-                                      new SnackBar(
-                                        duration: new Duration(seconds: 2),
+                                      SnackBar(
+                                        duration: Duration(seconds: 2),
                                         content:
-                                        new Row(
+                                        Row(
                                           children: <Widget>[
-                                            new CircularProgressIndicator(),
-                                            new Text("    Sending Verification Email...")
+                                            CircularProgressIndicator(),
+                                            Text("    Sending Verification Email...")
                                           ],
                                         ),
                                       )
                                   );
 
-                                  await new Future.delayed(const Duration(seconds : 3));
+                                  await Future.delayed(const Duration(seconds : 3));
 
                                   _scaffoldKey.currentState.showSnackBar(
-                                      new SnackBar(
-                                        duration: new Duration(seconds: 3),
-                                        content:
-                                        new Row(
-                                          children: <Widget>[
-                                            new CircularProgressIndicator(),
-                                            new Text("    Logging In...")
-                                          ],
-                                        ),
-                                      )
+                                    SnackBar(
+                                      duration: Duration(seconds: 3),
+                                      content:
+                                      Row(
+                                        children: <Widget>[
+                                          CircularProgressIndicator(),
+                                          Text("    Logging In...")
+                                        ],
+                                      ),
+                                    )
                                   );
 
-                                  await new Future.delayed(const Duration(seconds : 3));
+                                  await Future.delayed(const Duration(seconds : 3));
                                   Navigator.of(context)
                                       .pushNamedAndRemoveUntil('/HomeScreen', (Route<dynamic> route) => false);
                                 },
-                                color: Colors.lightBlueAccent,
-                                child: new Text(
+                                color: Colors.indigoAccent,
+                                child: Text(
                                   "Create Account",
-                                  style: new TextStyle(
+                                  style: TextStyle(
                                     color: Colors.white,
                                   ),
                                 ),

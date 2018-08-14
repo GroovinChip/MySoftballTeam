@@ -4,21 +4,21 @@ import 'package:my_softball_team/globals.dart' as globals;
 
 class AddNewGame extends StatefulWidget{
   @override
-  _AddNewGameState createState() => new _AddNewGameState();
+  _AddNewGameState createState() => _AddNewGameState();
 }
 
 class _AddNewGameState extends State<AddNewGame> {
 
   List<DropdownMenuItem> _homeOrAwayOptions = [
-    new DropdownMenuItem(child: new Text("Home"), value: "Home",),
-    new DropdownMenuItem(child: new Text("Away"), value: "Away",),
-    new DropdownMenuItem(child: new Text("Bye"), value: "Bye",)
+    DropdownMenuItem(child: Text("Home"), value: "Home",),
+    DropdownMenuItem(child: Text("Away"), value: "Away",),
+    DropdownMenuItem(child: Text("Bye"), value: "Bye",)
   ];
 
-  TextEditingController _opposingTeamController = new TextEditingController();
-  TextEditingController _gameLocationController = new TextEditingController();
-  TextEditingController _gameDateController = new TextEditingController();
-  TextEditingController _gameTimeController = new TextEditingController();
+  TextEditingController _opposingTeamController = TextEditingController();
+  TextEditingController _gameLocationController = TextEditingController();
+  TextEditingController _gameDateController = TextEditingController();
+  TextEditingController _gameTimeController = TextEditingController();
   String year;
   String month;
   DateTime gameDate;
@@ -33,44 +33,44 @@ class _AddNewGameState extends State<AddNewGame> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Add New Game"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Add New Game"),
       ),
-      body: new SingleChildScrollView(
-        child: new Column(
+      body: SingleChildScrollView(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 25.0),
-              child: new Card(
+              child: Card(
                 elevation: 4.0,
-                child: new Padding(
+                child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: new Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      new Column(
+                      Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.only(bottom: 16.0),
-                            child: new Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                new SizedBox(
+                                SizedBox(
                                   width: 185.0,
-                                  child: new TextField(
+                                  child: TextField(
                                     controller: _gameDateController,
                                     enabled: false,
-                                    decoration: new InputDecoration(
+                                    decoration: InputDecoration(
                                       labelText: "Game Date*",
                                       filled: true,
                                       fillColor: Colors.black12,
                                     ),
                                   ),
                                 ),
-                                new RaisedButton(
-                                  child: new Text("Pick Game Date"),
+                                RaisedButton(
+                                  child: Text("Pick Game Date"),
                                   onPressed: () async {
                                     gameDate = await showDatePicker(
                                       context: context,
@@ -132,20 +132,20 @@ class _AddNewGameState extends State<AddNewGame> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                new SizedBox(
+                                SizedBox(
                                   width: 185.0,
-                                  child: new TextField(
+                                  child: TextField(
                                     controller: _gameTimeController,
                                     enabled: false,
-                                    decoration: new InputDecoration(
+                                    decoration: InputDecoration(
                                       labelText: "Game Time*",
                                       filled: true,
                                       fillColor: Colors.black12,
                                     ),
                                   ),
                                 ),
-                                new RaisedButton(
-                                  child: new Text("Pick Game Time"),
+                                RaisedButton(
+                                  child: Text("Pick Game Time"),
                                   onPressed: () async {
                                     gameTime = await showTimePicker(
                                       context: context,
@@ -158,14 +158,14 @@ class _AddNewGameState extends State<AddNewGame> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 16.0, top: 16.0),
-                            child: new TextField(
+                            child: TextField(
                               controller: _opposingTeamController,
-                              decoration: new InputDecoration(
+                              decoration: InputDecoration(
                                 labelText: "Opposing Team*",
                                 fillColor: Colors.black12,
                                 filled: true,
-                                suffixIcon: new IconButton(
-                                  icon: new Icon(Icons.clear),
+                                suffixIcon: IconButton(
+                                  icon: Icon(Icons.clear),
                                   onPressed: (){
                                     _opposingTeamController.text = "";
                                   }
@@ -175,12 +175,12 @@ class _AddNewGameState extends State<AddNewGame> {
                           ),
                           TextField(
                             controller: _gameLocationController,
-                            decoration: new InputDecoration(
+                            decoration: InputDecoration(
                                 labelText: "Game Location*",
                                 fillColor: Colors.black12,
                                 filled: true,
-                                suffixIcon: new IconButton(
-                                    icon: new Icon(Icons.clear),
+                                suffixIcon: IconButton(
+                                    icon: Icon(Icons.clear),
                                     onPressed: (){
                                       _gameLocationController.text = "";
                                     })
@@ -188,18 +188,18 @@ class _AddNewGameState extends State<AddNewGame> {
                           ),
                         ],
                       ),
-                      new SizedBox(height: 15.0),
-                      new DropdownButton(
+                      SizedBox(height: 15.0),
+                      DropdownButton(
                         items: _homeOrAwayOptions,
                         onChanged: _chooseHomeOrAway,
-                        hint: new Text("Home or Away"),
+                        hint: Text("Home or Away"),
                         value: _homeOrAway,
                       ),
-                      new SizedBox(height: 25.0),
-                      new Row(
+                      SizedBox(height: 25.0),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          new RaisedButton(
+                          RaisedButton(
                             onPressed: (){
                               if(_gameDateController.text != "" && _gameTimeController.text != "") {
                                 if(_opposingTeamController.text != "" && _gameLocationController.text != "") {
@@ -214,14 +214,14 @@ class _AddNewGameState extends State<AddNewGame> {
                                 }
                               }
                             },
-                            color: Colors.blue,
-                            child: new Text(
+                            color: Colors.indigo,
+                            child: Text(
                               "Save",
-                              style: new TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
                               ),
                             ),
-                            splashColor: Colors.lightBlueAccent,
+                            splashColor: Colors.indigoAccent,
                           ),
                         ],
                       ),

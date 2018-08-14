@@ -21,10 +21,10 @@ class _EditGameModalState extends State<EditGameModal> {
     DropdownMenuItem(child: Text("Loss"), value: "Loss")
   ];
 
-  TextEditingController _editGameDateController = new TextEditingController();
-  TextEditingController _editGameTimeController = new TextEditingController();
-  TextEditingController _editGameLocationController = new TextEditingController();
-  TextEditingController _editOpposingTeamController = new TextEditingController();
+  TextEditingController _editGameDateController = TextEditingController();
+  TextEditingController _editGameTimeController = TextEditingController();
+  TextEditingController _editGameLocationController = TextEditingController();
+  TextEditingController _editOpposingTeamController = TextEditingController();
   String year;
   String month;
   DateTime gameDate;
@@ -85,20 +85,20 @@ class _EditGameModalState extends State<EditGameModal> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      new SizedBox(
+                                      SizedBox(
                                         width: 185.0,
-                                        child: new TextField(
+                                        child: TextField(
                                           controller: _editGameDateController,
                                           enabled: false,
-                                          decoration: new InputDecoration(
+                                          decoration: InputDecoration(
                                             labelText: "${game['GameDate']}",
                                             filled: true,
                                             fillColor: Colors.black12,
                                           ),
                                         ),
                                       ),
-                                      new RaisedButton(
-                                        child: new Text("Pick Game Date"),
+                                      RaisedButton(
+                                        child: Text("Pick Game Date"),
                                         onPressed: () async {
                                           gameDate = await showDatePicker(
                                               context: context,
@@ -160,20 +160,20 @@ class _EditGameModalState extends State<EditGameModal> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      new SizedBox(
+                                      SizedBox(
                                         width: 185.0,
-                                        child: new TextField(
+                                        child: TextField(
                                           controller: _editGameTimeController,
                                           enabled: false,
-                                          decoration: new InputDecoration(
+                                          decoration: InputDecoration(
                                             labelText: "${game['GameTime']}",
                                             filled: true,
                                             fillColor: Colors.black12,
                                           ),
                                         ),
                                       ),
-                                      new RaisedButton(
-                                          child: new Text("Pick Game Time"),
+                                      RaisedButton(
+                                          child: Text("Pick Game Time"),
                                           onPressed: () async {
                                             gameTime = await showTimePicker(
                                               context: context,
@@ -188,12 +188,12 @@ class _EditGameModalState extends State<EditGameModal> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextField(
                                     controller: _editOpposingTeamController,
-                                    decoration: new InputDecoration(
+                                    decoration: InputDecoration(
                                       labelText: "${game['OpposingTeam']}",
                                       fillColor: Colors.black12,
                                       filled: true,
-                                      suffixIcon: new IconButton(
-                                          icon: new Icon(Icons.clear),
+                                      suffixIcon: IconButton(
+                                          icon: Icon(Icons.clear),
                                           onPressed: (){
                                             _editOpposingTeamController.text = "";
                                           }
@@ -205,12 +205,12 @@ class _EditGameModalState extends State<EditGameModal> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextField(
                                     controller: _editGameLocationController,
-                                    decoration: new InputDecoration(
+                                    decoration: InputDecoration(
                                         labelText: "${game['GameLocation']}",
                                         fillColor: Colors.black12,
                                         filled: true,
-                                        suffixIcon: new IconButton(
-                                            icon: new Icon(Icons.clear),
+                                        suffixIcon: IconButton(
+                                            icon: Icon(Icons.clear),
                                             onPressed: (){
                                               _editGameLocationController.text = "";
                                             })
@@ -238,24 +238,24 @@ class _EditGameModalState extends State<EditGameModal> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
-                                    new RaisedButton(
+                                    RaisedButton(
                                       onPressed: (){
-                                        if(_editGameDateController.text == ""){
+                                        if(_editGameDateController.text == "" || _editGameDateController.text == null){
                                           _editGameDateController.text = "${game['GameDate']}";
                                         }
-                                        if(_editGameTimeController.text == ""){
+                                        if(_editGameTimeController.text == "" || _editGameTimeController.text == null){
                                           _editGameTimeController.text = "${game['GameTime']}";
                                         }
-                                        if(_editOpposingTeamController.text == ""){
+                                        if(_editOpposingTeamController.text == "" || _editOpposingTeamController.text == null){
                                           _editOpposingTeamController.text = "${game['OpposingTeam']}";
                                         }
-                                        if(_editGameLocationController.text == ""){
+                                        if(_editGameLocationController.text == "" || _editGameLocationController.text == null){
                                           _editGameLocationController.text = "${game['GameLocation']}";
                                         }
-                                        if(_homeOrAway == ""){
+                                        if(_homeOrAway == "" || _homeOrAway == null){
                                           _homeOrAway = "${game['HomeOrAway']}";
                                         }
-                                        if(winOrLoss == ""){
+                                        if(winOrLoss == "" || winOrLoss == null){
                                           winOrLoss = "unknown";
                                         }
 
@@ -274,14 +274,14 @@ class _EditGameModalState extends State<EditGameModal> {
 
                                         Navigator.pop(context);
                                       },
-                                      color: Colors.blue,
-                                      child: new Text(
+                                      color: Colors.indigo,
+                                      child: Text(
                                         "Update",
-                                        style: new TextStyle(
+                                        style: TextStyle(
                                           color: Colors.white,
                                         ),
                                       ),
-                                      splashColor: Colors.lightBlueAccent,
+                                      splashColor: Colors.indigoAccent,
                                     ),
                                   ],
                                 ),
