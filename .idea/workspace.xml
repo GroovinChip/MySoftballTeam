@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/widgets/gameCard.dart" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/lib/globals.dart" afterPath="$PROJECT_DIR$/lib/globals.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/previousGamesTable.dart" afterPath="$PROJECT_DIR$/lib/widgets/previousGamesTable.dart" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/seasonSchedule.dart" afterPath="$PROJECT_DIR$/lib/widgets/seasonSchedule.dart" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+            <state relative-caret-position="0">
+              <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -39,7 +37,7 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
+            <state relative-caret-position="840">
               <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -51,8 +49,8 @@
       <file leaf-file-name="globals.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/globals.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="33" lean-forward="true" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+            <state relative-caret-position="-183">
+              <caret line="301" column="12" lean-forward="false" selection-start-line="301" selection-start-column="12" selection-end-line="301" selection-end-column="12" />
               <folding>
                 <element signature="e#34#73#0" expanded="true" />
                 <element signature="e#765#824#0" expanded="false" />
@@ -74,7 +72,7 @@
       <file leaf-file-name="homeScreen.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/screens/homeScreen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2469">
+            <state relative-caret-position="455">
               <caret line="144" column="28" lean-forward="false" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -83,14 +81,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seasonSchedule.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="seasonSchedule.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/widgets/seasonSchedule.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="145" column="70" lean-forward="false" selection-start-line="145" selection-start-column="70" selection-end-line="145" selection-end-column="70" />
+            <state relative-caret-position="498">
+              <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gameCard.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/widgets/gameCard.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1000">
+              <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="previousGamesTable.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/widgets/previousGamesTable.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1320">
+              <caret line="38" column="86" lean-forward="false" selection-start-line="38" selection-start-column="86" selection-end-line="38" selection-end-column="86" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,9 +173,10 @@
         <option value="$PROJECT_DIR$/lib/screens/sendGameReminderEmail.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/editGameModal.dart" />
         <option value="$PROJECT_DIR$/lib/screens/homeScreen.dart" />
-        <option value="$PROJECT_DIR$/lib/widgets/previousGamesTable.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/widgets/gameCard.dart" />
         <option value="$PROJECT_DIR$/lib/globals.dart" />
+        <option value="$PROJECT_DIR$/lib/widgets/previousGamesTable.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/seasonSchedule.dart" />
       </list>
     </option>
@@ -184,7 +205,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -220,8 +241,8 @@
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -375,7 +396,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="true" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3152012" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31371087" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="23" side_tool="false" content_ui="tabs" />
       <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -383,44 +404,20 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13665803" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1363342" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5641026" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56408346" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16256477" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1619171" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="true" content_ui="tabs" />
-      <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
-      <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5641026" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328614" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31438127" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="23" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13646056" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16204691" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -454,19 +451,48 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="82" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/globals.dart</url>
+          <line>330</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/globals.dart</url>
+          <line>327</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="86" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
-    <expressions id="evaluateExpression">
+    <expressions id="watch">
       <expression>
-        <expression-string>DateTime.parse(toParseAsDate)</expression-string>
+        <expression-string>resultDate</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>resultDate</expression-string>
+        <expression-string>15</expression-string>
+        <language-id>Dart</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>resultDate = 15</expression-string>
+        <language-id>Dart</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>splittedTimeString[2].length &lt; 2</expression-string>
+        <language-id>Dart</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>splittedTimeString[2]</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -476,55 +502,38 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hour</expression-string>
+        <expression-string>year + month + day + &quot;T&quot; + hour + minute</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>day</expression-string>
+        <expression-string>DateTime.parse(toParseAsDate)</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dateToEval.isBefore(today) == true</expression-string>
+        <expression-string>toParseAsDate</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>temp[1][0]</expression-string>
+        <expression-string>year + month</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dateToEval.isBefore(now)</expression-string>
+        <expression-string>year</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dateToEval.isBefore(now) == true</expression-string>
+        <expression-string>resultDate</expression-string>
         <language-id>Dart</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="29" lean-forward="false" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="39" lean-forward="false" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/globals.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -771,22 +780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widgets/editGameModal.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5080">
-          <caret line="257" column="60" lean-forward="false" selection-start-line="257" selection-start-column="60" selection-end-line="257" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widgets/previousGamesTable.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="106" column="88" lean-forward="true" selection-start-line="106" selection-start-column="88" selection-end-line="106" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/checkLogin.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
@@ -795,19 +788,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/homeScreen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2469">
-          <caret line="144" column="28" lean-forward="false" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
+        <state relative-caret-position="840">
           <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -817,16 +800,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        <state relative-caret-position="0">
+          <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/src/flutter/packages/flutter/lib/src/widgets/async.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="407" column="73" lean-forward="false" selection-start-line="407" selection-start-column="73" selection-end-line="407" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/homeScreen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="144" column="28" lean-forward="false" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/globals.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="33" lean-forward="true" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+        <state relative-caret-position="-183">
+          <caret line="301" column="12" lean-forward="false" selection-start-line="301" selection-start-column="12" selection-end-line="301" selection-end-column="12" />
           <folding>
             <element signature="e#34#73#0" expanded="true" />
             <element signature="e#765#824#0" expanded="false" />
@@ -844,13 +845,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/editGameModal.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="791">
+          <caret line="230" column="41" lean-forward="false" selection-start-line="230" selection-start-column="41" selection-end-line="230" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/gameCard.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1000">
+          <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/seasonSchedule.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="145" column="70" lean-forward="false" selection-start-line="145" selection-start-column="70" selection-end-line="145" selection-end-column="70" />
+        <state relative-caret-position="498">
+          <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/previousGamesTable.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="38" column="86" lean-forward="false" selection-start-line="38" selection-start-column="86" selection-end-line="38" selection-end-column="86" />
+          <folding />
         </state>
       </provider>
     </entry>

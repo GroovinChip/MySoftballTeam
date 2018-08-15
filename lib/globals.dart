@@ -299,7 +299,7 @@ convertStringDateToDateTime(String date, String time) {
       case "2":
         minute = "02";
         break;
-      case "03":
+      case "3":
         minute = "03";
         break;
       case "4":

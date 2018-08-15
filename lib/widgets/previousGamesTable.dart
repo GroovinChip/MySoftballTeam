@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/widgets/editGameModal.dart';
+import 'package:my_softball_team/widgets/gameCard.dart';
 
 class PreviousGamesTable extends StatefulWidget {
   @override
@@ -35,124 +36,25 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
             });
 
             for(int index = 0; index < games.length; index++){
-              // Check each game date - if the date is before today, create a row
+              // Check each game date - if the date is before today, create a GameCard
               DateTime gameDate = globals.convertStringDateToDateTime("${games[index]['GameDate']}", "${games[index]['GameTime']}");
               if(gameDate.isBefore(today) == false){
-                // do not create a Game row
+                // do not create a GameCard
               } else {
-                switch("${games[index]['HomeOrAway']}"){
-                  case "Home":
-                    gameCards.add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          elevation: 4.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 6.0, top: 8.0, right: 8.0),
-                                child: Text(
-                                  globals.teamName + " VS " + "${games[index]['OpposingTeam']}",
-                                  style: TextStyle(
-                                      fontSize: 26.0,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 6.0),
-                                child: Text(
-                                    "${games[index]['GameTime']}" + " on " + "${games[index]['GameDate']}"
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
-                                child: Text(
-                                    "${games[index]['GameLocation']}"
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                    break;
-                  case "Away":
-                    gameCards.add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          elevation: 4.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 6.0, top: 8.0, right: 8.0),
-                                child: Text(
-                                  "${games[index]['OpposingTeam']}" + " VS " + globals.teamName,
-                                  style: TextStyle(
-                                      fontSize: 26.0,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 6.0),
-                                child: Text(
-                                    "${games[index]['GameTime']}" + " on " + "${games[index]['GameDate']}"
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
-                                child: Text(
-                                    "${games[index]['GameLocation']}"
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                    break;
-                  case "Bye":
-                    gameCards.add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          elevation: 4.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 6.0, top: 8.0, right: 8.0),
-                                child: Text(
-                                  "${games[index]['OpposingTeam']}",
-                                  style: TextStyle(
-                                      fontSize: 26.0,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 6.0),
-                                child: Text(
-                                    "${games[index]['GameTime']}" + " on " + "${games[index]['GameDate']}"
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
-                                child: Text(
-                                    "${games[index]['GameLocation']}"
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                    break;
-                }
+                gameCards.add(
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GameCard(
+                        gameID: games[index].documentID,
+                        homeOrAway: "${games[index]['HomeOrAway']}",
+                        teamName: globals.teamName,
+                        opposingTeam: "${games[index]['OpposingTeam']}",
+                        gameTime: "${games[index]['GameTime']}",
+                        gameDate: "${games[index]['GameDate']}",
+                        gameLocation: "${games[index]['GameLocation']}"
+                    ),
+                  ),
+                );
               }
             }
 
