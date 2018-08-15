@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/widgets/editStatsModal.dart';
-import 'package:flutter_list_drag_and_drop/drag_and_drop_list.dart';
+import 'package:groovin_material_icons/groovin_material_icons.dart';
 
 class TeamList extends StatefulWidget {
   @override

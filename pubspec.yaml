@@ -9,12 +9,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   firebase_auth: "^0.5.11"
-  google_sign_in: "^3.0.4"
   cloud_firestore: "^0.7.3"
   shared_preferences: "^0.4.2"
-  flutter_list_drag_and_drop: "^0.1.2"
-  flutter_fab_dialer: "^0.0.5"
-  community_material_icon: 0.1.2
+  groovin_material_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:

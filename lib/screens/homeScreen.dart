@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,8 +7,7 @@ import 'package:my_softball_team/widgets/teamList.dart';
 import 'package:my_softball_team/widgets/statsTable.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_fab_dialer/flutter_fab_dialer.dart';
-import 'package:community_material_icon/community_material_icon.dart';
+import 'package:groovin_material_icons/groovin_material_icons.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -21,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // List of bottom navigation bar items
   List<BottomNavigationBarItem> _bottomNavigationBarItems = [
     BottomNavigationBarItem(
-      icon: Icon(CommunityMaterialIcons.calendar_text),
+      icon: Icon(GroovinMaterialIcons.calendar_text),
       title: Text("Schedule"),
     ),
     BottomNavigationBarItem(
