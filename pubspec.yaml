@@ -28,4 +28,7 @@ flutter:
     - family: sourcesanspro
       fonts:
         - asset: fonts/sourcesanspro_regular.ttf
+    - family: materialdesignicons
+      fonts:
+        - asset: fonts/materialdesignicons-webfont.ttf
 

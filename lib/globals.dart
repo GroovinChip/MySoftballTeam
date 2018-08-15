@@ -9,6 +9,8 @@ String selectedPlayerName;
 String selectedGameDocument;
 CollectionReference usersDB = Firestore.instance.collection("Users");
 CollectionReference gamesDB = Firestore.instance.collection("Teams").document(teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
+IconData baseball_bat = IconData(0xF852, fontFamily: 'materialdesignicons');
+IconData baseball = IconData(0xf851, fontFamily: 'materialdesignicons');
 
 // List of field positions
 List<DropdownMenuItem> fieldPositions = [

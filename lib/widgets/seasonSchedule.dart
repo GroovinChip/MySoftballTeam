@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
@@ -141,12 +142,15 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                                     Navigator.of(context).pushNamed('/SendGameReminderEmailScreen');
                                   },
                                 ),
-                                IconButton(
-                                  icon: Icon(CommunityMaterialIcons.gamepad),
-                                  tooltip: "Play game",
-                                  onPressed: (){
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8.0),
+                                  child: IconButton(
+                                    icon: Icon(globals.baseball_bat),
+                                    tooltip: "Play game",
+                                    onPressed: (){
 
-                                  },
+                                    },
+                                  ),
                                 ),
                               ],
                             )
@@ -253,12 +257,15 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                                     Navigator.of(context).pushNamed('/SendGameReminderEmailScreen');
                                   },
                                 ),
-                                IconButton(
-                                  icon: Icon(CommunityMaterialIcons.gamepad),
-                                  tooltip: "Play game",
-                                  onPressed: (){
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8.0),
+                                  child: IconButton(
+                                    icon: Icon(globals.baseball_bat),
+                                    tooltip: "Play game",
+                                    onPressed: (){
 
-                                  },
+                                    },
+                                  ),
                                 ),
                               ],
                             )
@@ -365,12 +372,15 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                                     Navigator.of(context).pushNamed('/SendGameReminderEmailScreen');
                                   },
                                 ),
-                                IconButton(
-                                  icon: Icon(CommunityMaterialIcons.gamepad),
-                                  tooltip: "Play game",
-                                  onPressed: (){
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 8.0),
+                                  child: IconButton(
+                                    icon: Icon(globals.baseball_bat),
+                                    tooltip: "Play game",
+                                    onPressed: (){
 
-                                  },
+                                    },
+                                  ),
                                 ),
                               ],
                             )
