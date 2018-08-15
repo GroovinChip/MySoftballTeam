@@ -67,86 +67,11 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
+                                padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
                                 child: Text(
                                     "${games[index]['GameLocation']}"
                                 ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  IconButton(
-                                    icon: Icon(Icons.delete_forever),
-                                    tooltip: "Delete game",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) => SimpleDialog(
-                                            title: Text("Delete Game"),
-                                            children: <Widget>[
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: ListTile(
-                                                  title: Text("Are you sure you want to remove this game from the schedule?"),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    FlatButton(
-                                                      child: Text("No"),
-                                                      onPressed: (){
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-                                                    FlatButton(
-                                                      child: Text("Yes"),
-                                                      onPressed: (){
-                                                        globals.gamesDB.document(globals.selectedGameDocument).delete();
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                      );
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.edit),
-                                    tooltip: "Edit game",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      Navigator.of(context).push(MaterialPageRoute<Null>(
-                                          builder: (BuildContext context) {
-                                            return EditGameModal();
-                                          },
-                                          fullscreenDialog: true
-                                      ));
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(CommunityMaterialIcons.email_variant),
-                                    tooltip: "Send game reminder",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      Navigator.of(context).pushNamed('/SendGameReminderEmailScreen');
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(CommunityMaterialIcons.gamepad),
-                                    tooltip: "Play game",
-                                    onPressed: (){
-
-                                    },
-                                  ),
-                                ],
-                              )
                             ],
                           ),
                         ),
@@ -179,86 +104,11 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
+                                padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
                                 child: Text(
                                     "${games[index]['GameLocation']}"
                                 ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  IconButton(
-                                    icon: Icon(Icons.delete_forever),
-                                    tooltip: "Delete game",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) => SimpleDialog(
-                                            title: Text("Delete Game"),
-                                            children: <Widget>[
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: ListTile(
-                                                  title: Text("Are you sure you want to remove this game from the schedule?"),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    FlatButton(
-                                                      child: Text("No"),
-                                                      onPressed: (){
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-                                                    FlatButton(
-                                                      child: Text("Yes"),
-                                                      onPressed: (){
-                                                        globals.gamesDB.document(globals.selectedGameDocument).delete();
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                      );
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.edit),
-                                    tooltip: "Edit game",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      Navigator.of(context).push(MaterialPageRoute<Null>(
-                                          builder: (BuildContext context) {
-                                            return EditGameModal();
-                                          },
-                                          fullscreenDialog: true
-                                      ));
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(CommunityMaterialIcons.email_variant),
-                                    tooltip: "Send game reminder",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      Navigator.of(context).pushNamed('/SendGameReminderEmailScreen');
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(CommunityMaterialIcons.gamepad),
-                                    tooltip: "Play game",
-                                    onPressed: (){
-
-                                    },
-                                  ),
-                                ],
-                              )
                             ],
                           ),
                         ),
@@ -291,86 +141,11 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
+                                padding: const EdgeInsets.only(left: 16.0, bottom: 8.0),
                                 child: Text(
                                     "${games[index]['GameLocation']}"
                                 ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  IconButton(
-                                    icon: Icon(Icons.delete_forever),
-                                    tooltip: "Delete game",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) => SimpleDialog(
-                                            title: Text("Delete Game"),
-                                            children: <Widget>[
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: ListTile(
-                                                  title: Text("Are you sure you want to remove this game from the schedule?"),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 8.0),
-                                                child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    FlatButton(
-                                                      child: Text("No"),
-                                                      onPressed: (){
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-                                                    FlatButton(
-                                                      child: Text("Yes"),
-                                                      onPressed: (){
-                                                        globals.gamesDB.document(globals.selectedGameDocument).delete();
-                                                        Navigator.pop(context);
-                                                      },
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                      );
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.edit),
-                                    tooltip: "Edit game",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      Navigator.of(context).push(MaterialPageRoute<Null>(
-                                          builder: (BuildContext context) {
-                                            return EditGameModal();
-                                          },
-                                          fullscreenDialog: true
-                                      ));
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(CommunityMaterialIcons.email_variant),
-                                    tooltip: "Send game reminder",
-                                    onPressed: (){
-                                      globals.selectedGameDocument = games[index].documentID;
-                                      Navigator.of(context).pushNamed('/SendGameReminderEmailScreen');
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(CommunityMaterialIcons.gamepad),
-                                    tooltip: "Play game",
-                                    onPressed: (){
-
-                                    },
-                                  ),
-                                ],
-                              )
                             ],
                           ),
                         ),
