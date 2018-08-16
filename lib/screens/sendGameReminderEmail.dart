@@ -12,7 +12,14 @@ class _SendGameReminderEmailScreenState extends State<SendGameReminderEmailScree
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Send Game Reminder"),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Send Game Reminder",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.send),

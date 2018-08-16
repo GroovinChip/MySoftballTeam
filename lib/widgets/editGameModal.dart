@@ -47,7 +47,14 @@ class _EditGameModalState extends State<EditGameModal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Game"),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Edit Game",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: globals.gamesDB.snapshots(),

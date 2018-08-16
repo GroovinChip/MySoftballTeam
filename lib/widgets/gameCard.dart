@@ -12,6 +12,7 @@ class GameCard extends StatelessWidget{
   String gameTime;
   String gameLocation;
   String fullText;
+  bool isPreviousGame;
 
   GameCard({
     this.gameID,
@@ -20,7 +21,8 @@ class GameCard extends StatelessWidget{
     this.opposingTeam,
     this.gameDate,
     this.gameTime,
-    this.gameLocation
+    this.gameLocation,
+    this.isPreviousGame
   });
 
   @override
@@ -63,7 +65,8 @@ class GameCard extends StatelessWidget{
                 gameLocation
             ),
           ),
-          Row(
+          // Check if this game is a previous game - if so, do not show the action row
+          (isPreviousGame == false) ? Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
@@ -72,43 +75,43 @@ class GameCard extends StatelessWidget{
                 onPressed: () {
                   globals.selectedGameDocument = gameID;
                   showDialog(
-                      context: context,
-                      builder: (_) =>
-                          SimpleDialog(
-                            title: Text("Delete Game"),
+                  context: context,
+                  builder: (_) =>
+                    SimpleDialog(
+                      title: Text("Delete Game"),
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: ListTile(
+                            title: Text(
+                                "Are you sure you want to remove this game from the schedule?"),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: ListTile(
-                                  title: Text(
-                                      "Are you sure you want to remove this game from the schedule?"),
-                                ),
+                              FlatButton(
+                                child: Text("No"),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    FlatButton(
-                                      child: Text("No"),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                    FlatButton(
-                                      child: Text("Yes"),
-                                      onPressed: () {
-                                        globals.gamesDB.document(
-                                            globals.selectedGameDocument)
-                                            .delete();
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                  ],
-                                ),
+                              FlatButton(
+                                child: Text("Yes"),
+                                onPressed: () {
+                                  globals.gamesDB.document(
+                                      globals.selectedGameDocument)
+                                      .delete();
+                                  Navigator.pop(context);
+                                },
                               ),
                             ],
-                          )
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
@@ -140,12 +143,16 @@ class GameCard extends StatelessWidget{
                   icon: Icon(GroovinMaterialIcons.baseball_bat),
                   tooltip: "Play game",
                   onPressed: () {
-
+                    Navigator.of(context).pushNamed("/SetLineup");
                   },
                 ),
               ),
             ],
-          )
+          ) : Container(
+            child: Padding(
+              padding: EdgeInsets.only(top: 8.0),
+            ),
+          ),
         ],
       ),
     );

@@ -11,17 +11,17 @@ class EditStatsModal extends StatefulWidget {
 class _EditStatsModalState extends State<EditStatsModal> {
 
   // Controllers
-  TextEditingController _atBatsController = new TextEditingController();
-  TextEditingController _singlesController = new TextEditingController();
-  TextEditingController _doublesController = new TextEditingController();
-  TextEditingController _triplesController = new TextEditingController();
-  TextEditingController _homeRunsController = new TextEditingController();
-  TextEditingController _runsBattedInController = new TextEditingController();
-  TextEditingController _walksController = new TextEditingController();
-  TextEditingController _strikeoutsController = new TextEditingController();
-  TextEditingController _gamesPlayerController = new TextEditingController();
-  TextEditingController _outsReceivedController = new TextEditingController();
-  TextEditingController _outsFieldedController = new TextEditingController();
+  TextEditingController _atBatsController = TextEditingController();
+  TextEditingController _singlesController = TextEditingController();
+  TextEditingController _doublesController = TextEditingController();
+  TextEditingController _triplesController = TextEditingController();
+  TextEditingController _homeRunsController = TextEditingController();
+  TextEditingController _runsBattedInController = TextEditingController();
+  TextEditingController _walksController = TextEditingController();
+  TextEditingController _strikeoutsController = TextEditingController();
+  TextEditingController _gamesPlayerController = TextEditingController();
+  TextEditingController _outsReceivedController = TextEditingController();
+  TextEditingController _outsFieldedController = TextEditingController();
 
   // Variables
   String atBats;
@@ -41,9 +41,16 @@ class _EditStatsModalState extends State<EditStatsModal> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Update Stats"),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          "Update Stats",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: playersCollection.snapshots(),
@@ -66,29 +73,29 @@ class _EditStatsModalState extends State<EditStatsModal> {
             gamesPlayed = "${player['GamesPlayed']}";
             outsReceived = "${player['OutsReceived']}";
             outsFielded = "${player['OutsFielded']}";
-            return new SingleChildScrollView(
-              child: new Column(
+            return SingleChildScrollView(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Padding(
+                  Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: new Card(
+                    child: Card(
                       elevation: 4.0,
-                      child: new Padding(
+                      child: Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: new Column(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                   labelText: "Current At Bats: ${player['AtBats']}",
                                   filled: true,
                                   fillColor: Colors.black12,
-                                  suffixIcon: new IconButton(
-                                    icon: new Icon(Icons.clear),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(Icons.clear),
                                     onPressed: (){
                                       _atBatsController.text="";
                                     },
@@ -99,14 +106,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     labelText: "Current Singles: ${player['Singles']}",
                                     filled: true,
                                     fillColor: Colors.black12,
-                                    suffixIcon: new IconButton(
-                                      icon: new Icon(Icons.clear),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
                                       onPressed: (){
                                         _singlesController.text="";
                                       },
@@ -117,14 +124,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     labelText: "Current Doubles: ${player['Doubles']}",
                                     filled: true,
                                     fillColor: Colors.black12,
-                                    suffixIcon: new IconButton(
-                                      icon: new Icon(Icons.clear),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
                                       onPressed: (){
                                         _doublesController.text="";
                                       },
@@ -135,14 +142,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     labelText: "Current Triples: ${player['Triples']}",
                                     filled: true,
                                     fillColor: Colors.black12,
-                                    suffixIcon: new IconButton(
-                                      icon: new Icon(Icons.clear),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
                                       onPressed: (){
                                         _triplesController.text="";
                                       },
@@ -153,14 +160,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     labelText: "Current Home Runs: ${player['HomeRuns']}",
                                     filled: true,
                                     fillColor: Colors.black12,
-                                    suffixIcon: new IconButton(
-                                      icon: new Icon(Icons.clear),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
                                       onPressed: (){
                                         _homeRunsController.text="";
                                       },
@@ -171,14 +178,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     labelText: "Current RBIs: ${player['RunsBattedIn']}",
                                     filled: true,
                                     fillColor: Colors.black12,
-                                    suffixIcon: new IconButton(
-                                      icon: new Icon(Icons.clear),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
                                       onPressed: (){
                                         _runsBattedInController.text="";
                                       },
@@ -189,14 +196,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     labelText: "Current Walks: ${player['Walks']}",
                                     filled: true,
                                     fillColor: Colors.black12,
-                                    suffixIcon: new IconButton(
-                                      icon: new Icon(Icons.clear),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
                                       onPressed: (){
                                         _walksController.text="";
                                       },
@@ -207,14 +214,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                     labelText: "Current Strikeouts: ${player['Strikeouts']}",
                                     filled: true,
                                     fillColor: Colors.black12,
-                                    suffixIcon: new IconButton(
-                                      icon: new Icon(Icons.clear),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
                                       onPressed: (){
                                         _strikeoutsController.text="";
                                       },
@@ -225,14 +232,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                   labelText: "Current Games Played: " + gamesPlayed,
                                   filled: true,
                                   fillColor: Colors.black12,
-                                  suffixIcon: new IconButton(
-                                    icon: new Icon(Icons.clear),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(Icons.clear),
                                     onPressed: (){
                                       _gamesPlayerController.text="";
                                     },
@@ -243,14 +250,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                   labelText: "Current Outs Fielded: ${player['OutsFielded']}",
                                   filled: true,
                                   fillColor: Colors.black12,
-                                  suffixIcon: new IconButton(
-                                    icon: new Icon(Icons.clear),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(Icons.clear),
                                     onPressed: (){
                                       _outsFieldedController.text="";
                                     },
@@ -261,14 +268,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new TextField(
+                              child: TextField(
                                 keyboardType: TextInputType.number,
-                                decoration: new InputDecoration(
+                                decoration: InputDecoration(
                                   labelText: "Current Outs Received: ${player['OutsReceived']}",
                                   filled: true,
                                   fillColor: Colors.black12,
-                                  suffixIcon: new IconButton(
-                                    icon: new Icon(Icons.clear),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(Icons.clear),
                                     onPressed: (){
                                       _outsReceivedController.text="";
                                     },
@@ -279,10 +286,10 @@ class _EditStatsModalState extends State<EditStatsModal> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
-                                  new RaisedButton(
+                                  RaisedButton(
                                     onPressed: (){
                                       /*gamesPlayed = _gamesPlayerController.text;
                                       atBats = _atBatsController.text;
@@ -378,8 +385,13 @@ class _EditStatsModalState extends State<EditStatsModal> {
 
                                       Navigator.pop(context);
                                     },
-                                    color: Colors.blue,
-                                    child: new Text("Save", style: new TextStyle(color: Colors.white)),
+                                    color: Colors.indigo,
+                                    child: Text(
+                                      "Update", 
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                     splashColor: Colors.lightBlueAccent,
                                   )
                                 ],
@@ -394,8 +406,8 @@ class _EditStatsModalState extends State<EditStatsModal> {
               ),
             );
           } else {
-            return new Center(
-              child: new CircularProgressIndicator(),
+            return Center(
+              child: CircularProgressIndicator(),
             );
           }
         },

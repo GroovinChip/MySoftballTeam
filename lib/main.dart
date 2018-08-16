@@ -3,6 +3,7 @@ import 'package:my_softball_team/checkLogin.dart';
 import 'package:my_softball_team/screens/addNewGame.dart';
 import 'package:my_softball_team/screens/addNewPlayer.dart';
 import 'package:my_softball_team/screens/sendGameReminderEmail.dart';
+import 'package:my_softball_team/screens/setLineup.dart';
 import 'package:my_softball_team/screens/signup.dart';
 import 'package:my_softball_team/widgets/previousGamesTable.dart';
 import 'package:my_softball_team/widgets/seasonSchedule.dart';
@@ -31,7 +32,8 @@ class LoadApplication extends StatelessWidget {
         '/SeasonSchedule': (BuildContext context) => new SeasonSchedule(),
         '/LoginPage': (BuildContext context) => new LoginPage(),
         '/PreviousGamesTable': (BuildContext context) => new PreviousGamesTable(),
-        '/SendGameReminderEmailScreen': (BuildContext context) => new SendGameReminderEmailScreen()
+        '/SendGameReminderEmailScreen': (BuildContext context) => new SendGameReminderEmailScreen(),
+        '/SetLineup': (BuildContext context) => new SetLineupScreen()
       },
     );
   }

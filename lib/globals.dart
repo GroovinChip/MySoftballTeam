@@ -9,51 +9,52 @@ String selectedPlayerName;
 String selectedGameDocument;
 CollectionReference usersDB = Firestore.instance.collection("Users");
 CollectionReference gamesDB = Firestore.instance.collection("Teams").document(teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games");
+CollectionReference teamPlayersDB = Firestore.instance.collection("Teams").document(teamName).collection("Players");
 
 // List of field positions
 List<DropdownMenuItem> fieldPositions = [
-  new DropdownMenuItem(
-    child: new Text("Pitcher"),
+  DropdownMenuItem(
+    child: Text("Pitcher"),
     value: "Pitcher",
   ),
-  new DropdownMenuItem(
-    child: new Text("First Base"),
+  DropdownMenuItem(
+    child: Text("First Base"),
     value: "First Base",
   ),
-  new DropdownMenuItem(
-    child: new Text("Second Base"),
+  DropdownMenuItem(
+    child: Text("Second Base"),
     value: "Second Base",
   ),
-  new DropdownMenuItem(
-    child: new Text("Shortstop"),
+  DropdownMenuItem(
+    child: Text("Shortstop"),
     value: "Shortstop",
   ),
-  new DropdownMenuItem(
-    child: new Text("Third Base"),
+  DropdownMenuItem(
+    child: Text("Third Base"),
     value: "Third Base",
   ),
-  new DropdownMenuItem(
-    child: new Text("Right Field"),
+  DropdownMenuItem(
+    child: Text("Right Field"),
     value: "Right Field",
   ),
-  new DropdownMenuItem(
-    child: new Text("Right Center Field"),
+  DropdownMenuItem(
+    child: Text("Right Center Field"),
     value: "Right Center Field",
   ),
-  new DropdownMenuItem(
-    child: new Text("Center Field"),
+  DropdownMenuItem(
+    child: Text("Center Field"),
     value: "Center Field",
   ),
-  new DropdownMenuItem(
-    child: new Text("Left Center Field"),
+  DropdownMenuItem(
+    child: Text("Left Center Field"),
     value: "Left Center Field",
   ),
-  new DropdownMenuItem(
-    child: new Text("Left Field"),
+  DropdownMenuItem(
+    child: Text("Left Field"),
     value: "Left Field",
   ),
-  new DropdownMenuItem(
-    child: new Text("Catcher"),
+  DropdownMenuItem(
+    child: Text("Catcher"),
     value: "Catcher",
   ),
 ];

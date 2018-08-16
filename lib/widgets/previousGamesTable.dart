@@ -18,7 +18,13 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Previous Games"),
+        backgroundColor: Colors.white,
+        title: Text("Previous Games",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: globals.gamesDB.snapshots(),
@@ -45,13 +51,14 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GameCard(
-                        gameID: games[index].documentID,
-                        homeOrAway: "${games[index]['HomeOrAway']}",
-                        teamName: globals.teamName,
-                        opposingTeam: "${games[index]['OpposingTeam']}",
-                        gameTime: "${games[index]['GameTime']}",
-                        gameDate: "${games[index]['GameDate']}",
-                        gameLocation: "${games[index]['GameLocation']}"
+                      gameID: games[index].documentID,
+                      homeOrAway: "${games[index]['HomeOrAway']}",
+                      teamName: globals.teamName,
+                      opposingTeam: "${games[index]['OpposingTeam']}",
+                      gameTime: "${games[index]['GameTime']}",
+                      gameDate: "${games[index]['GameDate']}",
+                      gameLocation: "${games[index]['GameLocation']}",
+                      isPreviousGame: true,
                     ),
                   ),
                 );

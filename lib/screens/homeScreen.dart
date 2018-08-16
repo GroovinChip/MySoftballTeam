@@ -62,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
     List<Widget> _fabs = [
       FloatingActionButton.extended(

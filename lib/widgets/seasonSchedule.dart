@@ -47,13 +47,14 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GameCard(
-                      gameID: games[index].documentID,
-                      homeOrAway: "${games[index]['HomeOrAway']}",
-                      teamName: globals.teamName,
-                      opposingTeam: "${games[index]['OpposingTeam']}",
-                      gameTime: "${games[index]['GameTime']}",
-                      gameDate: "${games[index]['GameDate']}",
-                      gameLocation: "${games[index]['GameLocation']}"
+                    gameID: games[index].documentID,
+                    homeOrAway: "${games[index]['HomeOrAway']}",
+                    teamName: globals.teamName,
+                    opposingTeam: "${games[index]['OpposingTeam']}",
+                    gameTime: "${games[index]['GameTime']}",
+                    gameDate: "${games[index]['GameDate']}",
+                    gameLocation: "${games[index]['GameLocation']}",
+                    isPreviousGame: false,
                   ),
                 ),
               );

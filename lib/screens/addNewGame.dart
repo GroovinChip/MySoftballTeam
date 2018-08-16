@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 
 class AddNewGame extends StatefulWidget{
@@ -35,7 +36,14 @@ class _AddNewGameState extends State<AddNewGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add New Game"),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Add New Game",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -199,7 +207,7 @@ class _AddNewGameState extends State<AddNewGame> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          RaisedButton(
+                          RaisedButton.icon(
                             onPressed: (){
                               if(_gameDateController.text != "" && _gameTimeController.text != "") {
                                 if(_opposingTeamController.text != "" && _gameLocationController.text != "") {
@@ -214,8 +222,12 @@ class _AddNewGameState extends State<AddNewGame> {
                                 }
                               }
                             },
+                            icon: Icon(
+                              GroovinMaterialIcons.content_save_outline,
+                              color: Colors.white,
+                            ),
                             color: Colors.indigo,
-                            child: Text(
+                            label: Text(
                               "Save",
                               style: TextStyle(
                                 color: Colors.white,
