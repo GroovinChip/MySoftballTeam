@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: Text("Schedule"),
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.group),
+      icon: Icon(GroovinMaterialIcons.account_multiple_outline),
       title: Text("Team"),
     ),
     BottomNavigationBarItem(

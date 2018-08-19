@@ -10,19 +10,16 @@ class SetLineupScreen extends StatefulWidget {
 
 class _SetLineupScreenState extends State<SetLineupScreen> {
   
-  List<DropdownMenuItem> players = [
-    /*DropdownMenuItem(
-      child: Text("Choose a Player"),
-    ),*/
-  ];
+  List<DropdownMenuItem> players = [];
+  List<String> lineup = [];
   var selectedPlayer;
 
-  void _chooseBatter(value) {
+  /*void _chooseBatter(value) {
     setState(() {
       selectedPlayer = value;
       print(selectedPlayer);
     });
-  }
+  }*/
   
   @override
   Widget build(BuildContext context) {
@@ -47,22 +44,55 @@ class _SetLineupScreenState extends State<SetLineupScreen> {
               itemCount: snapshot.data.documents.length,
               itemBuilder: (builder, index){
                 DocumentSnapshot player = snapshot.data.documents[index];
+                //Key dropdownKey;
+                //Key(index.toString());
                 players.add(
                   DropdownMenuItem(
                     child: Text("${player['PlayerName']}"),
                     value: "${player['PlayerName']}",
                   ),
                 );
-                index += 1;
                 return Column(
                   children: <Widget>[
                     ListTile(
-                      leading: Text("Batter # " + index.toString()),
-                      title: DropdownButton(
+                      leading: Text("Batter #" + index.toString()),
+                      title: (!players.any((item) => item.value == "${player['PlayerName']}")) ? DropdownButton(
                         items: players,
-                        onChanged: _chooseBatter,
+                        onChanged: (player) {
+                          /*if(lineup.isEmpty){
+                            setState(() {
+                              lineup.add(player);
+                              selectedPlayer = player;
+                            });
+                          } else if(lineup.contains(player) == false){
+                            setState(() {
+                              lineup.insert(index, player);
+                              selectedPlayer = player;
+                            });
+                          } else {
+                            setState(() {
+                              lineup.removeAt(index);
+                              lineup.insert(index, player);
+                              selectedPlayer = player;
+                            });
+                          }*/
+                          //print("Batter #" + index.toString() + " is " + "${player['PlayerName']}");
+                        },
                         value: selectedPlayer,
                         hint: Text("Choose a Player"),
+                      ) : DropdownButton(
+                          items: players,
+                          onChanged: (player){
+                            setState(() {
+                              selectedPlayer = player;;
+                              print(selectedPlayer);
+                            });
+                          },
+                          value: selectedPlayer,
+                          hint: Text("Choose a Player"),
+                        ),
+                      trailing: SizedBox(
+                        width: 100.0,
                       ),
                     ),
                   ],

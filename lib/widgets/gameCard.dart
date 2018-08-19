@@ -140,7 +140,7 @@ class GameCard extends StatelessWidget{
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: IconButton(
-                  icon: Icon(GroovinMaterialIcons.baseball_bat),
+                  icon: Icon(GroovinMaterialIcons.baseball),
                   tooltip: "Play game",
                   onPressed: () {
                     Navigator.of(context).pushNamed("/SetLineup");
