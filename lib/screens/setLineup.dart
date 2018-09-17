@@ -25,6 +25,7 @@ class _SetLineupScreenState extends State<SetLineupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2.0,
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
@@ -55,7 +56,7 @@ class _SetLineupScreenState extends State<SetLineupScreen> {
                 return Column(
                   children: <Widget>[
                     ListTile(
-                      leading: Text("Batter #" + index.toString()),
+                      leading: Text("Batter #" + (index+1).toString()),
                       title: (!players.any((item) => item.value == "${player['PlayerName']}")) ? DropdownButton(
                         items: players,
                         onChanged: (player) {

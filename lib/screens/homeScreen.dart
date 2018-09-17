@@ -8,6 +8,7 @@ import 'package:my_softball_team/widgets/statsTable.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: Text("Team"),
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.insert_chart),
+      icon: Icon(OMIcons.assessment),
       title: Text("Stats"),
     ),
   ];
@@ -112,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold (
       appBar: AppBar(
         //centerTitle: true,
+        elevation: 2.0,
         backgroundColor: Colors.white,
         title: StreamBuilder<List<QuerySnapshot>>(
           stream: StreamZip([usersDB.snapshots(), globals.gamesDB.snapshots()]),
@@ -191,6 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
         items: _bottomNavigationBarItems,
         currentIndex: _page,
         onTap: navigationTapped,
+
       ),
     );
   }

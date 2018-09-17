@@ -79,6 +79,13 @@
             </list>
           </value>
         </entry>
+        <entry key="draggable_scrollbar">
+          <value>
+            <list>
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/draggable_scrollbar-0.0.4/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="firebase_auth">
           <value>
             <list>
@@ -124,7 +131,7 @@
         <entry key="groovin_material_icons">
           <value>
             <list>
-              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/groovin_material_icons-1.0.2/lib" />
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/groovin_material_icons-1.1.2/lib" />
             </list>
           </value>
         </entry>
@@ -223,6 +230,13 @@
           <value>
             <list>
               <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/node_preamble-1.4.4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="outline_material_icons">
+          <value>
+            <list>
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/outline_material_icons-0.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -436,11 +450,12 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.0.6/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.14.5/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-0.1.2/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/draggable_scrollbar-0.0.4/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.11/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.4/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/front_end-0.1.4/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/glob-1.1.7/lib" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/groovin_material_icons-1.0.2/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/groovin_material_icons-1.1.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.13.3+3/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.11.3+17/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/http_multi_server-2.0.5/lib" />
@@ -455,6 +470,7 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/mime-0.9.6+2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/multi_server_socket-1.0.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/node_preamble-1.4.4/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/outline_material_icons-0.1.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-1.0.5/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/package_resolver-1.0.4/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.6.2/lib" />

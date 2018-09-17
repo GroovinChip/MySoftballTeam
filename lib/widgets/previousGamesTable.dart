@@ -18,6 +18,7 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2.0,
         backgroundColor: Colors.white,
         title: Text("Previous Games",
           style: TextStyle(

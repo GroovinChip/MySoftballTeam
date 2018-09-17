@@ -47,6 +47,7 @@ class _EditGameModalState extends State<EditGameModal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2.0,
         backgroundColor: Colors.white,
         title: Text(
           "Edit Game",
@@ -70,7 +71,7 @@ class _EditGameModalState extends State<EditGameModal> {
                     child: Column(
                       children: <Widget>[
                         Card(
-                          elevation: 4.0,
+                          elevation: 2.0,
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
@@ -196,8 +197,9 @@ class _EditGameModalState extends State<EditGameModal> {
                                     controller: _editOpposingTeamController,
                                     decoration: InputDecoration(
                                       labelText: "${game['OpposingTeam']}",
-                                      fillColor: Colors.black12,
-                                      filled: true,
+                                      /*fillColor: Colors.black12,
+                                      filled: true,*/
+                                      border: OutlineInputBorder(),
                                       suffixIcon: IconButton(
                                           icon: Icon(Icons.clear),
                                           onPressed: (){
@@ -213,8 +215,9 @@ class _EditGameModalState extends State<EditGameModal> {
                                     controller: _editGameLocationController,
                                     decoration: InputDecoration(
                                         labelText: "${game['GameLocation']}",
-                                        fillColor: Colors.black12,
-                                        filled: true,
+                                        /*fillColor: Colors.black12,
+                                        filled: true,*/
+                                        border: OutlineInputBorder(),
                                         suffixIcon: IconButton(
                                             icon: Icon(Icons.clear),
                                             onPressed: (){
@@ -244,7 +247,7 @@ class _EditGameModalState extends State<EditGameModal> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
-                                    RaisedButton(
+                                    RaisedButton.icon(
                                       onPressed: (){
                                         if(_editGameDateController.text == "" || _editGameDateController.text == null){
                                           _editGameDateController.text = "${game['GameDate']}";
@@ -281,13 +284,14 @@ class _EditGameModalState extends State<EditGameModal> {
                                         Navigator.pop(context);
                                       },
                                       color: Colors.indigo,
-                                      child: Text(
+                                      label: Text(
                                         "Update",
                                         style: TextStyle(
                                           color: Colors.white,
                                         ),
                                       ),
                                       splashColor: Colors.indigoAccent,
+                                      icon: Icon(Icons.update, color: Colors.white,),
                                     ),
                                   ],
                                 ),

@@ -36,6 +36,7 @@ class _AddNewGameState extends State<AddNewGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2.0,
         backgroundColor: Colors.white,
         title: Text(
           "Add New Game",
@@ -52,7 +53,7 @@ class _AddNewGameState extends State<AddNewGame> {
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 25.0),
               child: Card(
-                elevation: 4.0,
+                elevation: 2.0,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -170,8 +171,9 @@ class _AddNewGameState extends State<AddNewGame> {
                               controller: _opposingTeamController,
                               decoration: InputDecoration(
                                 labelText: "Opposing Team*",
-                                fillColor: Colors.black12,
-                                filled: true,
+                                /*fillColor: Colors.black12,
+                                filled: true,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -184,14 +186,15 @@ class _AddNewGameState extends State<AddNewGame> {
                           TextField(
                             controller: _gameLocationController,
                             decoration: InputDecoration(
-                                labelText: "Game Location*",
-                                fillColor: Colors.black12,
-                                filled: true,
-                                suffixIcon: IconButton(
-                                    icon: Icon(Icons.clear),
-                                    onPressed: (){
-                                      _gameLocationController.text = "";
-                                    })
+                              labelText: "Game Location*",
+                              /*fillColor: Colors.black12,
+                              filled: true,*/
+                              border: OutlineInputBorder(),
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.clear),
+                                onPressed: (){
+                                  _gameLocationController.text = "";
+                                })
                             ),
                           ),
                         ],

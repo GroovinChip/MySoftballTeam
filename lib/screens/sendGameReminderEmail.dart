@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
+import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 
 class SendGameReminderEmailScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SendGameReminderEmailScreenState extends State<SendGameReminderEmailScree
         iconTheme: IconThemeData(color: Colors.black),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.send),
+            icon: Icon(GroovinMaterialIcons.send_outline),
             onPressed: (){
 
             },

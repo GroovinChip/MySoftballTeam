@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 
 class AddNewPlayer extends StatefulWidget {
@@ -67,8 +68,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                       TextField(
                         decoration: InputDecoration(
                           labelText: "Player Name",
-                          filled: true,
-                          fillColor: Colors.black12,
+                          /*filled: true,
+                          fillColor: Colors.black12,*/
+                          border: OutlineInputBorder(),
                           suffixIcon: IconButton(
                             icon: Icon(Icons.clear),
                             onPressed: (){
@@ -99,8 +101,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _atBatsController,
                               decoration: InputDecoration(
                                 labelText: "At Bats",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -119,8 +122,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _singlesController,
                               decoration: InputDecoration(
                                 labelText: "Singles",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -139,8 +143,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _doublesController,
                               decoration: InputDecoration(
                                 labelText: "Doubles",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -159,8 +164,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _triplesController,
                               decoration: InputDecoration(
                                 labelText: "Triples",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -179,8 +185,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _homeRunsController,
                               decoration: InputDecoration(
                                 labelText: "Home Runs",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -199,8 +206,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _runsBattedInController,
                               decoration: InputDecoration(
                                 labelText: "Runs Batted In",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -219,8 +227,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _walksController,
                               decoration: InputDecoration(
                                 labelText: "Walks",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -239,8 +248,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _strikeoutsController,
                               decoration: InputDecoration(
                                 labelText: "Strikeouts",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -259,8 +269,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _gamesPlayerController,
                               decoration: InputDecoration(
                                 labelText: "Games Played",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -279,8 +290,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _outsReceivedController,
                               decoration: InputDecoration(
                                 labelText: "Outs Received",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -299,8 +311,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               controller: _outsFieldedController,
                               decoration: InputDecoration(
                                 labelText: "Outs Fielded",
-                                filled: true,
-                                fillColor: Colors.black12,
+                                /*filled: true,
+                                fillColor: Colors.black12,*/
+                                border: OutlineInputBorder(),
                                 suffixIcon: IconButton(
                                   icon: Icon(Icons.clear),
                                   onPressed: (){
@@ -320,7 +333,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          RaisedButton(
+                          RaisedButton.icon(
                             onPressed: () => Firestore.instance
                                 .runTransaction((transaction) async {
                               // Get all the text from the fields
@@ -400,13 +413,14 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                               Navigator.pop(context);
                             }),
                             color: Colors.indigo,
-                            child: Text(
+                            label: Text(
                               "Save",
                               style: TextStyle(
                                 color: Colors.white,
                               ),
                             ),
                             splashColor: Colors.indigoAccent,
+                            icon: Icon(GroovinMaterialIcons.content_save_outline,color: Colors.white,),
                           ),
                         ],
                       ),

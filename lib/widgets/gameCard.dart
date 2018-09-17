@@ -39,7 +39,7 @@ class GameCard extends StatelessWidget{
         break;
     }
     return Card(
-      elevation: 4.0,
+      elevation: 2.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -70,7 +70,7 @@ class GameCard extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.delete_forever),
+                icon: Icon(Icons.delete_outline),
                 tooltip: "Delete game",
                 onPressed: () {
                   globals.selectedGameDocument = gameID;
@@ -116,7 +116,7 @@ class GameCard extends StatelessWidget{
                 },
               ),
               IconButton(
-                icon: Icon(Icons.edit),
+                icon: Icon(GroovinMaterialIcons.edit_outline),
                 tooltip: "Edit game",
                 onPressed: () {
                   globals.selectedGameDocument = gameID;

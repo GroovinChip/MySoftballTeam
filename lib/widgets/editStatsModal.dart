@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:async/async.dart';
+import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 
 class EditStatsModal extends StatefulWidget {
@@ -43,6 +44,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2.0,
         backgroundColor: Colors.white,
         title: Text(
           "Update Stats",
@@ -80,7 +82,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Card(
-                      elevation: 4.0,
+                      elevation: 2.0,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -92,8 +94,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   labelText: "Current At Bats: ${player['AtBats']}",
-                                  filled: true,
-                                  fillColor: Colors.black12,
+                                  /*filled: true,
+                                  fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                   suffixIcon: IconButton(
                                     icon: Icon(Icons.clear),
                                     onPressed: (){
@@ -110,8 +113,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     labelText: "Current Singles: ${player['Singles']}",
-                                    filled: true,
-                                    fillColor: Colors.black12,
+                                    /*filled: true,
+                                    fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: (){
@@ -128,8 +132,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     labelText: "Current Doubles: ${player['Doubles']}",
-                                    filled: true,
-                                    fillColor: Colors.black12,
+                                    /*filled: true,
+                                    fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: (){
@@ -146,8 +151,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     labelText: "Current Triples: ${player['Triples']}",
-                                    filled: true,
-                                    fillColor: Colors.black12,
+                                    /*filled: true,
+                                    fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: (){
@@ -164,8 +170,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     labelText: "Current Home Runs: ${player['HomeRuns']}",
-                                    filled: true,
-                                    fillColor: Colors.black12,
+                                    /*filled: true,
+                                    fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: (){
@@ -182,8 +189,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     labelText: "Current RBIs: ${player['RunsBattedIn']}",
-                                    filled: true,
-                                    fillColor: Colors.black12,
+                                    /*filled: true,
+                                    fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: (){
@@ -200,8 +208,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     labelText: "Current Walks: ${player['Walks']}",
-                                    filled: true,
-                                    fillColor: Colors.black12,
+                                    /*filled: true,
+                                    fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: (){
@@ -218,8 +227,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     labelText: "Current Strikeouts: ${player['Strikeouts']}",
-                                    filled: true,
-                                    fillColor: Colors.black12,
+                                    /*filled: true,
+                                    fillColor: Colors.black12,*/
+                                    border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: (){
@@ -236,8 +246,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   labelText: "Current Games Played: " + gamesPlayed,
-                                  filled: true,
-                                  fillColor: Colors.black12,
+                                  /*filled: true,
+                                  fillColor: Colors.black12,*/
+                                  border: OutlineInputBorder(),
                                   suffixIcon: IconButton(
                                     icon: Icon(Icons.clear),
                                     onPressed: (){
@@ -254,8 +265,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   labelText: "Current Outs Fielded: ${player['OutsFielded']}",
-                                  filled: true,
-                                  fillColor: Colors.black12,
+                                  /*filled: true,
+                                  fillColor: Colors.black12,*/
+                                  border: OutlineInputBorder(),
                                   suffixIcon: IconButton(
                                     icon: Icon(Icons.clear),
                                     onPressed: (){
@@ -272,8 +284,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   labelText: "Current Outs Received: ${player['OutsReceived']}",
-                                  filled: true,
-                                  fillColor: Colors.black12,
+                                  /*filled: true,
+                                  fillColor: Colors.black12,*/
+                                  border: OutlineInputBorder(),
                                   suffixIcon: IconButton(
                                     icon: Icon(Icons.clear),
                                     onPressed: (){
@@ -289,7 +302,7 @@ class _EditStatsModalState extends State<EditStatsModal> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
-                                  RaisedButton(
+                                  RaisedButton.icon(
                                     onPressed: (){
                                       /*gamesPlayed = _gamesPlayerController.text;
                                       atBats = _atBatsController.text;
@@ -386,13 +399,14 @@ class _EditStatsModalState extends State<EditStatsModal> {
                                       Navigator.pop(context);
                                     },
                                     color: Colors.indigo,
-                                    child: Text(
+                                    label: Text(
                                       "Update", 
                                       style: TextStyle(
                                         color: Colors.white,
                                       ),
                                     ),
                                     splashColor: Colors.lightBlueAccent,
+                                    icon: Icon(GroovinMaterialIcons.update, color: Colors.white,),
                                   )
                                 ],
                               ),

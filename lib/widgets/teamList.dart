@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/widgets/editStatsModal.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
 
 class TeamList extends StatefulWidget {
   @override
@@ -41,7 +42,9 @@ class _TeamListState extends State<TeamList> {
                     leading: CircleAvatar(
                       child: Text("${ds['PlayerName']}"[0]),
                     ),
-                    title: Text("${ds['PlayerName']}"),
+                    title: Text("${ds['PlayerName']}",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     subtitle: Text("${ds['FieldPosition']}"),
                     trailing: SizedBox(
                       width: 150.0,
@@ -49,7 +52,7 @@ class _TeamListState extends State<TeamList> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           IconButton(
-                            icon: Icon(Icons.insert_chart),
+                            icon: Icon(OMIcons.assessment, color: Colors.black,),
                             onPressed: (){
                               globals.selectedPlayerName = "${ds['PlayerName']}";
                               Navigator.of(context).push(MaterialPageRoute<Null>(
@@ -61,7 +64,7 @@ class _TeamListState extends State<TeamList> {
                             },
                           ),
                           IconButton(
-                            icon: Icon(Icons.location_on),
+                            icon: Icon(OMIcons.locationOn, color: Colors.black,),
                             onPressed: (){
                               showDialog(
                                 context: context,
@@ -87,7 +90,7 @@ class _TeamListState extends State<TeamList> {
                             },
                           ),
                           IconButton(
-                            icon: Icon(Icons.delete_forever),
+                            icon: Icon(Icons.delete_outline, color: Colors.black,),
                             onPressed: () => Firestore.instance.runTransaction((transaction) async {
                               showDialog(
                                 context: context,
