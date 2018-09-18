@@ -117,7 +117,7 @@ class GameCard extends StatelessWidget{
               ),
               IconButton(
                 icon: Icon(GroovinMaterialIcons.edit_outline),
-                tooltip: "Edit game",
+                tooltip: "Edit game details",
                 onPressed: () {
                   globals.selectedGameDocument = gameID;
                   Navigator.of(context).push(new MaterialPageRoute<Null>(
@@ -140,10 +140,15 @@ class GameCard extends StatelessWidget{
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: IconButton(
-                  icon: Icon(GroovinMaterialIcons.baseball),
-                  tooltip: "Play game",
+                  icon: Icon(GroovinMaterialIcons.trophy_variant_outline),
+                  tooltip: "Record score",
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/SetLineup");
+                    //Navigator.of(context).pushNamed("/SetLineup");
+                    final SnackBar snackBar = SnackBar(
+                      content: Text("This feature is not available yet"),
+                      duration: Duration(seconds: 1),
+                    );
+                    Scaffold.of(context).showSnackBar(snackBar);
                   },
                 ),
               ),

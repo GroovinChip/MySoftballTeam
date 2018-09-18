@@ -2,6 +2,7 @@ import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:my_softball_team/widgets/teamList.dart';
 import 'package:my_softball_team/widgets/statsTable.dart';
@@ -63,6 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /*SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.grey[50],
+        systemNavigationBarColor: Colors.grey[50],
+        systemNavigationBarIconBrightness: Brightness.dark
+    ));*/
+
     // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
     List<Widget> _fabs = [
       FloatingActionButton.extended(
@@ -112,9 +120,66 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold (
       appBar: AppBar(
-        //centerTitle: true,
+        centerTitle: true,
         elevation: 2.0,
         backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: (){
+            showModalBottomSheet(
+              context: context,
+              builder: (builder){
+                return Container(
+                  height: 250.0,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        ListTile(
+                          leading: Icon(OMIcons.accountCircle),
+                          title: Text(globals.loggedInUser.email),
+                        ),
+                        Divider(
+                          height: 0.0,
+                          color: Colors.grey,
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.history),
+                          title: Text("View Previous Games"),
+                          onTap: (){
+                            Navigator.pop(context);
+                            Navigator.of(context).pushNamed('/PreviousGamesTable');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(GroovinMaterialIcons.logout),
+                          title: Text("Log Out"),
+                          onTap: () async {
+                            FirebaseAuth.instance.signOut();
+                            final SharedPreferences prefs = await SharedPreferences.getInstance();
+                            prefs.setString("Email", "");
+                            prefs.setString("Password", "");
+                            Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
+                          },
+                        ),
+                        Divider(
+                          height: 0.0,
+                          color: Colors.grey,
+                        ),
+                        ListTile(
+                          leading: Icon(OMIcons.info),
+                          title: Text("About"),
+                          onTap: (){
+
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
         title: StreamBuilder<List<QuerySnapshot>>(
           stream: StreamZip([usersDB.snapshots(), globals.gamesDB.snapshots()]),
           builder: (context, snapshot) {
@@ -164,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           },
         ),
-        actions: <Widget>[
+        /*actions: <Widget>[
           PopupMenuButton(
             icon: Icon(
               Icons.more_vert,
@@ -175,7 +240,8 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             onSelected: onSelectOverflowMenuItem,
           )
-        ],
+        ],*/
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: PageView(
         children: <Widget>[
@@ -189,11 +255,93 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: _fabs[_page],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      bottomNavigationBar: BottomNavigationBar(
-        items: _bottomNavigationBarItems,
-        currentIndex: _page,
-        onTap: navigationTapped,
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          BottomNavigationBar(
+            items: _bottomNavigationBarItems,
+            currentIndex: _page,
+            onTap: navigationTapped,
+          ),
+          /*Container(
+            height: 50.0,
+            child: BottomAppBar(
+              elevation: 0.0,
+              color: Colors.grey[50],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.menu),
+                    onPressed: (){
 
+                    },
+                  ),
+                  StreamBuilder<List<QuerySnapshot>>(
+                    stream: StreamZip([usersDB.snapshots(), globals.gamesDB.snapshots()]),
+                    builder: (context, snapshot) {
+                      if(snapshot.hasData){
+                        final usersStream = snapshot.data[0];
+                        final gamesStream = snapshot.data[1];
+                        List<DocumentSnapshot> users = usersStream.documents;
+                        List<DocumentSnapshot> games = gamesStream.documents;
+                        int wins = 0;
+                        int losses = 0;
+
+                        for(int index = 0; index < users.length; index++) {
+                          if (users[index].documentID == globals.loggedInUser.uid) {
+                            DocumentSnapshot team = users[index];
+                            globals.teamName = "${team['Team']}";
+
+                            for(int index2 = 0; index2 < games.length; index2++) {
+                              DocumentSnapshot game = games[index2];
+                              String winOrLoss = "${game['WinOrLoss']}";
+                              if(winOrLoss  == null){
+
+                              } else if(winOrLoss == "Unknown") {
+
+                              } else if(winOrLoss == "Win") {
+                                wins += 1;
+                              } else if(winOrLoss == "Loss") {
+                                losses += 1;
+                              }
+                            }
+
+                            return Text(
+                              globals.teamName + " " + wins.toString() + " - " + losses.toString(),
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20.0
+                              ),
+                            );
+                          }
+                        }
+                      } else {
+                        return Text(
+                          "MySoftballTeam",
+                          style: TextStyle(
+                              color: Colors.black
+                          ),
+                        );
+                      }
+
+                    },
+                  ),
+                  PopupMenuButton(
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: Colors.black,
+                    ),
+                    itemBuilder: (builder){
+                      return oveflowMenuItems;
+                    },
+                    onSelected: onSelectOverflowMenuItem,
+                  )
+                ],
+              ),
+            ),
+          )*/
+        ],
       ),
     );
   }

@@ -66,6 +66,7 @@ class _TeamListState extends State<TeamList> {
                           IconButton(
                             icon: Icon(OMIcons.locationOn, color: Colors.black,),
                             onPressed: (){
+                              globals.selectedPlayerName = "${ds['PlayerName']}";
                               showDialog(
                                 context: context,
                                 builder: (_) => SimpleDialog(
@@ -92,6 +93,7 @@ class _TeamListState extends State<TeamList> {
                           IconButton(
                             icon: Icon(Icons.delete_outline, color: Colors.black,),
                             onPressed: () => Firestore.instance.runTransaction((transaction) async {
+                              globals.selectedPlayerName = "${ds['PlayerName']}";
                               showDialog(
                                 context: context,
                                 builder: (_) => AlertDialog(

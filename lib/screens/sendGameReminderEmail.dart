@@ -13,6 +13,7 @@ class _SendGameReminderEmailScreenState extends State<SendGameReminderEmailScree
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2.0,
         backgroundColor: Colors.white,
         title: Text(
           "Send Game Reminder",
@@ -58,7 +59,7 @@ class _SendGameReminderEmailScreenState extends State<SendGameReminderEmailScree
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 maxLines: 100,
-                decoration: InputDecoration.collapsed(hintText: ""),
+                decoration: InputDecoration.collapsed(hintText: "Message"),
                 //inputFormatters: TextI,
               ),
             ),

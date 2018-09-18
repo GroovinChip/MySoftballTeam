@@ -15,11 +15,6 @@ class _EditGameModalState extends State<EditGameModal> {
     DropdownMenuItem(child: Text("Bye"), value: "Bye")
   ];
 
-  List<DropdownMenuItem> _winOrLossOptions = [
-    DropdownMenuItem(child: Text("Win"), value: "Win"),
-    DropdownMenuItem(child: Text("Loss"), value: "Loss")
-  ];
-
   TextEditingController _editGameDateController = TextEditingController();
   TextEditingController _editGameTimeController = TextEditingController();
   TextEditingController _editGameLocationController = TextEditingController();
@@ -29,17 +24,10 @@ class _EditGameModalState extends State<EditGameModal> {
   DateTime gameDate;
   TimeOfDay gameTime;
   String _homeOrAway;
-  String winOrLoss;
 
   void _chooseHomeOrAway(value) {
     setState(() {
       _homeOrAway = value;
-    });
-  }
-
-  void _recordWinOrLoss(value) {
-    setState(() {
-      winOrLoss = value;
     });
   }
 
@@ -235,15 +223,6 @@ class _EditGameModalState extends State<EditGameModal> {
                                     value: _homeOrAway,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: DropdownButton(
-                                    items: _winOrLossOptions,
-                                    onChanged: _recordWinOrLoss,
-                                    hint: Text("Record Win or Loss"),
-                                    value: winOrLoss,
-                                  ),
-                                ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
@@ -264,9 +243,6 @@ class _EditGameModalState extends State<EditGameModal> {
                                         if(_homeOrAway == "" || _homeOrAway == null){
                                           _homeOrAway = "${game['HomeOrAway']}";
                                         }
-                                        if(winOrLoss == "" || winOrLoss == null){
-                                          winOrLoss = "unknown";
-                                        }
 
                                         // TODO: Record win/loss in a Record document
 
@@ -277,7 +253,6 @@ class _EditGameModalState extends State<EditGameModal> {
                                             "OpposingTeam":_editOpposingTeamController.text,
                                             "GameLocation":_editGameLocationController.text,
                                             "HomeOrAway":_homeOrAway,
-                                            "WinOrLoss":winOrLoss
                                           }
                                         );
 
