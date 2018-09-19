@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
 
                   return Text(
-                    globals.teamName + " " + wins.toString() + " - " + losses.toString(),
+                    globals.teamName + " (" + DateTime.now().year.toString() + ") " + wins.toString() + " - " + losses.toString(),
                     style: TextStyle(
                       color: Colors.black
                     ),
@@ -174,93 +174,91 @@ class _HomeScreenState extends State<HomeScreen> {
                 context: context,
                 builder: (builder){
                   return Container(
-                    height: 350.0,
-                    // try and just do a Column with MainAxisSize.min and no height in Container
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: <Widget>[
-                          ListTile(
-                            leading: Icon(OMIcons.accountCircle),
-                            title: Text(globals.loggedInUser.email),
-                          ),
-                          Divider(
-                            height: 0.0,
-                            color: Colors.grey,
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.history),
-                            title: Text("View Previous Games"),
-                            onTap: (){
-                              Navigator.pop(context);
-                              Navigator.of(context).pushNamed('/PreviousGamesTable');
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(OMIcons.email),
-                            title: Text("Email List"),
-                            onTap: (){
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(GroovinMaterialIcons.logout),
-                            title: Text("Log Out"),
-                            onTap: () async {
-                              FirebaseAuth.instance.signOut();
-                              final SharedPreferences prefs = await SharedPreferences.getInstance();
-                              prefs.setString("Email", "");
-                              prefs.setString("Password", "");
-                              Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
-                            },
-                          ),
-                          Divider(
-                            height: 0.0,
-                            color: Colors.grey,
-                          ),
-                          ListTile(
-                            leading: Icon(OMIcons.info),
-                            title: Text("MySoftballTeam by GroovinChip"),
-                            subtitle: Text("Version " + _packageInfo.version),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(GroovinMaterialIcons.twitter, color: Colors.blue),
-                                onPressed: (){
-                                  launch("https:twitter.com/GroovinChipDev");
-                                },
-                              ),
-                              IconButton(
-                                icon: Icon(GroovinMaterialIcons.github_circle),
-                                onPressed: (){
-                                  launch("https:github.com/GroovinChip");
-                                },
-                              ),
-                              IconButton(
-                                icon: Icon(GroovinMaterialIcons.gmail),
-                                color: Colors.red,
-                                onPressed: (){
-                                  launch("mailto:groovinchip@gmail.com");
-                                },
-                              ),
-                              IconButton(
-                                icon: Icon(GroovinMaterialIcons.discord, color: Colors.deepPurpleAccent),
-                                onPressed: (){
-                                  launch("https://discord.gg/CFnBRue");
-                                },
-                              ),
-                              /*IconButton(
-                                icon: Icon(GroovinMaterialIcons.flutter),
-                                color: Colors.blue,
-                                onPressed: (){
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        ListTile(
+                          leading: Icon(OMIcons.accountCircle),
+                          title: Text(globals.loggedInUser.email),
+                        ),
+                        Divider(
+                          height: 0.0,
+                          color: Colors.grey,
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.history),
+                          title: Text("View Previous Games"),
+                          onTap: (){
+                            Navigator.pop(context);
+                            Navigator.of(context).pushNamed('/PreviousGamesTable');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(OMIcons.email),
+                          title: Text("Email List"),
+                          onTap: (){
+                            Navigator.pop(context);
+                            Navigator.of(context).pushNamed('/EmailList');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(GroovinMaterialIcons.logout),
+                          title: Text("Log Out"),
+                          onTap: () async {
+                            FirebaseAuth.instance.signOut();
+                            final SharedPreferences prefs = await SharedPreferences.getInstance();
+                            prefs.setString("Email", "");
+                            prefs.setString("Password", "");
+                            Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
+                          },
+                        ),
+                        Divider(
+                          height: 0.0,
+                          color: Colors.grey,
+                        ),
+                        ListTile(
+                          leading: Icon(OMIcons.info),
+                          title: Text("MySoftballTeam by GroovinChip"),
+                          subtitle: Text("Version " + _packageInfo.version),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            IconButton(
+                              icon: Icon(GroovinMaterialIcons.twitter, color: Colors.blue),
+                              onPressed: (){
+                                launch("https:twitter.com/GroovinChipDev");
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(GroovinMaterialIcons.github_circle),
+                              onPressed: (){
+                                launch("https:github.com/GroovinChip");
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(GroovinMaterialIcons.gmail),
+                              color: Colors.red,
+                              onPressed: (){
+                                launch("mailto:groovinchip@gmail.com");
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(GroovinMaterialIcons.discord, color: Colors.deepPurpleAccent),
+                              onPressed: (){
+                                launch("https://discord.gg/CFnBRue");
+                              },
+                            ),
+                            /*IconButton(
+                              icon: Icon(GroovinMaterialIcons.flutter),
+                              color: Colors.blue,
+                              onPressed: (){
 
-                                },
-                              ),*/
-                            ],
-                          ),
-                        ],
-                      ),
+                              },
+                            ),*/
+                          ],
+                        ),
+                      ],
                     ),
                   );
                 },

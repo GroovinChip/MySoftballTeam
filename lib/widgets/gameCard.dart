@@ -145,11 +145,71 @@ class GameCard extends StatelessWidget{
                   tooltip: "Record score",
                   onPressed: () {
                     //Navigator.of(context).pushNamed("/SetLineup");
-                    final SnackBar snackBar = SnackBar(
+                    /*final SnackBar snackBar = SnackBar(
                       content: Text("This feature is not available yet"),
                       duration: Duration(seconds: 1),
                     );
-                    Scaffold.of(context).showSnackBar(snackBar);
+                    Scaffold.of(context).showSnackBar(snackBar);*/
+                    showDialog(
+                      context: context,
+                      builder: (_) =>
+                        SimpleDialog(
+                          title: Text("Record Score"),
+                          children: <Widget>[
+                            Column(
+                              children: <Widget>[
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 24.0),
+                                      child: Text(teamName),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 24.0),
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        child: TextField(
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 24.0),
+                                      child: Text(opposingTeam),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 24.0),
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        child: TextField(
+                                          keyboardType: TextInputType.number,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    FlatButton(
+                                      child: Text("Save"),
+                                      onPressed: (){
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                    );
                   },
                 ),
               ),
