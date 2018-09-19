@@ -2,6 +2,7 @@ import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/widgets/editGameModal.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
 
 class GameCard extends StatelessWidget{
   String gameID;
@@ -129,7 +130,7 @@ class GameCard extends StatelessWidget{
                 },
               ),
               IconButton(
-                icon: Icon(GroovinMaterialIcons.email_variant),
+                icon: Icon(OMIcons.email),
                 tooltip: "Send game reminder",
                 onPressed: () {
                   globals.selectedGameDocument = gameID;

@@ -75,7 +75,7 @@ class _TeamListState extends State<TeamList> {
                                     Column(
                                       children: <Widget>[
                                         ListTile(
-                                          leading: Icon(Icons.location_on),
+                                          leading: Icon(OMIcons.locationOn, color: Colors.black),
                                           title: DropdownButton(
                                             items: globals.fieldPositions,
                                             onChanged: _changeFieldPosition,

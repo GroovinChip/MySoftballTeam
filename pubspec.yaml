@@ -13,6 +13,8 @@ dependencies:
   shared_preferences: "^0.4.2"
   groovin_material_icons: ^1.1.2
   outline_material_icons: ^0.1.0
+  package_info: ^0.3.2
+  url_launcher: ^3.0.3
 
 dev_dependencies:
   flutter_test:

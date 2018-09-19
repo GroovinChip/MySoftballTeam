@@ -10,6 +10,9 @@ import 'package:my_softball_team/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:package_info/package_info.dart';
+import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -17,6 +20,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  // Set initial package info
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+  );
+
+  // Get and set the package details
+  Future getPackageDetails() async{
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+  }
 
   // List of bottom navigation bar items
   List<BottomNavigationBarItem> _bottomNavigationBarItems = [
@@ -53,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    getPackageDetails();
     _pageController = PageController();
   }
 
@@ -92,94 +112,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
     CollectionReference usersDB = Firestore.instance.collection("Users");
 
-    List<PopupMenuItem> oveflowMenuItems = [
-      PopupMenuItem(
-        child: Text("View Previous Games"),
-        value: "VPG",
-      ),
-      PopupMenuItem(
-        child: Text("Log Out"),
-        value: "LO",
-      ),
-    ];
-
-    void onSelectOverflowMenuItem(item) async {
-      switch(item){
-        case "VPG":
-          Navigator.of(context).pushNamed('/PreviousGamesTable');
-          break;
-        case "LO":
-          FirebaseAuth.instance.signOut();
-          final SharedPreferences prefs = await SharedPreferences.getInstance();
-          prefs.setString("Email", "");
-          prefs.setString("Password", "");
-          Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
-          break;
-      }
-    }
-
     return Scaffold (
       appBar: AppBar(
-        centerTitle: true,
+        //centerTitle: true,
         elevation: 2.0,
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: (){
-            showModalBottomSheet(
-              context: context,
-              builder: (builder){
-                return Container(
-                  height: 250.0,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[
-                        ListTile(
-                          leading: Icon(OMIcons.accountCircle),
-                          title: Text(globals.loggedInUser.email),
-                        ),
-                        Divider(
-                          height: 0.0,
-                          color: Colors.grey,
-                        ),
-                        ListTile(
-                          leading: Icon(Icons.history),
-                          title: Text("View Previous Games"),
-                          onTap: (){
-                            Navigator.pop(context);
-                            Navigator.of(context).pushNamed('/PreviousGamesTable');
-                          },
-                        ),
-                        ListTile(
-                          leading: Icon(GroovinMaterialIcons.logout),
-                          title: Text("Log Out"),
-                          onTap: () async {
-                            FirebaseAuth.instance.signOut();
-                            final SharedPreferences prefs = await SharedPreferences.getInstance();
-                            prefs.setString("Email", "");
-                            prefs.setString("Password", "");
-                            Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
-                          },
-                        ),
-                        Divider(
-                          height: 0.0,
-                          color: Colors.grey,
-                        ),
-                        ListTile(
-                          leading: Icon(OMIcons.info),
-                          title: Text("About"),
-                          onTap: (){
-
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            );
-          },
-        ),
         title: StreamBuilder<List<QuerySnapshot>>(
           stream: StreamZip([usersDB.snapshots(), globals.gamesDB.snapshots()]),
           builder: (context, snapshot) {
@@ -229,18 +166,108 @@ class _HomeScreenState extends State<HomeScreen> {
 
           },
         ),
-        /*actions: <Widget>[
-          PopupMenuButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: Colors.black,
-            ),
-            itemBuilder: (builder){
-              return oveflowMenuItems;
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: (){
+              showModalBottomSheet(
+                context: context,
+                builder: (builder){
+                  return Container(
+                    height: 350.0,
+                    // try and just do a Column with MainAxisSize.min and no height in Container
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          ListTile(
+                            leading: Icon(OMIcons.accountCircle),
+                            title: Text(globals.loggedInUser.email),
+                          ),
+                          Divider(
+                            height: 0.0,
+                            color: Colors.grey,
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.history),
+                            title: Text("View Previous Games"),
+                            onTap: (){
+                              Navigator.pop(context);
+                              Navigator.of(context).pushNamed('/PreviousGamesTable');
+                            },
+                          ),
+                          ListTile(
+                            leading: Icon(OMIcons.email),
+                            title: Text("Email List"),
+                            onTap: (){
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: Icon(GroovinMaterialIcons.logout),
+                            title: Text("Log Out"),
+                            onTap: () async {
+                              FirebaseAuth.instance.signOut();
+                              final SharedPreferences prefs = await SharedPreferences.getInstance();
+                              prefs.setString("Email", "");
+                              prefs.setString("Password", "");
+                              Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
+                            },
+                          ),
+                          Divider(
+                            height: 0.0,
+                            color: Colors.grey,
+                          ),
+                          ListTile(
+                            leading: Icon(OMIcons.info),
+                            title: Text("MySoftballTeam by GroovinChip"),
+                            subtitle: Text("Version " + _packageInfo.version),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.twitter, color: Colors.blue),
+                                onPressed: (){
+                                  launch("https:twitter.com/GroovinChipDev");
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.github_circle),
+                                onPressed: (){
+                                  launch("https:github.com/GroovinChip");
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.gmail),
+                                color: Colors.red,
+                                onPressed: (){
+                                  launch("mailto:groovinchip@gmail.com");
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.discord, color: Colors.deepPurpleAccent),
+                                onPressed: (){
+                                  launch("https://discord.gg/CFnBRue");
+                                },
+                              ),
+                              /*IconButton(
+                                icon: Icon(GroovinMaterialIcons.flutter),
+                                color: Colors.blue,
+                                onPressed: (){
+
+                                },
+                              ),*/
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
             },
-            onSelected: onSelectOverflowMenuItem,
-          )
-        ],*/
+          ),
+        ],
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: PageView(
@@ -263,84 +290,6 @@ class _HomeScreenState extends State<HomeScreen> {
             currentIndex: _page,
             onTap: navigationTapped,
           ),
-          /*Container(
-            height: 50.0,
-            child: BottomAppBar(
-              elevation: 0.0,
-              color: Colors.grey[50],
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.menu),
-                    onPressed: (){
-
-                    },
-                  ),
-                  StreamBuilder<List<QuerySnapshot>>(
-                    stream: StreamZip([usersDB.snapshots(), globals.gamesDB.snapshots()]),
-                    builder: (context, snapshot) {
-                      if(snapshot.hasData){
-                        final usersStream = snapshot.data[0];
-                        final gamesStream = snapshot.data[1];
-                        List<DocumentSnapshot> users = usersStream.documents;
-                        List<DocumentSnapshot> games = gamesStream.documents;
-                        int wins = 0;
-                        int losses = 0;
-
-                        for(int index = 0; index < users.length; index++) {
-                          if (users[index].documentID == globals.loggedInUser.uid) {
-                            DocumentSnapshot team = users[index];
-                            globals.teamName = "${team['Team']}";
-
-                            for(int index2 = 0; index2 < games.length; index2++) {
-                              DocumentSnapshot game = games[index2];
-                              String winOrLoss = "${game['WinOrLoss']}";
-                              if(winOrLoss  == null){
-
-                              } else if(winOrLoss == "Unknown") {
-
-                              } else if(winOrLoss == "Win") {
-                                wins += 1;
-                              } else if(winOrLoss == "Loss") {
-                                losses += 1;
-                              }
-                            }
-
-                            return Text(
-                              globals.teamName + " " + wins.toString() + " - " + losses.toString(),
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20.0
-                              ),
-                            );
-                          }
-                        }
-                      } else {
-                        return Text(
-                          "MySoftballTeam",
-                          style: TextStyle(
-                              color: Colors.black
-                          ),
-                        );
-                      }
-
-                    },
-                  ),
-                  PopupMenuButton(
-                    icon: Icon(
-                      Icons.more_vert,
-                      color: Colors.black,
-                    ),
-                    itemBuilder: (builder){
-                      return oveflowMenuItems;
-                    },
-                    onSelected: onSelectOverflowMenuItem,
-                  )
-                ],
-              ),
-            ),
-          )*/
         ],
       ),
     );

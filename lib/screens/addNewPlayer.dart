@@ -50,7 +50,9 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add New Player"),
+        title: Text("Add New Player", style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Column(
