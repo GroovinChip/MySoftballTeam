@@ -53,6 +53,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
         title: Text("Add New Player", style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black),
+        elevation: 2.0,
       ),
       body: SingleChildScrollView(
         child: Column(
