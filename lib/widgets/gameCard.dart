@@ -144,12 +144,6 @@ class GameCard extends StatelessWidget{
                   icon: Icon(GroovinMaterialIcons.trophy_variant_outline),
                   tooltip: "Record score",
                   onPressed: () {
-                    //Navigator.of(context).pushNamed("/SetLineup");
-                    /*final SnackBar snackBar = SnackBar(
-                      content: Text("This feature is not available yet"),
-                      duration: Duration(seconds: 1),
-                    );
-                    Scaffold.of(context).showSnackBar(snackBar);*/
                     showDialog(
                       context: context,
                       builder: (_) =>
@@ -168,9 +162,10 @@ class GameCard extends StatelessWidget{
                                     Padding(
                                       padding: const EdgeInsets.only(right: 24.0),
                                       child: SizedBox(
-                                        width: 50.0,
+                                        width: 25.0,
                                         child: TextField(
                                           keyboardType: TextInputType.number,
+                                          maxLength: 3,
                                         ),
                                       ),
                                     )
@@ -186,9 +181,10 @@ class GameCard extends StatelessWidget{
                                     Padding(
                                       padding: const EdgeInsets.only(right: 24.0),
                                       child: SizedBox(
-                                        width: 50.0,
+                                        width: 25.0,
                                         child: TextField(
                                           keyboardType: TextInputType.number,
+                                          maxLength: 3,
                                         ),
                                       ),
                                     )
@@ -198,7 +194,7 @@ class GameCard extends StatelessWidget{
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
                                     FlatButton(
-                                      child: Text("Save"),
+                                      child: Text("Save", style: TextStyle(color: Colors.indigo),),
                                       onPressed: (){
                                         Navigator.pop(context);
                                       },
