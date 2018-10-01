@@ -2,7 +2,6 @@ import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:my_softball_team/widgets/seasonSchedule.dart';
 import 'package:my_softball_team/widgets/teamList.dart';
 import 'package:my_softball_team/widgets/statsTable.dart';
@@ -84,13 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    /*SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: Colors.grey[50],
-        systemNavigationBarColor: Colors.grey[50],
-        systemNavigationBarIconBrightness: Brightness.dark
-    ));*/
-
     // List of FloatingActionButtons to show only on 'Games' and 'Team' pages
     List<Widget> _fabs = [
       FloatingActionButton.extended(
@@ -144,6 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       wins += 1;
                     } else if(winOrLoss == "Loss") {
                       losses += 1;
+                    } else if(winOrLoss == "Tie") {
+
                     }
                   }
 

@@ -14,6 +14,8 @@ class GameCard extends StatelessWidget{
   String gameLocation;
   String fullText;
   bool isPreviousGame;
+  TextEditingController ownTeamScoreController = TextEditingController();
+  TextEditingController opposingTeamScoreController = TextEditingController();
 
   GameCard({
     this.gameID,
@@ -148,7 +150,12 @@ class GameCard extends StatelessWidget{
                       context: context,
                       builder: (_) =>
                         SimpleDialog(
-                          title: Text("Record Score"),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text("Record Score")
+                            ],
+                          ),
                           children: <Widget>[
                             Column(
                               children: <Widget>[
@@ -164,6 +171,7 @@ class GameCard extends StatelessWidget{
                                       child: SizedBox(
                                         width: 25.0,
                                         child: TextField(
+                                          controller: ownTeamScoreController,
                                           keyboardType: TextInputType.number,
                                           maxLength: 3,
                                         ),
@@ -183,6 +191,7 @@ class GameCard extends StatelessWidget{
                                       child: SizedBox(
                                         width: 25.0,
                                         child: TextField(
+                                          controller: opposingTeamScoreController,
                                           keyboardType: TextInputType.number,
                                           maxLength: 3,
                                         ),
@@ -191,11 +200,25 @@ class GameCard extends StatelessWidget{
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     FlatButton(
                                       child: Text("Save", style: TextStyle(color: Colors.indigo),),
-                                      onPressed: (){
+                                      onPressed: () {
+                                        int ownScore = int.parse(ownTeamScoreController.text);
+                                        int opposingScore = int.parse(opposingTeamScoreController.text);
+                                        String winOrLoss;
+                                        if(ownScore > opposingScore){
+                                          winOrLoss = "Win";
+                                        } else {
+                                          winOrLoss = "Loss";
+                                        }
+                                        if(ownScore == opposingScore){
+                                          winOrLoss = "Unknown"; //TODO figure something out with this
+                                        }
+                                        globals.gamesDB.document(gameID).updateData({
+                                          "WinOrLoss":winOrLoss
+                                        });
                                         Navigator.pop(context);
                                       },
                                     ),
