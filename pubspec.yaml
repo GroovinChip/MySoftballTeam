@@ -15,11 +15,16 @@ dependencies:
   outline_material_icons: ^0.1.0
   package_info: ^0.3.2
   url_launcher: ^3.0.3
+  flutter_email_sender: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.6.1"
 
+flutter_icons:
+  android: true
+  image_path: "assets/icon2.png"
 
 flutter:
 

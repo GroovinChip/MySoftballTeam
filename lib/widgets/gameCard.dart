@@ -1,8 +1,12 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/widgets/editGameModal.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class GameCard extends StatelessWidget{
   String gameID;
@@ -125,19 +129,54 @@ class GameCard extends StatelessWidget{
                   globals.selectedGameDocument = gameID;
                   Navigator.of(context).push(new MaterialPageRoute<Null>(
                       builder: (BuildContext context) {
-                        return new EditGameModal();
+                        return EditGameModal();
                       },
                       fullscreenDialog: true
                   ));
                 },
               ),
-              IconButton(
-                icon: Icon(OMIcons.email),
-                tooltip: "Send game reminder",
+              /*IconButton(
+                icon: Icon(OMIcons.navigation),
+                tooltip: "Drive to Game",
                 onPressed: () {
                   globals.selectedGameDocument = gameID;
-                  Navigator.of(context).pushNamed(
-                      '/SendGameReminderEmailScreen');
+
+                },
+              ),*/
+              StreamBuilder<QuerySnapshot>(
+                stream: Firestore.instance.collection("Teams").document(globals.teamName).collection("EmailList").snapshots(),
+                builder: (context, snapshot){
+                  if(snapshot.hasData == false) {
+                    return IconButton(
+                      icon: Icon(OMIcons.email),
+                      tooltip: "Send game reminder",
+                      onPressed: () async {
+
+                      },
+                    );
+                  } else {
+                    List<String> emailAddresses = [];
+                    for(int i = 0; i < snapshot.data.documents.length; i++){
+                      DocumentSnapshot ds = snapshot.data.documents[i];
+                      emailAddresses.add(ds.documentID);
+                    }
+                    String s = "";
+                    emailAddresses.forEach((value) {
+                      s += value + "; ";
+                    });
+                    return IconButton(
+                      icon: Icon(OMIcons.email),
+                      tooltip: "Send game reminder",
+                      onPressed: () async {
+                        final Email email = Email(
+                          body: '',
+                          subject: 'Game Today!',
+                          recipients: emailAddresses,
+                        );
+                        await FlutterEmailSender.send(email);
+                      },
+                    );
+                  }
                 },
               ),
               Padding(
