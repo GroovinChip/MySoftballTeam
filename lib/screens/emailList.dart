@@ -22,9 +22,10 @@ class _EmailListState extends State<EmailList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).canvasColor,
         iconTheme: IconThemeData(color: Colors.black),
-        elevation: 2.0,
+        elevation: 0.0,
+        centerTitle: true,
         title: Text("Email List", style: TextStyle(color: Colors.black),),
       ),
       body: StreamBuilder<QuerySnapshot>(
@@ -59,12 +60,13 @@ class _EmailListState extends State<EmailList> {
                                         Padding(
                                           padding: const EdgeInsets.only(left: 8.0),
                                           child: ListTile(
-                                            leading: Icon(OMIcons.email),
                                             title: TextField(
                                               controller: _editEmailAddressFieldContoller,
                                               keyboardType: TextInputType.emailAddress,
                                               decoration: InputDecoration(
-                                                labelText: selectedEmail
+                                                labelText: selectedEmail,
+                                                prefixIcon: Icon(OMIcons.email),
+                                                border: OutlineInputBorder(),
                                               ),
                                             ),
                                           ),
@@ -114,6 +116,7 @@ class _EmailListState extends State<EmailList> {
           }
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         icon: Icon(Icons.add),
         label: Text("Add Email"),
@@ -121,6 +124,7 @@ class _EmailListState extends State<EmailList> {
           showDialog(
             context: context,
             builder: (_) => SimpleDialog(
+              title: Text("Add email"),
               children: <Widget>[
                 Column(
                   mainAxisSize: MainAxisSize.min,
@@ -130,12 +134,13 @@ class _EmailListState extends State<EmailList> {
                       child: Column(
                         children: <Widget>[
                           ListTile(
-                            leading: Icon(OMIcons.email),
                             title: TextField(
                               controller: _emailAddressFieldContoller,
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
-                                labelText: "Email Address"
+                                labelText: "Email Address",
+                                border: OutlineInputBorder(),
+                                prefixIcon: Icon(OMIcons.email),
                               ),
                             ),
                           ),

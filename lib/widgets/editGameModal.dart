@@ -35,8 +35,9 @@ class _EditGameModalState extends State<EditGameModal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 2.0,
-        backgroundColor: Colors.white,
+        elevation: 0.0,
+        backgroundColor: Theme.of(context).canvasColor,
+        centerTitle: true,
         title: Text(
           "Edit Game",
           style: TextStyle(
@@ -221,6 +222,7 @@ class _EditGameModalState extends State<EditGameModal> {
                                     onChanged: _chooseHomeOrAway,
                                     hint: Text("${game['HomeOrAway']}"),
                                     value: _homeOrAway,
+                                    isExpanded: true,
                                   ),
                                 ),
                                 Row(

@@ -16,6 +16,7 @@ dependencies:
   package_info: ^0.3.2
   url_launcher: ^3.0.3
   flutter_email_sender: ^1.0.1
+  rounded_modal: ^1.0.0
 
 dev_dependencies:
   flutter_test:

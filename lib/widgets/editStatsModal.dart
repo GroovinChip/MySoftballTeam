@@ -44,8 +44,9 @@ class _EditStatsModalState extends State<EditStatsModal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 2.0,
-        backgroundColor: Colors.white,
+        elevation: 0.0,
+        backgroundColor: Theme.of(context).canvasColor,
+        centerTitle: true,
         title: Text(
           "Update Stats",
           style: TextStyle(

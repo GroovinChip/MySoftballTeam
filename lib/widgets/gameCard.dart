@@ -47,6 +47,7 @@ class GameCard extends StatelessWidget{
     }
     return Card(
       elevation: 2.0,
+      //shape: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

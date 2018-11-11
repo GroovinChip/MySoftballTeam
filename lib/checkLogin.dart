@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_softball_team/screens/homeScreen.dart';
+import 'package:my_softball_team/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/screens/login.dart';

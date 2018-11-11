@@ -12,6 +12,7 @@ import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
 import 'dart:async';
+import 'package:rounded_modal/rounded_modal.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -106,9 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold (
       appBar: AppBar(
-        //centerTitle: true,
-        elevation: 2.0,
-        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0.0,
+        backgroundColor: Theme.of(context).canvasColor,
         title: StreamBuilder<List<QuerySnapshot>>(
           stream: StreamZip([usersDB.snapshots(), globals.gamesDB.snapshots()]),
           builder: (context, snapshot) {
@@ -163,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: Icon(Icons.more_vert),
             onPressed: (){
-              showModalBottomSheet(
+              showRoundedModalBottomSheet(
                 context: context,
                 builder: (builder){
                   return Container(
@@ -178,32 +179,38 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 0.0,
                           color: Colors.grey,
                         ),
-                        ListTile(
-                          leading: Icon(Icons.history),
-                          title: Text("View Previous Games"),
-                          onTap: (){
-                            Navigator.pop(context);
-                            Navigator.of(context).pushNamed('/PreviousGamesTable');
-                          },
+                        Material(
+                          child: ListTile(
+                            leading: Icon(Icons.history),
+                            title: Text("View Previous Games"),
+                            onTap: (){
+                              Navigator.pop(context);
+                              Navigator.of(context).pushNamed('/PreviousGamesTable');
+                            },
+                          ),
                         ),
-                        ListTile(
-                          leading: Icon(OMIcons.email),
-                          title: Text("Email List"),
-                          onTap: (){
-                            Navigator.pop(context);
-                            Navigator.of(context).pushNamed('/EmailList');
-                          },
+                        Material(
+                          child: ListTile(
+                            leading: Icon(OMIcons.email),
+                            title: Text("Email List"),
+                            onTap: (){
+                              Navigator.pop(context);
+                              Navigator.of(context).pushNamed('/EmailList');
+                            },
+                          ),
                         ),
-                        ListTile(
-                          leading: Icon(GroovinMaterialIcons.logout),
-                          title: Text("Log Out"),
-                          onTap: () async {
-                            FirebaseAuth.instance.signOut();
-                            final SharedPreferences prefs = await SharedPreferences.getInstance();
-                            prefs.setString("Email", "");
-                            prefs.setString("Password", "");
-                            Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
-                          },
+                        Material(
+                          child: ListTile(
+                            leading: Icon(GroovinMaterialIcons.logout),
+                            title: Text("Log Out"),
+                            onTap: () async {
+                              FirebaseAuth.instance.signOut();
+                              final SharedPreferences prefs = await SharedPreferences.getInstance();
+                              prefs.setString("Email", "");
+                              prefs.setString("Password", "");
+                              Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
+                            },
+                          ),
                         ),
                         Divider(
                           height: 0.0,
@@ -214,42 +221,44 @@ class _HomeScreenState extends State<HomeScreen> {
                           title: Text("MySoftballTeam by GroovinChip"),
                           subtitle: Text("Version " + _packageInfo.version),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(GroovinMaterialIcons.twitter, color: Colors.blue),
-                              onPressed: (){
-                                launch("https:twitter.com/GroovinChipDev");
-                              },
-                            ),
-                            IconButton(
-                              icon: Icon(GroovinMaterialIcons.github_circle),
-                              onPressed: (){
-                                launch("https:github.com/GroovinChip");
-                              },
-                            ),
-                            IconButton(
-                              icon: Icon(GroovinMaterialIcons.gmail),
-                              color: Colors.red,
-                              onPressed: (){
-                                launch("mailto:groovinchip@gmail.com");
-                              },
-                            ),
-                            IconButton(
-                              icon: Icon(GroovinMaterialIcons.discord, color: Colors.deepPurpleAccent),
-                              onPressed: (){
-                                launch("https://discord.gg/CFnBRue");
-                              },
-                            ),
-                            /*IconButton(
-                              icon: Icon(GroovinMaterialIcons.flutter),
-                              color: Colors.blue,
-                              onPressed: (){
+                        Material(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.twitter, color: Colors.blue),
+                                onPressed: (){
+                                  launch("https:twitter.com/GroovinChipDev");
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.github_circle),
+                                onPressed: (){
+                                  launch("https:github.com/GroovinChip");
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.gmail),
+                                color: Colors.red,
+                                onPressed: (){
+                                  launch("mailto:groovinchip@gmail.com");
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(GroovinMaterialIcons.discord, color: Colors.deepPurpleAccent),
+                                onPressed: (){
+                                  launch("https://discord.gg/CFnBRue");
+                                },
+                              ),
+                              /*IconButton(
+                                icon: Icon(GroovinMaterialIcons.flutter),
+                                color: Colors.blue,
+                                onPressed: (){
 
-                              },
-                            ),*/
-                          ],
+                                },
+                              ),*/
+                            ],
+                          ),
                         ),
                       ],
                     ),

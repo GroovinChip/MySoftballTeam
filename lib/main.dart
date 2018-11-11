@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/checkLogin.dart';
-import 'package:my_softball_team/screens/addNewGame.dart';
+import 'package:my_softball_team/screens/add_new_game.dart';
 import 'package:my_softball_team/screens/addNewPlayer.dart';
 import 'package:my_softball_team/screens/emailList.dart';
 import 'package:my_softball_team/screens/sendGameReminderEmail.dart';
@@ -8,7 +8,7 @@ import 'package:my_softball_team/screens/setLineup.dart';
 import 'package:my_softball_team/screens/signup.dart';
 import 'package:my_softball_team/widgets/previousGamesTable.dart';
 import 'package:my_softball_team/widgets/seasonSchedule.dart';
-import 'package:my_softball_team/screens/homeScreen.dart';
+import 'package:my_softball_team/screens/home_screen.dart';
 import 'package:my_softball_team/screens/login.dart';
 
 void main() => runApp(LoadApplication());
@@ -20,7 +20,8 @@ class LoadApplication extends StatelessWidget {
     return MaterialApp(
       title: 'My Softball Team',
       theme: ThemeData(
-          primarySwatch: Colors.indigo,
+          primaryColor: Colors.indigo,
+          accentColor: Colors.indigoAccent,
           fontFamily: 'sourcesanspro'
       ),
       home: CheckLogin(),

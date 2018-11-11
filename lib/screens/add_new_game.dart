@@ -36,8 +36,9 @@ class _AddNewGameState extends State<AddNewGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 2.0,
-        backgroundColor: Colors.white,
+        elevation: 0.0,
+        centerTitle: true,
+        backgroundColor: Theme.of(context).canvasColor,
         title: Text(
           "Add New Game",
           style: TextStyle(
@@ -205,6 +206,7 @@ class _AddNewGameState extends State<AddNewGame> {
                         onChanged: _chooseHomeOrAway,
                         hint: Text("Home or Away"),
                         value: _homeOrAway,
+                        isExpanded: true,
                       ),
                       SizedBox(height: 25.0),
                       Row(
