@@ -207,7 +207,7 @@ convertStringDateToDateTime(String date, String time) {
       day = "31";
       break;
   }
-  if(splittedTimeString[4] == "AM") {
+  if(splittedTimeString[5] == "A") {
     switch(splittedTimeString[0]){
       case '1':
         hour = "01";
@@ -286,8 +286,8 @@ convertStringDateToDateTime(String date, String time) {
         break;
     }
   }
-
-  if(splittedTimeString[2].length < 2) {
+  minute = splittedTimeString[2] + splittedTimeString[3];
+  /*if(splittedTimeString[2].length < 2) {
     switch(splittedTimeString[2]){
       case "0":
         minute = "00";
@@ -322,7 +322,7 @@ convertStringDateToDateTime(String date, String time) {
     }
   } else {
     minute = splittedTimeString[2];
-  }
+  }*/
 
   toParseAsDate = year + month + day + "T" + hour + minute;
   //toParseAsDate = "$year$month$day$timeDenotion$hour$minute";

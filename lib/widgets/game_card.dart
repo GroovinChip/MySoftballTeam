@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/editGameModal.dart';
+import 'package:my_softball_team/widgets/edit_game.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
@@ -56,8 +56,8 @@ class GameCard extends StatelessWidget{
             child: Text(
               fullText,
               style: TextStyle(
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.bold
+                fontSize: isPreviousGame == false ? 26.0 : 20,
+                fontWeight: FontWeight.bold
               ),
             ),
           ),
@@ -101,13 +101,13 @@ class GameCard extends StatelessWidget{
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               FlatButton(
-                                child: Text("No"),
+                                child: Text("No", style: TextStyle(color: Theme.of(context).accentColor),),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
                               ),
                               FlatButton(
-                                child: Text("Yes"),
+                                child: Text("Yes", style: TextStyle(color: Theme.of(context).accentColor),),
                                 onPressed: () {
                                   globals.gamesDB.document(
                                       globals.selectedGameDocument)
@@ -130,7 +130,7 @@ class GameCard extends StatelessWidget{
                   globals.selectedGameDocument = gameID;
                   Navigator.of(context).push(new MaterialPageRoute<Null>(
                       builder: (BuildContext context) {
-                        return EditGameModal();
+                        return EditGame();
                       },
                       fullscreenDialog: true
                   ));

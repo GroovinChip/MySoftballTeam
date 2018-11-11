@@ -2,9 +2,9 @@ import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_softball_team/widgets/seasonSchedule.dart';
-import 'package:my_softball_team/widgets/teamList.dart';
-import 'package:my_softball_team/widgets/statsTable.dart';
+import 'package:my_softball_team/widgets/season_schedule.dart';
+import 'package:my_softball_team/widgets/team_list.dart';
+import 'package:my_softball_team/widgets/stats_table.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
@@ -145,7 +145,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Text(
                     globals.teamName + " (" + DateTime.now().year.toString() + ") " + wins.toString() + " - " + losses.toString(),
                     style: TextStyle(
-                      color: Colors.black
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold
                     ),
                   );
                 }

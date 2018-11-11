@@ -2,15 +2,15 @@ import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/editGameModal.dart';
-import 'package:my_softball_team/widgets/gameCard.dart';
+import 'package:my_softball_team/widgets/edit_game.dart';
+import 'package:my_softball_team/widgets/game_card.dart';
 
-class PreviousGamesTable extends StatefulWidget {
+class PreviousGamesList extends StatefulWidget {
   @override
-  _PreviousGamesTableState createState() => _PreviousGamesTableState();
+  _PreviousGamesListState createState() => _PreviousGamesListState();
 }
 
-class _PreviousGamesTableState extends State<PreviousGamesTable> {
+class _PreviousGamesListState extends State<PreviousGamesList> {
 
   DateTime today = DateTime.now();
 
@@ -24,6 +24,7 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
         title: Text("Previous Games",
           style: TextStyle(
             color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
         iconTheme: IconThemeData(color: Colors.black),
@@ -67,11 +68,17 @@ class _PreviousGamesTableState extends State<PreviousGamesTable> {
               }
             }
 
-            return ListView.builder(
+            return gameCards.length > 0 ? ListView.builder(
               itemCount: gameCards.length,
               itemBuilder: (context, index){
                 return gameCards[index];
               },
+            ) :
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 75.0),
+                child: Text("No previous games"),
+              ),
             );
           }
         },

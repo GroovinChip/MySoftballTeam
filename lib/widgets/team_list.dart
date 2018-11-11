@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/editStatsModal.dart';
+import 'package:my_softball_team/widgets/edit_stats.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
@@ -57,7 +57,7 @@ class _TeamListState extends State<TeamList> {
                               globals.selectedPlayerName = "${ds['PlayerName']}";
                               Navigator.of(context).push(MaterialPageRoute<Null>(
                                   builder: (BuildContext context) {
-                                    return EditStatsModal();
+                                    return EditStats();
                                   },
                                   fullscreenDialog: true
                               ));

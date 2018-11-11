@@ -22,10 +22,13 @@ class _StatsTableState extends State<StatsTable> {
       builder: (context, snapshot){
         List<DataColumn> columns = [
           DataColumn(
-            label: Text("Players"),
-            onSort: (int columnIndex, bool ascending){
-              print("Column " + columnIndex.toString() + " tapped");
-            }
+            label: Text(
+              "Players",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ];
         List<DataRow> rows = [];
@@ -40,7 +43,13 @@ class _StatsTableState extends State<StatsTable> {
           // Create the columns
           for(int statsIndex = 0; statsIndex < statsInStream.length; statsIndex++) {
             columns.add(DataColumn(
-              label: Text(statsInStream[statsIndex].documentID),
+              label: Text(
+                statsInStream[statsIndex].documentID,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onSort: (int columnIndex, bool sortDirection){
                 print(sortDirection);
                 sortAscending = sortDirection;

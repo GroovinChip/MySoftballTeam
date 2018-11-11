@@ -26,7 +26,13 @@ class _EmailListState extends State<EmailList> {
         iconTheme: IconThemeData(color: Colors.black),
         elevation: 0.0,
         centerTitle: true,
-        title: Text("Email List", style: TextStyle(color: Colors.black),),
+        title: Text(
+          "Email List",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: Firestore.instance.collection("Teams").document(globals.teamName).collection("EmailList").snapshots(),

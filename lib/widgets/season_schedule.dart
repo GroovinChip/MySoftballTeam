@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/editGameModal.dart';
+import 'package:my_softball_team/widgets/edit_game.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
-import 'package:my_softball_team/widgets/gameCard.dart';
+import 'package:my_softball_team/widgets/game_card.dart';
 
 class SeasonSchedule extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
 
         List<Widget> gameCards = [];
 
-        if(snapshot.hasData == true) {
+        if(snapshot.hasData) {
 
           List<DocumentSnapshot> games = snapshot.data.documents;
 
@@ -61,15 +61,21 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
             }
           }
 
-          return ListView.builder(
+          return gameCards.length > 0 ? ListView.builder(
             itemCount: gameCards.length,
             itemBuilder: (context, index){
               return gameCards[index];
             },
+          ) :
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 75.0),
+              child: Text("No games scheduled"),
+            ),
           );
 
         } else {
-          return Center(child: Text("No Games in the Schedule"));
+          return Center(child: Text("Data not found"));
         }
       },
     );
