@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/check_login.dart';
 import 'package:my_softball_team/screens/add_new_game.dart';
-import 'package:my_softball_team/screens/addNewPlayer.dart';
+import 'package:my_softball_team/screens/add_new_player.dart';
 import 'package:my_softball_team/screens/emailList.dart';
 import 'package:my_softball_team/screens/setLineup.dart';
 import 'package:my_softball_team/screens/signup.dart';

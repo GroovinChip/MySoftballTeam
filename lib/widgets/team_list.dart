@@ -40,7 +40,8 @@ class _TeamListState extends State<TeamList> {
                 children: <Widget>[
                   ListTile(
                     leading: CircleAvatar(
-                      child: Text("${ds['PlayerName']}"[0]),
+                      child: Text("${ds['PlayerName']}"[0], style: TextStyle(color: Colors.white),),
+                      backgroundColor: Theme.of(context).accentColor,
                     ),
                     title: Text("${ds['PlayerName']}",
                       style: TextStyle(fontWeight: FontWeight.bold),

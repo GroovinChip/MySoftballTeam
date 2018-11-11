@@ -167,6 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: (){
               showRoundedModalBottomSheet(
                 context: context,
+                dismissOnTap: false,
                 builder: (builder){
                   return Container(
                     child: Column(

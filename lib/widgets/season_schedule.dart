@@ -69,7 +69,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
           ) :
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 75.0),
+              padding: const EdgeInsets.only(bottom: 50.0),
               child: Text("No games scheduled"),
             ),
           );

@@ -130,9 +130,9 @@ packages:
   flutter_email_sender:
     dependency: "direct main"
     description:
-      name: flutter_email_sender
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "C:\\Users\\groov\\Flutter_Projects\\flutter_email_sender"
+      relative: false
+    source: path
     version: "1.0.1"
   flutter_launcher_icons:
     dependency: "direct dev"
