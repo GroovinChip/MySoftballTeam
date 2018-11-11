@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.2" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.11" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.4" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.7.3" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/package_info-0.3.2" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-3.0.3" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_email_sender-1.0.0" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.20" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.7.4" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.4.3" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_email_sender-1.0.1" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
