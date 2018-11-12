@@ -13,6 +13,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:package_info/package_info.dart';
 import 'dart:async';
 import 'package:rounded_modal/rounded_modal.dart';
+import 'package:modal_drawer_handle/modal_drawer_handle.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -173,6 +174,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ModalDrawerHandle(),
+                        ),
                         ListTile(
                           leading: Icon(OMIcons.accountCircle),
                           title: Text(globals.loggedInUser.email),
@@ -207,9 +212,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             title: Text("Log Out"),
                             onTap: () async {
                               FirebaseAuth.instance.signOut();
-                              final SharedPreferences prefs = await SharedPreferences.getInstance();
-                              prefs.setString("Email", "");
-                              prefs.setString("Password", "");
+                              SharedPreferences prefs = await SharedPreferences.getInstance();
+                              prefs.setString("Team", "");
                               Navigator.of(context).pushNamedAndRemoveUntil('/LoginPage',(Route<dynamic> route) => false);
                             },
                           ),

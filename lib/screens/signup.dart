@@ -32,11 +32,6 @@ class _SignupState extends State<Signup> {
     });
   }
 
-  void _saveValuesToStorage(String teamName) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("TeamName", teamName);
-  }
-
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -68,15 +63,15 @@ class _SignupState extends State<Signup> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           SizedBox(
                             height: 10.0,
                           ),
                           TextField(
                             decoration: InputDecoration(
-                              icon: Icon(Icons.person),
+                              prefixIcon: Icon(Icons.person),
                               labelText: "*Name",
+                              border: OutlineInputBorder(),
                             ),
                             controller: _nameController,
                             keyboardType: TextInputType.text,
@@ -86,8 +81,9 @@ class _SignupState extends State<Signup> {
                           ),
                           TextField(
                             decoration: InputDecoration(
-                              icon: Icon(Icons.email),
+                              prefixIcon: Icon(Icons.email),
                               labelText: "*Email Address",
+                              border: OutlineInputBorder(),
                             ),
                             controller: _emailController,
                             keyboardType: TextInputType.emailAddress,
@@ -97,7 +93,8 @@ class _SignupState extends State<Signup> {
                           ),
                           TextField(
                             decoration: InputDecoration(
-                              icon: Icon(Icons.lock),
+                              prefixIcon: Icon(Icons.lock),
+                              border: OutlineInputBorder(),
                               labelText: "*Password",
                             ),
 
@@ -111,33 +108,30 @@ class _SignupState extends State<Signup> {
                             children: <Widget>[
                               Icon(Icons.group, color: Colors.black45,),
                               SizedBox(
-                                width: 1.0,
-                              ),
-                              SizedBox(
                                 width: 15.0,
                               ),
-                              StreamBuilder<QuerySnapshot>(
-                                stream: Firestore.instance.collection("Teams").snapshots(),
-                                builder: (context, snapshot){
+                              Expanded(
+                                child: StreamBuilder<QuerySnapshot>(
+                                  stream: Firestore.instance.collection("Teams").snapshots(),
+                                  builder: (context, snapshot){
 
-                                  // Check if the snapshot is null
-                                  if (snapshot.data == null) {
-                                    return CircularProgressIndicator();
+                                    // Check if the snapshot is null
+                                    if (snapshot.data == null) {
+                                      return CircularProgressIndicator();
+                                    }
+
+                                    // Return a dropdownbutton with all the teams from the database
+                                    return DropdownButton(
+                                      items: snapshot.data.documents.map((DocumentSnapshot document) {
+                                        return DropdownMenuItem(child: Text(document.documentID), value: document.documentID);
+                                      }).toList(),
+                                      onChanged: _chooseTeam,
+                                      hint: Text("Join a Team"),
+                                      value: _team,
+                                      isExpanded: true,
+                                    );
                                   }
-
-                                  // Return a dropdownbutton with all the teams from the database
-                                  return DropdownButton(
-                                    items: snapshot.data.documents.map((DocumentSnapshot document) {
-                                      return DropdownMenuItem(child: Text(document.documentID), value: document.documentID);
-                                    }).toList(),
-                                    onChanged: _chooseTeam,
-                                    hint: Text("Join a Team"),
-                                    value: _team
-                                  );
-                                }
-                              ),
-                              SizedBox(
-                                width: 15.0,
+                                ),
                               ),
                             ],
                           ),
@@ -156,26 +150,16 @@ class _SignupState extends State<Signup> {
                                       children: <Widget>[
                                         Column(
                                           children: <Widget>[
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Icon(Icons.group, color: Colors.black45,),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(left: 8.0),
-                                                  child: SizedBox(
-                                                    width: 200.0,
-                                                    child: TextField(
-                                                      decoration: InputDecoration(
-                                                        hintText: "Team Name"
-                                                      ),
-                                                      controller: _teamNameController,
-                                                    ),
-                                                  ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(16.0),
+                                              child: TextField(
+                                                decoration: InputDecoration(
+                                                  prefixIcon: Icon(Icons.group, color: Colors.black45,),
+                                                  labelText: "Team Name",
+                                                  border: OutlineInputBorder(),
                                                 ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: 25.0,
+                                                controller: _teamNameController,
+                                              ),
                                             ),
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.end,

@@ -15,7 +15,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: globals.gamesDB.snapshots(),
+      stream: Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games").snapshots(),
       builder: (context, snapshot) {
 
         List<Widget> gameCards = [];

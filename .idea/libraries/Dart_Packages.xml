@@ -110,7 +110,7 @@
         <entry key="firebase_auth">
           <value>
             <list>
-              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.20/lib" />
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.6.2+1/lib" />
             </list>
           </value>
         </entry>
@@ -258,6 +258,13 @@
           <value>
             <list>
               <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/mime-0.9.6+2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="modal_drawer_handle">
+          <value>
+            <list>
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/modal_drawer_handle-1.0.3/lib" />
             </list>
           </value>
         </entry>
@@ -531,7 +538,7 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-0.1.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/datetime_picker_formfield-0.1.6/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/draggable_scrollbar-0.0.4/lib" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.5.20/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.6.2+1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.6.1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/front_end-0.1.6/lib" />
@@ -551,6 +558,7 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.3+1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.1.6/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/mime-0.9.6+2/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/modal_drawer_handle-1.0.3/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/multi_server_socket-1.0.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/node_preamble-1.4.4/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/outline_material_icons-0.1.0/lib" />

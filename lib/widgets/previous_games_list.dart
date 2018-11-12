@@ -30,7 +30,7 @@ class _PreviousGamesListState extends State<PreviousGamesList> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: globals.gamesDB.snapshots(),
+        stream: Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games").snapshots(),
         builder: (context, snapshot){
           List<Widget> gameCards = [];
           if(snapshot.hasData == false) {

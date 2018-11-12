@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart'
-    show FirebaseAuth, FirebaseUser;
+import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuth, FirebaseUser;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:my_softball_team/globals.dart' as globals;
@@ -26,16 +25,6 @@ class _LoginPageState extends State<LoginPage> {
   bool isChecked = false;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  void _rememberLogin() async {
-    if(isChecked == true){
-      print(globals.loggedInUser);
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString("Email", email);
-      prefs.setString("Password", password);
-      prefs.setString("TeamName", globals.teamName);
-    }
-  }
 
   @override
   void initState() {
@@ -78,8 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               TextField(
                                 decoration: InputDecoration(
-                                  icon: Icon(Icons.email),
+                                  prefixIcon: Icon(Icons.email),
                                   labelText: "Email Address",
+                                  border: OutlineInputBorder(),
                                 ),
                                 keyboardType: TextInputType.emailAddress,
                                 controller: _emailController,
@@ -89,28 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               TextField(
                                 decoration: InputDecoration(
-                                  icon: Icon(Icons.lock),
+                                  prefixIcon: Icon(Icons.lock),
                                   labelText: "Password",
+                                  border: OutlineInputBorder(),
                                 ),
                                 obscureText: true,
                                 controller: _passwordController,
-                              ),
-                              SizedBox(
-                                height: 25.0,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Text("Remember Me"),
-                                  Checkbox(
-                                    value: isChecked,
-                                    onChanged: (bool value) {
-                                      setState(() {
-                                        isChecked = value;
-                                      });
-                                    },
-                                  )
-                                ],
                               ),
                               SizedBox(
                                 height: 25.0,
@@ -144,16 +118,16 @@ class _LoginPageState extends State<LoginPage> {
                                               final firebaseUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
                                               if (firebaseUser.isEmailVerified == true) {
                                                 _scaffoldKey.currentState.showSnackBar(
-                                                    SnackBar(
-                                                      duration: Duration(seconds: 2),
-                                                      content:
-                                                      Row(
-                                                        children: <Widget>[
-                                                          CircularProgressIndicator(),
-                                                          Text("    Signing-In...")
-                                                        ],
-                                                      ),
-                                                    )
+                                                  SnackBar(
+                                                    duration: Duration(seconds: 2),
+                                                    content:
+                                                    Row(
+                                                      children: <Widget>[
+                                                        CircularProgressIndicator(),
+                                                        Text("    Signing-In...")
+                                                      ],
+                                                    ),
+                                                  )
                                                 );
                                                 globals.loggedInUser = firebaseUser; // add user to globals
 
@@ -165,7 +139,8 @@ class _LoginPageState extends State<LoginPage> {
                                                   }
                                                 }
 
-                                                _rememberLogin();
+                                                SharedPreferences prefs = await SharedPreferences.getInstance();
+                                                prefs.setString("Team", globals.teamName);
 
                                                 await Future.delayed(const Duration(seconds : 2));
                                                 Navigator.of(context).pushNamedAndRemoveUntil('/HomeScreen',(Route<dynamic> route) => false);

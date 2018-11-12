@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_softball_team/screens/home_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/screens/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckLogin extends StatefulWidget {
   @override
@@ -13,24 +13,17 @@ class CheckLogin extends StatefulWidget {
 class _CheckLoginState extends State<CheckLogin> {
 
   void _checkLoginState() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String email = prefs.get("Email");
-    String password = prefs.get("Password");
-    String teamName = prefs.get("TeamName");
-    if(email == null || email == ""){
-      if(password == null || password == ""){
-        Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()));
-      }
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    if(user != null){
+      globals.loggedInUser = user;
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String teamName = prefs.getString("Team");
+      if(teamName != null || teamName != "")
+        globals.teamName = teamName;
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
     } else {
       try {
-        final firebaseUser = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-        globals.loggedInUser = firebaseUser;
-        if(globals.loggedInUser.isEmailVerified == true) {
-          globals.teamName = teamName;
-          Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new HomeScreen()));
-        } else {
-          Navigator.pushReplacement(context, new MaterialPageRoute(builder: (BuildContext context) => new LoginPage()));
-        }
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
       } catch (e) {
         print(e);
       }
