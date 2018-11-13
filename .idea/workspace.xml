@@ -10,21 +10,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/check_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/check_login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/signup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/previous_games_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/previous_games_list.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/season_schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/season_schedule.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_softball_team.iml" beforeDir="false" afterPath="$PROJECT_DIR$/my_softball_team.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/.pub/" />
@@ -83,8 +69,8 @@
       <file leaf-file-name="home_screen.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/screens/home_screen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="178" column="51" lean-forward="true" selection-start-line="178" selection-start-column="51" selection-end-line="178" selection-end-column="51" />
+            <state relative-caret-position="40">
+              <caret line="179" column="26" selection-start-line="179" selection-start-column="26" selection-end-line="179" selection-end-column="26" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -393,7 +379,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1384" height="1044" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="18" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="17" weight="0.32998884" />
@@ -404,9 +389,9 @@
       <window_info anchor="right" id="Capture Analysis" order="13" />
       <window_info anchor="bottom" id="Event Log" order="19" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="20" weight="0.32842582" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.3204983" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.3204983" />
       <window_info anchor="bottom" id="Version Control" order="22" />
-      <window_info anchor="bottom" id="Terminal" order="23" weight="0.34541336" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="23" visible="true" weight="0.34541336" />
       <window_info anchor="right" id="Flutter Outline" order="10" weight="0.32930514" />
       <window_info anchor="bottom" id="Logcat" order="21" weight="0.3295583" />
       <window_info id="Captures" order="14" />
@@ -843,8 +828,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/home_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="178" column="51" lean-forward="true" selection-start-line="178" selection-start-column="51" selection-end-line="178" selection-end-column="51" />
+        <state relative-caret-position="40">
+          <caret line="179" column="26" selection-start-line="179" selection-start-column="26" selection-end-line="179" selection-end-column="26" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
