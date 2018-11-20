@@ -2,6 +2,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:datetime_picker_formfield/time_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:groovin_widgets/outline_dropdown_button.dart';
 import 'package:intl/intl.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:outline_material_icons/outline_material_icons.dart';
@@ -100,118 +101,13 @@ class _EditGameState extends State<EditGame> {
                                   ),
                                 ),
                               ),
-                              /*Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    SizedBox(
-                                      width: 185.0,
-                                      child: TextField(
-                                        controller: _editGameDateController,
-                                        enabled: false,
-                                        decoration: InputDecoration(
-                                          labelText: "${game['GameDate']}",
-                                          filled: true,
-                                          fillColor: Colors.black12,
-                                        ),
-                                      ),
-                                    ),
-                                    RaisedButton(
-                                      child: Text("Pick Game Date"),
-                                      onPressed: () async {
-                                        gameDate = await showDatePicker(
-                                            context: context,
-                                            initialDate: DateTime.now(),
-                                            firstDate:
-                                            DateTime(DateTime.now().year,
-                                                DateTime.now().month, DateTime.now().day),
-                                            lastDate: DateTime(DateTime.now().year, 12, 31)
-                                        );
-                                        year = gameDate.year.toString();
-                                        switch(gameDate.month){
-                                          case 1:
-                                            month = "January";
-                                            break;
-                                          case 2:
-                                            month = "February";
-                                            break;
-                                          case 3:
-                                            month = "March";
-                                            break;
-                                          case 4:
-                                            month = "April";
-                                            break;
-                                          case 5:
-                                            month = "May";
-                                            break;
-                                          case 6:
-                                            month = "June";
-                                            break;
-                                          case 7:
-                                            month = "July";
-                                            break;
-                                          case 8:
-                                            month = "August";
-                                            break;
-                                          case 9:
-                                            month = "September";
-                                            break;
-                                          case 10:
-                                            month = "October";
-                                            break;
-                                          case 11:
-                                            month = "November";
-                                            break;
-                                          case 12:
-                                            month = "December";
-                                            break;
-                                          default:
-                                            break;
-                                        }
-                                        _editGameDateController.text = month + " " + gameDate.day.toString() + ", " + gameDate.year.toString();
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),*/
-                              /*Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    SizedBox(
-                                      width: 185.0,
-                                      child: TextField(
-                                        controller: _editGameTimeController,
-                                        enabled: false,
-                                        decoration: InputDecoration(
-                                          labelText: "${game['GameTime']}",
-                                          filled: true,
-                                          fillColor: Colors.black12,
-                                        ),
-                                      ),
-                                    ),
-                                    RaisedButton(
-                                        child: Text("Pick Game Time"),
-                                        onPressed: () async {
-                                          gameTime = await showTimePicker(
-                                            context: context,
-                                            initialTime: TimeOfDay.now(),
-                                          );
-                                          _editGameTimeController.text = gameTime.format(context);
-                                        }),
-                                  ],
-                                ),
-                              ),*/
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 16.0),
                                 child: TextField(
                                   controller: _editOpposingTeamController,
                                   decoration: InputDecoration(
+                                    prefixIcon: Icon(OMIcons.group),
                                     labelText: "Opposing Team: " + "${gameToUpdate['OpposingTeam']}",
-                                    /*fillColor: Colors.black12,
-                                    filled: true,*/
                                     border: OutlineInputBorder(),
                                     suffixIcon: IconButton(
                                         icon: Icon(Icons.clear),
@@ -228,8 +124,7 @@ class _EditGameState extends State<EditGame> {
                                   controller: _editGameLocationController,
                                   decoration: InputDecoration(
                                       labelText: "Game Location: " + "${gameToUpdate['GameLocation']}",
-                                      /*fillColor: Colors.black12,
-                                      filled: true,*/
+                                      prefixIcon: Icon(OMIcons.locationOn),
                                       border: OutlineInputBorder(),
                                       suffixIcon: IconButton(
                                           icon: Icon(Icons.clear),
@@ -241,12 +136,19 @@ class _EditGameState extends State<EditGame> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 16.0),
-                                child:  DropdownButton(
+                                child: OutlineDropdownButton(
                                   items: _homeOrAwayOptions,
                                   onChanged: _chooseHomeOrAway,
-                                  hint: Text("${gameToUpdate['HomeOrAway']}"),
+                                  hint: Row(
+                                    children: <Widget>[
+                                      Icon(OMIcons.notListedLocation, color: Colors.grey[600],),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10.0),
+                                        child: Text("${gameToUpdate['HomeOrAway']}"),
+                                      ),
+                                    ],
+                                  ),
                                   value: _homeOrAway,
-                                  isExpanded: true,
                                 ),
                               ),
                             ],

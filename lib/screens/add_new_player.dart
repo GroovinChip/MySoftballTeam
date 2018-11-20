@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
+import 'package:groovin_widgets/outline_dropdown_button.dart';
 import 'package:my_softball_team/globals.dart' as globals;
+import 'package:outline_material_icons/outline_material_icons.dart';
 
 class AddNewPlayer extends StatefulWidget {
   @override
@@ -76,8 +78,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                   TextField(
                     decoration: InputDecoration(
                       labelText: "Player Name",
-                      /*filled: true,
-                      fillColor: Colors.black12,*/
+                      prefixIcon: Icon(OMIcons.person),
                       border: OutlineInputBorder(),
                       suffixIcon: IconButton(
                           icon: Icon(Icons.clear),
@@ -90,12 +91,11 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                   SizedBox(
                     height: 25.0,
                   ),
-                  DropdownButton(
+                  OutlineDropdownButton(
                     items: globals.fieldPositions,
                     onChanged: _chooseFieldPosition,
                     hint: Text("Choose Field Position"),
                     value: position,
-                    isExpanded: true,
                   ),
                   SizedBox(
                     height: 15.0,

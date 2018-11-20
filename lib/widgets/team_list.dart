@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
+import 'package:groovin_widgets/outline_dropdown_button.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/widgets/edit_stats.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
@@ -72,17 +73,16 @@ class _TeamListState extends State<TeamList> {
                                 context: context,
                                 builder: (_) => SimpleDialog(
                                   title: Text("Change Field Position"),
+                                  titlePadding: EdgeInsets.all(16.0),
+                                  contentPadding: EdgeInsets.all(16.0),
                                   children: <Widget>[
                                     Column(
                                       children: <Widget>[
-                                        ListTile(
-                                          leading: Icon(OMIcons.locationOn, color: Colors.black),
-                                          title: DropdownButton(
-                                            items: globals.fieldPositions,
-                                            onChanged: _changeFieldPosition,
-                                            hint: Text("${ds['FieldPosition']}"),
-                                            value: position),
-                                          trailing: SizedBox(width: 25.0),
+                                        OutlineDropdownButton(
+                                          items: globals.fieldPositions,
+                                          onChanged: _changeFieldPosition,
+                                          hint: Text("${ds['FieldPosition']}"),
+                                          value: position
                                         ),
                                       ],
                                     )

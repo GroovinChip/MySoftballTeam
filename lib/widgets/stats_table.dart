@@ -42,18 +42,19 @@ class _StatsTableState extends State<StatsTable> {
 
           // Create the columns
           for(int statsIndex = 0; statsIndex < statsInStream.length; statsIndex++) {
-            columns.add(DataColumn(
-              label: Text(
-                statsInStream[statsIndex].documentID,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+            columns.add(
+              DataColumn(
+                label: Text(
+                  statsInStream[statsIndex].documentID,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              onSort: (int columnIndex, bool sortDirection){
-                print(sortDirection);
-                sortAscending = sortDirection;
-              },
+                onSort: (int columnIndex, bool sortDirection){
+                  print(sortDirection);
+                  sortAscending = sortDirection;
+                },
               ),
             );
           }
@@ -121,11 +122,11 @@ class _StatsTableState extends State<StatsTable> {
             children: <Widget>[
               SingleChildScrollView(
                 child: Container(
-                    child: DataTable(
-                      columns: columns,
-                      rows: rows,
-                      sortAscending: sortAscending,
-                    )
+                  child: DataTable(
+                    columns: columns,
+                    rows: rows,
+                    sortAscending: sortAscending,
+                  ),
                 ),
               ),
             ],

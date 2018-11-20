@@ -6,6 +6,7 @@ import 'package:my_softball_team/globals.dart' as globals;
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:datetime_picker_formfield/time_picker_formfield.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:groovin_widgets/groovin_widgets.dart';
 
 class AddNewGame extends StatefulWidget{
   @override
@@ -95,118 +96,13 @@ class _AddNewGameState extends State<AddNewGame> {
                             ),
                           ),
                         ),
-                        /*Padding(
-                          padding: const EdgeInsets.only(bottom: 16.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              SizedBox(
-                                width: 185.0,
-                                child: TextField(
-                                  controller: _gameDateController,
-                                  enabled: false,
-                                  decoration: InputDecoration(
-                                    labelText: "Game Date*",
-                                    filled: true,
-                                    fillColor: Colors.black12,
-                                  ),
-                                ),
-                              ),
-                              RaisedButton(
-                                child: Text("Pick Game Date"),
-                                onPressed: () async {
-                                  gameDate = await showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate:
-                                      DateTime(DateTime.now().year,
-                                      DateTime.now().month, DateTime.now().day),
-                                    lastDate: DateTime(DateTime.now().year, 12, 31)
-                                  );
-                                  year = gameDate.year.toString();
-                                  switch(gameDate.month){
-                                    case 1:
-                                      month = "January";
-                                      break;
-                                    case 2:
-                                      month = "February";
-                                      break;
-                                    case 3:
-                                      month = "March";
-                                      break;
-                                    case 4:
-                                      month = "April";
-                                      break;
-                                    case 5:
-                                      month = "May";
-                                      break;
-                                    case 6:
-                                      month = "June";
-                                      break;
-                                    case 7:
-                                      month = "July";
-                                      break;
-                                    case 8:
-                                      month = "August";
-                                      break;
-                                    case 9:
-                                      month = "September";
-                                      break;
-                                    case 10:
-                                      month = "October";
-                                      break;
-                                    case 11:
-                                      month = "November";
-                                      break;
-                                    case 12:
-                                      month = "December";
-                                      break;
-                                    default:
-                                      break;
-                                  }
-                                  _gameDateController.text = month + " " + gameDate.day.toString() + ", " + gameDate.year.toString();
-                                },
-                              ),
-                            ],
-                          ),
-                        ),*/
-                        /*Padding(
-                          padding: const EdgeInsets.only(top: 16.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              SizedBox(
-                                width: 185.0,
-                                child: TextField(
-                                  controller: _gameTimeController,
-                                  enabled: false,
-                                  decoration: InputDecoration(
-                                    labelText: "Game Time*",
-                                    filled: true,
-                                    fillColor: Colors.black12,
-                                  ),
-                                ),
-                              ),
-                              RaisedButton(
-                                child: Text("Pick Game Time"),
-                                onPressed: () async {
-                                  gameTime = await showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now(),
-                                  );
-                                  _gameTimeController.text = gameTime.format(context);
-                                }),
-                            ],
-                          ),
-                        ),*/
                         Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: TextField(
                             controller: _opposingTeamController,
                             decoration: InputDecoration(
                               labelText: "Opposing Team*",
-                              /*fillColor: Colors.black12,
-                              filled: true,*/
+                              prefixIcon: Icon(OMIcons.group),
                               border: OutlineInputBorder(),
                               suffixIcon: IconButton(
                                 icon: Icon(Icons.clear),
@@ -221,8 +117,7 @@ class _AddNewGameState extends State<AddNewGame> {
                           controller: _gameLocationController,
                           decoration: InputDecoration(
                             labelText: "Game Location*",
-                            /*fillColor: Colors.black12,
-                            filled: true,*/
+                            prefixIcon: Icon(OMIcons.locationOn),
                             border: OutlineInputBorder(),
                             suffixIcon: IconButton(
                               icon: Icon(Icons.clear),
@@ -234,47 +129,21 @@ class _AddNewGameState extends State<AddNewGame> {
                       ],
                     ),
                     SizedBox(height: 15.0),
-                    DropdownButton(
+                    OutlineDropdownButton(
                       items: _homeOrAwayOptions,
                       onChanged: _chooseHomeOrAway,
-                      hint: Text("Home or Away"),
+                      hint: Row(
+                        children: <Widget>[
+                          Icon(OMIcons.notListedLocation, color: Colors.grey[600],),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Text("Home or Away"),
+                          ),
+                        ],
+                      ),
                       value: _homeOrAway,
-                      isExpanded: true,
                     ),
                     SizedBox(height: 25.0),
-                    /*Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        RaisedButton.icon(
-                          onPressed: (){
-                            if(_gameDateController.text != "" && _gameTimeController.text != "") {
-                              if(_opposingTeamController.text != "" && _gameLocationController.text != "") {
-                                globals.gamesDB.add({
-                                  "GameDate":_gameDateController.text,
-                                  "GameTime":_gameTimeController.text,
-                                  "OpposingTeam":_opposingTeamController.text,
-                                  "GameLocation":_gameLocationController.text,
-                                  "HomeOrAway":_homeOrAway
-                                });
-                                Navigator.pop(context);
-                              }
-                            }
-                          },
-                          icon: Icon(
-                            GroovinMaterialIcons.content_save_outline,
-                            color: Colors.white,
-                          ),
-                          color: Colors.indigo,
-                          label: Text(
-                            "Save",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                          splashColor: Colors.indigoAccent,
-                        ),
-                      ],
-                    ),*/
                   ],
                 ),
               ),
