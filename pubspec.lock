@@ -14,7 +14,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.1"
+    version: "1.5.0"
   async:
     dependency: transitive
     description:
@@ -94,6 +94,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.4"
+  fancy_bottom_navigation:
+    dependency: "direct main"
+    description:
+      name: fancy_bottom_navigation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -116,7 +123,7 @@ packages:
   flutter_email_sender:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\groov\\Flutter_Projects\\flutter_email_sender"
+      path: "C:\\Users\\Reuvain\\Flutter Projects\\flutter_email_sender"
       relative: false
     source: path
     version: "1.0.1"
@@ -145,7 +152,7 @@ packages:
       name: groovin_widgets
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.3.1"
   image:
     dependency: transitive
     description:
@@ -306,5 +313,5 @@ packages:
     source: hosted
     version: "2.1.15"
 sdks:
-  dart: ">=2.0.0 <=2.1.0-dev.9.3.flutter-9c07fb64c4"
+  dart: ">=2.0.0 <=2.1.0-dev.9.4.flutter-f9ebf21297"
   flutter: ">=0.5.0 <2.0.0"

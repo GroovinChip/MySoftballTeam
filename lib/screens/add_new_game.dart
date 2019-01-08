@@ -134,9 +134,12 @@ class _AddNewGameState extends State<AddNewGame> {
                       onChanged: _chooseHomeOrAway,
                       hint: Row(
                         children: <Widget>[
-                          Icon(OMIcons.notListedLocation, color: Colors.grey[600],),
                           Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
+                            padding: const EdgeInsets.only(left: 4.0),
+                            child: Icon(OMIcons.notListedLocation, color: Colors.grey[600],),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 12.0),
                             child: Text("Home or Away"),
                           ),
                         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
+import 'package:groovin_widgets/groovin_widgets.dart';
 import 'package:groovin_widgets/outline_dropdown_button.dart';
 import 'package:my_softball_team/globals.dart' as globals;
 import 'package:outline_material_icons/outline_material_icons.dart';
@@ -100,7 +101,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                   SizedBox(
                     height: 15.0,
                   ),
-                  ExpansionTile(
+                  GroovinExpansionTile(
                     title: Text("Initial Stats (Optional)"),
                     children: <Widget>[
                       SizedBox(
