@@ -19,9 +19,9 @@ class MySoftballTeam extends StatelessWidget {
     return MaterialApp(
       title: 'My Softball Team',
       theme: ThemeData(
-          primaryColor: Colors.indigo,
-          accentColor: Colors.indigoAccent,
-          fontFamily: 'sourcesanspro'
+        primaryColor: Colors.indigo,
+        accentColor: Colors.indigoAccent,
+        fontFamily: 'sourcesanspro',
       ),
       home: CheckLogin(),
       debugShowCheckedModeBanner: false,
@@ -34,7 +34,7 @@ class MySoftballTeam extends StatelessWidget {
         '/LoginPage': (BuildContext context) => LoginPage(),
         '/PreviousGamesTable': (BuildContext context) => PreviousGamesList(),
         '/EmailList': (BuildContext context) => EmailList(),
-        '/SetLineup': (BuildContext context) => SetLineupScreen()
+        '/SetLineup': (BuildContext context) => SetLineupScreen(),
       },
     );
   }
