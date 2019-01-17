@@ -238,7 +238,12 @@ class _SignupState extends State<Signup> {
                                   
                                   // add the user to the database
                                   CollectionReference usersDB = Firestore.instance.collection("Users");
-                                  usersDB.document(firebaseUser.uid).setData({"Name":name, "Email":firebaseUser.email, "Team":_team});
+                                  usersDB.document(firebaseUser.uid).setData({
+                                    "Name":name,
+                                    "Email":firebaseUser.email,
+                                    "Team":_team,
+                                    "StatTableSort":"AtBats",
+                                  });
 
                                   // Add user to globals
                                   globals.loggedInUser = firebaseUser;

@@ -63,8 +63,6 @@ class _StatsTableState extends State<StatsTable> {
                   },
                 ),
               );
-
-              //return Container();
             }
           },
         ),
@@ -83,7 +81,7 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
       .collection("Teams")
       .document(globals.teamName)
       .collection("Stats");
-  String statSelection = null;
+  String statSelection;
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +111,7 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
             Container(
               width: MediaQuery.of(context).size.width / 4,
               child: DropdownButtonHideUnderline(
-                child: StreamBuilder(
+                child: StreamBuilder<QuerySnapshot>(
                   stream: stats.snapshots(),
                   builder: (context, snapshot) {
                     if(snapshot.hasError) {
@@ -161,6 +159,9 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
                           onChanged: (value) {
                             setState(() {
                               statSelection = value;
+                              globals.usersDB.document(globals.loggedInUser.uid).updateData({
+                                "StatTableSort":statSelection,
+                              });
                             });
                           },
                           value: statSelection,
