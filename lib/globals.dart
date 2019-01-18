@@ -61,7 +61,7 @@ List<DropdownMenuItem> fieldPositions = [
 
 // This function converts String dates and times into
 // formatted DateTime and TimeOfDay objects
-convertStringDateToDateTime(String date, String time) {
+DateTime convertStringDateToDateTime(String date, String time) {
   List<String> splittedDateString = date.split(' ');
   List<String> splittedTimeString = time.split('');
   DateTime resultDate;
