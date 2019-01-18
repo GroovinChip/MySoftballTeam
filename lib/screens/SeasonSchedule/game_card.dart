@@ -7,6 +7,7 @@ import 'package:my_softball_team/globals.dart' as globals;
 import 'package:my_softball_team/screens/SeasonSchedule/edit_game.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GameCard extends StatefulWidget{
   final String gameID;
@@ -144,14 +145,14 @@ class GameCardState extends State<GameCard> {
                   ));
                 },
               ),
-              /*IconButton(
-                icon: Icon(OMIcons.navigation),
+              IconButton(
+                icon: Icon(OMIcons.driveEta),
                 tooltip: "Drive to Game",
                 onPressed: () {
-                  globals.selectedGameDocument = gameID;
-
+                  globals.selectedGameDocument = widget.gameID;
+                  launch("https://www.google.com/maps/search/?api=1&query=" + widget.gameLocation);
                 },
-              ),*/
+              ),
               StreamBuilder<QuerySnapshot>(
                 stream: Firestore.instance.collection("Teams").document(globals.teamName).collection("EmailList").snapshots(),
                 builder: (context, snapshot){
