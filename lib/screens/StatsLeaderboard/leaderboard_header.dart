@@ -44,12 +44,15 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
                 fontSize: 16.0,
               ),
             ),
-            Text(
-              "Player",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 16.0,
+            Padding(
+              padding: const EdgeInsets.only(left: 24.0),
+              child: Text(
+                "Player",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
               ),
             ),
             Container(

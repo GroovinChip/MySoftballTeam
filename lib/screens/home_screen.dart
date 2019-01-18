@@ -42,15 +42,30 @@ class _HomeScreenState extends State<HomeScreen> {
   List<BottomNavigationBarItem> _bottomNavigationBarItems = [
     BottomNavigationBarItem(
       icon: Icon(GroovinMaterialIcons.calendar_text),
-      title: Text("Schedule"),
+      title: Text(
+        "Schedule",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ),
     BottomNavigationBarItem(
       icon: Icon(GroovinMaterialIcons.account_multiple_outline),
-      title: Text("Team"),
+      title: Text(
+        "Team",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ),
     BottomNavigationBarItem(
       icon: Icon(OMIcons.assessment),
-      title: Text("Stats"),
+      title: Text(
+        "Stats",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ),
   ];
 
