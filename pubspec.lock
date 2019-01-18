@@ -116,7 +116,7 @@ packages:
   flutter_email_sender:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\Reuvain\\Flutter Projects\\flutter_email_sender"
+      path: "C:\\Users\\groov\\Flutter_Projects\\flutter_email_sender"
       relative: false
     source: path
     version: "1.0.1"
