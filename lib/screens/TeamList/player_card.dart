@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:groovin_widgets/groovin_widgets.dart';
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/edit_stats.dart';
+import 'package:my_softball_team/screens/Player/edit_stats.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
 class PlayerCard extends StatefulWidget {
