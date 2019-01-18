@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/check_login.dart';
-import 'package:my_softball_team/screens/add_new_game.dart';
+import 'package:my_softball_team/screens/SeasonSchedule/add_new_game.dart';
 import 'package:my_softball_team/screens/add_new_player.dart';
 import 'package:my_softball_team/screens/emailList.dart';
 import 'package:my_softball_team/screens/setLineup.dart';
 import 'package:my_softball_team/screens/signup.dart';
 import 'package:my_softball_team/widgets/previous_games_list.dart';
-import 'package:my_softball_team/widgets/season_schedule.dart';
+import 'package:my_softball_team/screens/SeasonSchedule/season_schedule.dart';
 import 'package:my_softball_team/screens/home_screen.dart';
 import 'package:my_softball_team/screens/login.dart';
 

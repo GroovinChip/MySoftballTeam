@@ -2,7 +2,7 @@ import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_softball_team/widgets/season_schedule.dart';
+import 'package:my_softball_team/screens/SeasonSchedule/season_schedule.dart';
 import 'package:my_softball_team/screens/TeamList/team_list.dart';
 import 'package:my_softball_team/screens/StatsLeaderboard/leaderboard_home.dart';
 import 'package:my_softball_team/globals.dart' as globals;

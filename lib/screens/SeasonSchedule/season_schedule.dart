@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart' ;
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/edit_game.dart';
+import 'package:my_softball_team/screens/SeasonSchedule/edit_game.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
-import 'package:my_softball_team/widgets/game_card.dart';
+import 'package:my_softball_team/screens/SeasonSchedule/game_card.dart';
 
 class SeasonSchedule extends StatefulWidget {
   @override

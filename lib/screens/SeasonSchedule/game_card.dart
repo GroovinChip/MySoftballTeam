@@ -4,22 +4,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:groovin_material_icons/groovin_material_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:my_softball_team/globals.dart' as globals;
-import 'package:my_softball_team/widgets/edit_game.dart';
+import 'package:my_softball_team/screens/SeasonSchedule/edit_game.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
-class GameCard extends StatelessWidget{
-  String gameID;
-  String homeOrAway;
-  String teamName;
-  String opposingTeam;
-  String gameDate;
-  String gameTime;
-  String gameLocation;
-  String fullText;
-  bool isPreviousGame;
-  TextEditingController ownTeamScoreController = TextEditingController();
-  TextEditingController opposingTeamScoreController = TextEditingController();
+class GameCard extends StatefulWidget{
+  final String gameID;
+  final String homeOrAway;
+  final String teamName;
+  final String opposingTeam;
+  final String gameDate;
+  final String gameTime;
+  final String gameLocation;
+  final bool isPreviousGame;
 
   GameCard({
     this.gameID,
@@ -33,16 +30,27 @@ class GameCard extends StatelessWidget{
   });
 
   @override
+  GameCardState createState() {
+    return GameCardState();
+  }
+}
+
+class GameCardState extends State<GameCard> {
+  String fullText;
+  TextEditingController ownTeamScoreController = TextEditingController();
+  TextEditingController opposingTeamScoreController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    switch (homeOrAway) {
+    switch (widget.homeOrAway) {
       case "Home":
-        fullText = teamName + " VS " + opposingTeam;
+        fullText = widget.teamName + " VS " + widget.opposingTeam;
         break;
       case "Away":
-        fullText = opposingTeam + " VS " + teamName;
+        fullText = widget.opposingTeam + " VS " + widget.teamName;
         break;
       case "Bye":
-        fullText = homeOrAway;
+        fullText = widget.homeOrAway;
         break;
     }
     return Card(
@@ -56,7 +64,7 @@ class GameCard extends StatelessWidget{
             child: Text(
               fullText,
               style: TextStyle(
-                fontSize: isPreviousGame == false ? 26.0 : 20,
+                fontSize: widget.isPreviousGame == false ? 22.0 : 20,
                 fontWeight: FontWeight.bold
               ),
             ),
@@ -64,24 +72,24 @@ class GameCard extends StatelessWidget{
           Padding(
             padding: const EdgeInsets.only(left: 16.0, bottom: 6.0),
             child: Text(
-                gameTime + " on " + gameDate
+                widget.gameTime + " on " + widget.gameDate
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: Text(
-                gameLocation
+                widget.gameLocation
             ),
           ),
           // Check if this game is a previous game - if so, do not show the action row
-          (isPreviousGame == false) ? Row(
+          (widget.isPreviousGame == false) ? Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.delete_outline),
                 tooltip: "Delete game",
                 onPressed: () {
-                  globals.selectedGameDocument = gameID;
+                  globals.selectedGameDocument = widget.gameID;
                   showDialog(
                   context: context,
                   builder: (_) =>
@@ -127,7 +135,7 @@ class GameCard extends StatelessWidget{
                 icon: Icon(GroovinMaterialIcons.edit_outline),
                 tooltip: "Edit game details",
                 onPressed: () {
-                  globals.selectedGameDocument = gameID;
+                  globals.selectedGameDocument = widget.gameID;
                   Navigator.of(context).push(new MaterialPageRoute<Null>(
                       builder: (BuildContext context) {
                         return EditGame();
@@ -204,7 +212,7 @@ class GameCard extends StatelessWidget{
                                   children: <Widget>[
                                     Padding(
                                       padding: const EdgeInsets.only(left: 24.0),
-                                      child: Text(teamName),
+                                      child: Text(widget.teamName),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(right: 24.0),
@@ -224,7 +232,7 @@ class GameCard extends StatelessWidget{
                                   children: <Widget>[
                                     Padding(
                                       padding: const EdgeInsets.only(left: 24.0),
-                                      child: Text(opposingTeam),
+                                      child: Text(widget.opposingTeam),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(right: 24.0),
@@ -256,7 +264,7 @@ class GameCard extends StatelessWidget{
                                         if(ownScore == opposingScore){
                                           winOrLoss = "Unknown"; //TODO figure something out with this
                                         }
-                                        globals.gamesDB.document(gameID).updateData({
+                                        globals.gamesDB.document(widget.gameID).updateData({
                                           "WinOrLoss":winOrLoss
                                         });
                                         Navigator.pop(context);
