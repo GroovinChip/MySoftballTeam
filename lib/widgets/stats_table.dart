@@ -1,3 +1,4 @@
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_softball_team/globals.dart' as globals;
@@ -19,7 +20,7 @@ class StatsTable extends StatefulWidget {
 }
 
 class _StatsTableState extends State<StatsTable> {
-  bool sortAscending = false;
+  String statSort;
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +28,62 @@ class _StatsTableState extends State<StatsTable> {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
-          child: LeaderboardHeader(),
+          child: StreamBuilder<QuerySnapshot>(
+            stream: globals.usersDB.snapshots(),
+            builder: (context, snapshot) {
+              if(!snapshot.hasData) {
+                return Expanded(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              } else {
+                DocumentSnapshot user;
+                for(int i = 0; i < snapshot.data.documents.length; i++) {
+                  if(snapshot.data.documents[i].documentID == globals.loggedInUser.uid) {
+                    user = snapshot.data.documents[i];
+                  }
+                }
+                statSort = user['StatTableSort'];
+                return LeaderboardHeader(
+                  defaultSelection: user['StatTableSort'],
+                  onSelectionChange: (value) {
+                    setState(() {
+
+                    });
+                  },
+                );
+              }
+            },
+          ),
         ),
-        StreamBuilder<QuerySnapshot>(
-          stream: players.snapshots(),
+        StreamBuilder<List<QuerySnapshot>>(
+          stream: StreamZip([
+            globals.usersDB.snapshots(),
+            players.orderBy(statSort, descending: true).snapshots(),
+          ]),
           builder: (context, snapshot) {
             if(!snapshot.hasData) {
-              return Center(
-                child: CircularProgressIndicator(),
+              return Expanded(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
             } else {
-              final player = snapshot;
+              final userStream = snapshot.data[0];
+              final playerStream = snapshot.data[1];
+
+              DocumentSnapshot userDoc;
+              List<DocumentSnapshot> players = playerStream.documents;
+              for(int i = 0; i < userStream.documents.length; i++) {
+                if(userStream.documents[i].documentID == globals.loggedInUser.uid) {
+                  userDoc = userStream.documents[i];
+                }
+              }
+
               return Expanded(
                 child: ListView.builder(
-                  itemCount: player.data.documents.length,
+                  itemCount: playerStream.documents.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -52,9 +95,34 @@ class _StatsTableState extends State<StatsTable> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Text((index + 1).toString()),
-                              Text(player.data.documents[index]['PlayerName']),
-                              //Text(statSelection != null ? player.data.documents[index][statSelection] : ""),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text(
+                                  (index + 1).toString(),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
+                                    color: Colors.indigoAccent,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                playerStream.documents[index]['PlayerName'],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: Text(
+                                  playerStream.documents[index][userDoc['StatTableSort']],
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.0,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -71,7 +139,17 @@ class _StatsTableState extends State<StatsTable> {
   }
 }
 
+typedef LeaderboardHeaderChangeCallback = void Function(String);
+
 class LeaderboardHeader extends StatefulWidget {
+  final String defaultSelection;
+  final LeaderboardHeaderChangeCallback onSelectionChange;
+
+  LeaderboardHeader({
+    @required this.defaultSelection,
+    @required this.onSelectionChange,
+  });
+
   @override
   _LeaderboardHeaderState createState() => _LeaderboardHeaderState();
 }
@@ -99,6 +177,7 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
+                fontSize: 16.0,
               ),
             ),
             Text(
@@ -106,6 +185,7 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
+                fontSize: 16.0,
               ),
             ),
             Container(
@@ -127,18 +207,23 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
 
                       for(int i = 0; i < statListFromSnaps.data.documents.length; i++) {
                         DocumentSnapshot statSnap = statListFromSnaps.data.documents[i];
+                        String value = statSnap.documentID.replaceAll(RegExp(r"\s+\b|\b\s"), "");
                         statList.add(
                           DropdownMenuItem(
                             child: Text(
                               statSnap.documentID,
                               style: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.0
                               ),
                             ),
-                            value: statSnap.documentID,
+                            value: value,
                           ),
                         );
                       }
+
+                      statSelection = widget.defaultSelection;
 
                       return Theme(
                         data: ThemeData(
@@ -157,11 +242,12 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
                             ),
                           ),
                           onChanged: (value) {
-                            setState(() {
+                            setState(() async{
                               statSelection = value;
-                              globals.usersDB.document(globals.loggedInUser.uid).updateData({
+                              await globals.usersDB.document(globals.loggedInUser.uid).updateData({
                                 "StatTableSort":statSelection,
                               });
+                              widget.onSelectionChange(statSelection);
                             });
                           },
                           value: statSelection,

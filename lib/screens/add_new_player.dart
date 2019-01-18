@@ -12,7 +12,6 @@ class AddNewPlayer extends StatefulWidget {
 }
 
 class _AddNewPlayerState extends State<AddNewPlayer> {
-
   // Controllers
   TextEditingController _playerNameController = TextEditingController();
   TextEditingController _atBatsController = TextEditingController();
@@ -60,9 +59,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Theme
-            .of(context)
-            .canvasColor,
+        backgroundColor: Theme.of(context).canvasColor,
         iconTheme: IconThemeData(color: Colors.black),
         elevation: 0.0,
         centerTitle: true,
@@ -82,11 +79,13 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                       prefixIcon: Icon(OMIcons.person),
                       border: OutlineInputBorder(),
                       suffixIcon: IconButton(
-                          icon: Icon(Icons.clear),
-                          onPressed: () {
-                            _playerNameController.text = "";
-                          }),
+                        icon: Icon(Icons.clear),
+                        onPressed: () {
+                          _playerNameController.text = "";
+                        },
+                      ),
                     ),
+                    textCapitalization: TextCapitalization.words,
                     controller: _playerNameController,
                   ),
                   SizedBox(
@@ -95,7 +94,21 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
                   OutlineDropdownButton(
                     items: globals.fieldPositions,
                     onChanged: _chooseFieldPosition,
-                    hint: Text("Choose Field Position"),
+                    hint: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4.0),
+                          child: Icon(
+                            Icons.not_listed_location,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Text("Choose Field Position"),
+                        ),
+                      ],
+                    ),
                     value: position,
                   ),
                   SizedBox(
@@ -347,8 +360,7 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Save"),
         icon: Icon(Icons.save),
-        onPressed: () =>
-            Firestore.instance.runTransaction((transaction) async {
+        onPressed: () => Firestore.instance.runTransaction((transaction) async {
               playerName = _playerNameController.text;
               atBats = _atBatsController.text;
               singles = _singlesController.text;
@@ -405,7 +417,8 @@ class _AddNewPlayerState extends State<AddNewPlayer> {
               }
 
               // Save the player to the database
-              CollectionReference team = Firestore.instance.collection('Teams')
+              CollectionReference team = Firestore.instance
+                  .collection('Teams')
                   .document(globals.teamName)
                   .collection("Players");
               team.document(playerName).setData({
