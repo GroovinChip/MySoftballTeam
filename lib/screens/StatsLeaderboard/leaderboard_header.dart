@@ -45,7 +45,7 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 24.0),
+              padding: const EdgeInsets.only(left: 56.0),
               child: Text(
                 "Player",
                 style: TextStyle(
@@ -56,7 +56,7 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width / 4,
+              width: MediaQuery.of(context).size.width / 4.5,
               child: DropdownButtonHideUnderline(
                 child: StreamBuilder<QuerySnapshot>(
                   stream: stats.snapshots(),
@@ -82,7 +82,7 @@ class _LeaderboardHeaderState extends State<LeaderboardHeader> {
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 16.0
+                                  fontSize: 15.0
                               ),
                             ),
                             value: value,

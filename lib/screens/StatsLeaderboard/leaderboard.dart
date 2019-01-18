@@ -47,56 +47,54 @@ class _LeaderboardState extends State<Leaderboard> {
             }
           }
 
-          return Expanded(
-            child: ListView.builder(
-              itemCount: playerStream.documents.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Material(
-                    elevation: 2.0,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Text(
-                              (index + 1).toString(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                                color: Colors.indigoAccent,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            playerStream.documents[index]['PlayerName'],
+          return ListView.builder(
+            itemCount: playerStream.documents.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Material(
+                  elevation: 2.0,
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            (index + 1).toString(),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 16.0,
+                              fontSize: 18.0,
+                              color: Colors.indigoAccent,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Text(
-                              playerStream.documents[index]
-                                  [userDoc['StatTableSort']],
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                              ),
+                        ),
+                        Text(
+                          playerStream.documents[index]['PlayerName'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Text(
+                            playerStream.documents[index]
+                                [userDoc['StatTableSort']],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           );
         }
       },

@@ -1,4 +1,3 @@
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_softball_team/globals.dart' as globals;
@@ -21,43 +20,48 @@ class _LeaderboardHomeState extends State<LeaderboardHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-          child: StreamBuilder<QuerySnapshot>(
-            stream: globals.usersDB.snapshots(),
-            builder: (context, snapshot) {
-              if(!snapshot.hasData) {
-                return Expanded(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                );
-              } else {
-                DocumentSnapshot user;
-                for(int i = 0; i < snapshot.data.documents.length; i++) {
-                  if(snapshot.data.documents[i].documentID == globals.loggedInUser.uid) {
-                    user = snapshot.data.documents[i];
-                  }
-                }
-                statSort = user['StatTableSort'];
-                return LeaderboardHeader(
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+      child: StreamBuilder<QuerySnapshot>(
+        stream: globals.usersDB.snapshots(),
+        builder: (context, snapshot) {
+          if(!snapshot.hasData) {
+            return Expanded(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          } else {
+            DocumentSnapshot user;
+            for(int i = 0; i < snapshot.data.documents.length; i++) {
+              if(snapshot.data.documents[i].documentID == globals.loggedInUser.uid) {
+                user = snapshot.data.documents[i];
+              }
+            }
+            statSort = user['StatTableSort'];
+            return Column(
+              children: <Widget>[
+                LeaderboardHeader(
                   defaultSelection: user['StatTableSort'],
                   onSelectionChange: (value) {
                     setState(() {
 
                     });
                   },
-                );
-              }
-            },
-          ),
-        ),
-        Leaderboard(
-          statSort: statSort,
-        ),
-      ],
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Leaderboard(
+                      statSort: statSort,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
+        },
+      ),
     );
   }
 }
