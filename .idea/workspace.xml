@@ -11,7 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="494651c3-f602-4390-a5df-ae38acd139e5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/screens/SeasonSchedule/game_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/SeasonSchedule/game_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/SeasonSchedule/season_schedule.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/SeasonSchedule/season_schedule.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_home.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -56,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game_card.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="game_card.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/screens/SeasonSchedule/game_card.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="152" column="63" selection-start-line="152" selection-start-column="63" selection-end-line="152" selection-end-column="63" />
+            <state relative-caret-position="2300">
+              <caret line="148" column="27" selection-start-line="148" selection-start-column="27" selection-end-line="148" selection-end-column="27" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -71,11 +73,32 @@
       <file leaf-file-name="leaderboard_header.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_header.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="1220">
               <caret line="73" column="91" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="91" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="leaderboard_home.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_home.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="season_schedule.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/screens/SeasonSchedule/season_schedule.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="55" column="83" selection-start-line="55" selection-start-column="83" selection-end-line="55" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -170,11 +193,12 @@
         <option value="$PROJECT_DIR$/lib/screens/Stats Leaderboard/leaderboard_header.dart" />
         <option value="$PROJECT_DIR$/lib/screens/Stats Leaderboard/leaderboard_home.dart" />
         <option value="$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard.dart" />
-        <option value="$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_home.dart" />
         <option value="$PROJECT_DIR$/lib/screens/home_screen.dart" />
         <option value="$PROJECT_DIR$/lib/screens/TeamList/player_card.dart" />
         <option value="$PROJECT_DIR$/lib/screens/TeamList/team_list.dart" />
         <option value="$PROJECT_DIR$/lib/screens/SeasonSchedule/game_card.dart" />
+        <option value="$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_home.dart" />
+        <option value="$PROJECT_DIR$/lib/screens/SeasonSchedule/season_schedule.dart" />
       </list>
     </option>
   </component>
@@ -382,14 +406,14 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Flutter Performance" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29242262" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29242262" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
       <window_info id="Captures" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21896163" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21896163" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" id="Flutter Inspector" order="3" weight="0.19838056" />
+      <window_info anchor="right" id="Flutter Inspector" order="3" weight="0.19789316" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29242262" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -722,16 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_home.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/TeamList/player_card.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
@@ -773,16 +787,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/SeasonSchedule/season_schedule.dart">
+    <entry file="file://$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_home.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        <state relative-caret-position="398">
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/screens/SeasonSchedule/game_card.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2300">
+          <caret line="148" column="27" selection-start-line="148" selection-start-column="27" selection-end-line="148" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/screens/StatsLeaderboard/leaderboard_header.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="1220">
           <caret line="73" column="91" selection-start-line="73" selection-start-column="70" selection-end-line="73" selection-end-column="91" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
@@ -790,13 +817,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/screens/SeasonSchedule/game_card.dart">
+    <entry file="file://$PROJECT_DIR$/lib/screens/SeasonSchedule/season_schedule.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="152" column="63" selection-start-line="152" selection-start-column="63" selection-end-line="152" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="278">
+          <caret line="55" column="83" selection-start-line="55" selection-start-column="83" selection-end-line="55" selection-end-column="83" />
         </state>
       </provider>
     </entry>

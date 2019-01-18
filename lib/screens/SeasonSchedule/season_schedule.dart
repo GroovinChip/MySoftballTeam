@@ -15,7 +15,12 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection("Teams").document(globals.teamName).collection("Seasons").document(DateTime.now().year.toString()).collection("Games").snapshots(),
+      stream: Firestore.instance.collection("Teams")
+          .document(globals.teamName)
+          .collection("Seasons")
+          .document(DateTime.now().year.toString())
+          .collection("Games")
+          .snapshots(),
       builder: (context, snapshot) {
 
         List<Widget> gameCards = [];
@@ -32,7 +37,10 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
 
           for(int index = 0; index < games.length; index++) {
             // Check each game date - if the date is in the past, do not display a GameCard
-            DateTime gameDate = globals.convertStringDateToDateTime("${games[index]['GameDate']}", "${games[index]['GameTime']}");
+            DateTime gameDate = globals.convertStringDateToDateTime(
+              "${games[index]['GameDate']}",
+              "${games[index]['GameTime']}",
+            );
             DateTime today = new DateTime(
               DateTime.now().year,
               DateTime.now().month,
@@ -45,7 +53,7 @@ class _SeasonScheduleState extends State<SeasonSchedule> {
             } else {
               gameCards.add(
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
                   child: GameCard(
                     gameID: games[index].documentID,
                     homeOrAway: "${games[index]['HomeOrAway']}",

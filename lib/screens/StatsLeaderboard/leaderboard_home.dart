@@ -24,7 +24,7 @@ class _LeaderboardHomeState extends State<LeaderboardHome> {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0),
           child: StreamBuilder<QuerySnapshot>(
             stream: globals.usersDB.snapshots(),
             builder: (context, snapshot) {
