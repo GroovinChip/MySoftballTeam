@@ -16,8 +16,8 @@ dependencies:
   package_info: ^0.3.2
   url_launcher: ^3.0.3
   flutter_email_sender:
-    #path: C:\Users\groov\Flutter_Projects\flutter_email_sender
-    path: C:\Users\Reuvain\Flutter Projects\flutter_email_sender
+    path: C:\Users\groov\Flutter_Projects\flutter_email_sender
+    #path: C:\Users\Reuvain\Flutter Projects\flutter_email_sender
   rounded_modal: ^1.0.0
   datetime_picker_formfield: ^0.1.6
   groovin_widgets: ^1.3.1

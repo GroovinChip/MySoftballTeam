@@ -94,13 +94,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.4"
-  fancy_bottom_navigation:
-    dependency: "direct main"
-    description:
-      name: fancy_bottom_navigation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -123,7 +116,7 @@ packages:
   flutter_email_sender:
     dependency: "direct main"
     description:
-      path: "C:\\Users\\Reuvain\\Flutter Projects\\flutter_email_sender"
+      path: "C:\\Users\\groov\\Flutter_Projects\\flutter_email_sender"
       relative: false
     source: path
     version: "1.0.1"
