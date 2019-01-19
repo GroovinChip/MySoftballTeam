@@ -31,7 +31,7 @@ class _PlayerCardState extends State<PlayerCard> {
       teamCollection
         .document(globals.selectedPlayerName)
         .updateData({"FieldPosition": position});
-      Navigator.pop(context);
+      //Navigator.pop(context);
     });
   }
 
@@ -82,18 +82,56 @@ class _PlayerCardState extends State<PlayerCard> {
                   showDialog(
                     context: context,
                     builder: (_) => SimpleDialog(
-                      title: Text("Change Field Position"),
-                      titlePadding: EdgeInsets.all(16.0),
-                      contentPadding: EdgeInsets.all(16.0),
+                      title: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).accentColor,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(3.0),
+                            topLeft: Radius.circular(3.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Change Field Position",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      titlePadding: EdgeInsets.all(0.0),
+                      contentPadding: EdgeInsets.only(
+                        top: 16.0,
+                        right: 16.0,
+                        left: 16.0,
+                      ),
                       children: <Widget>[
                         Column(
                           children: <Widget>[
                             OutlineDropdownButton(
                               items: globals.fieldPositions,
                               onChanged: _changeFieldPosition,
-                              hint: Text(
-                                  "${widget.playerSnap['FieldPosition']}"),
+                              hint: Text("${widget.playerSnap['FieldPosition']}"),
                               value: position,
+                            ),
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: RaisedButton(
+                                color: Theme.of(context).accentColor,
+                                child: Text(
+                                  "Ok",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
                             ),
                           ],
                         )
