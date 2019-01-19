@@ -26,10 +26,8 @@ class _LeaderboardHomeState extends State<LeaderboardHome> {
         stream: globals.usersDB.snapshots(),
         builder: (context, snapshot) {
           if(!snapshot.hasData) {
-            return Expanded(
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
+            return Center(
+              child: CircularProgressIndicator(),
             );
           } else {
             DocumentSnapshot user;

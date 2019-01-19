@@ -74,8 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Navigate pages based on bottom navigation bar item tap
   void navigationTapped(int page) {
-    _pageController.animateToPage(page,
-        duration: const Duration(milliseconds: 300), curve: Curves.ease);
+    _pageController.animateToPage(
+      page,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
   }
 
   // Track which page is in view

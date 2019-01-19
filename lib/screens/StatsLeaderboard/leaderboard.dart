@@ -29,10 +29,8 @@ class _LeaderboardState extends State<Leaderboard> {
       ]),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return Expanded(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
+          return Center(
+            child: CircularProgressIndicator(),
           );
         } else {
           final userStream = snapshot.data[0];

@@ -42,7 +42,9 @@ class _EmailListState extends State<EmailList> {
               itemCount: snapshot.data.documents.length,
                 itemBuilder: (context, index){
                   DocumentSnapshot ds = snapshot.data.documents[index];
-                  return EmailCard();
+                  return EmailCard(
+                    emailSnap: ds,
+                  );
                 }
             );
           }
